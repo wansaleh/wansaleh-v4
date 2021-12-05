@@ -33,8 +33,8 @@ export default function UnstyledLink({
 
   return (
     <a
-      target='_blank'
-      rel='noopener noreferrer'
+      target="_blank"
+      rel="noopener noreferrer"
       href={href}
       {...rest}
       className={clsx(className, 'cursor-newtab')}
