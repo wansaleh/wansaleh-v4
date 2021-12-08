@@ -17,9 +17,9 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@mantine/core": "^3.3.2",
-    "@mantine/hooks": "^3.3.2",
-    "@mantine/next": "^3.3.2",
+    "@mantine/core": "^3.3.5",
+    "@mantine/hooks": "^3.3.5",
+    "@mantine/next": "^3.3.5",
     "@tailwindcss/forms": "^0.3.4",
     "clsx": "^1.1.1",
     "next": "^12.0.7",
@@ -32,8 +32,8 @@
     "@commitlint/config-conventional": "^15.0.0",
     "@types/react": "^17.0.37",
     "@types/tailwindcss": "^2.2.4",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^12.0.7",
