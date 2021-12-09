@@ -23,16 +23,18 @@ export default function WebPage() {
       <main>
         <section>
           <div className="layout flex flex-col justify-center items-center py-28 min-h-screen text-center">
-            <h1 className="mb-12 font-bold tracking-tighter">Web Projects</h1>
+            <h1 className="mb-12 font-extrabold tracking-tighter">
+              Web Projects
+            </h1>
 
-            <div className="lg:grid-cols-3 lg:grid md:grid-cols-2 gap-12">
+            <div className="lg:grid-cols-2 lg:grid md:grid-cols-2 gap-12">
               {orderBy(webProjects, 'publishedAt', 'desc').map(
                 (project: Project) => (
                   <div key={project.id} className="group relative">
                     <img
                       src={project.thumbnail}
                       alt={project.title}
-                      className="group-hover:ring-2 group-hover:ring-brand overflow-hidden rounded-xl border border-gray-400 shadow-lg"
+                      className="group-hover:ring-2 group-hover:ring-brand overflow-hidden rounded-xl border border-gray-300 shadow-lg"
                     />
                     <h3 className="mt-4 text-lg font-semibold">
                       <a

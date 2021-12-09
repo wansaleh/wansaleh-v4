@@ -14,14 +14,14 @@ export default function Nav() {
       <ul className="flex space-x-4 text-sm font-semibold tracking-tight">
         <li>
           <Link href="https://diskograf.com/wansaleh  ">
-            <a className="hover:(bg-black text-white) rounded-md px-1 py-0.5">
+            <a className="hover:bg-black hover:text-white rounded-md px-1 py-0.5">
               Discography
             </a>
           </Link>
         </li>
         <li>
           <Link href="/web">
-            <a className="hover:(bg-black text-white) rounded-md px-1 py-0.5">
+            <a className="hover:bg-black hover:text-white rounded-md px-1 py-0.5">
               Web
             </a>
           </Link>
