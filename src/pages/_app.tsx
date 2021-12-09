@@ -1,7 +1,11 @@
 import { MantineProvider } from '@mantine/core';
+import withTwindApp from '@twind/next/app';
 import { AppProps } from 'next/app';
+import 'twind/shim';
 
-import '@/styles/globals.css';
+import Layout from '@/components/layout/Layout';
+
+import twindConfig from '../../twind.config';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,9 +17,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         colorScheme: 'light',
       }}
     >
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </MantineProvider>
   );
 }
 
-export default MyApp;
+export default withTwindApp(twindConfig, MyApp);
