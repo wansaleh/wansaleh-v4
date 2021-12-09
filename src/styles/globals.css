@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply font-sans;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+
+h1 {
+  @apply lg:text-6xl text-4xl;
+}
+h2 {
+  @apply lg:text-5xl text-3xl;
+}
+h3 {
+  @apply lg:text-4xl text-2xl;
+}
+
+@layer base {
+  .layout {
+    @apply mx-auto max-w-6xl px-6;
+  }
+}

@@ -5,18 +5,14 @@ const brand = '#f16522';
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
-  mode: 'jit',
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...fontFamily.sans],
+        sans: ['Inter var', ...fontFamily.sans],
+        head: ['Clash Display', ...fontFamily.sans],
       },
       colors: { brand },
     },
-  },
-  variants: {
-    extend: {},
   },
 };
