@@ -12,10 +12,6 @@ export default function HomePage() {
         <section>
           <div className="layout flex flex-col justify-center items-center min-h-screen text-center">
             <Title>Wan Saleh v4</Title>
-
-            <footer className="absolute bottom-2">
-              © {new Date().getFullYear()} By Wan Saleh
-            </footer>
           </div>
         </section>
       </main>

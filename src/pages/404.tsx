@@ -10,8 +10,8 @@ export default function NotFoundPage() {
       <Seo templateTitle="Not Found" />
 
       <main>
-        <section className="bg-dark">
-          <div className="layout flex flex-col justify-center items-center min-h-screen text-center text-white">
+        <section>
+          <div className="layout flex flex-col justify-center items-center min-h-screen text-center">
             <h1 className="mt-8">😩 Page Not Found</h1>
             <CustomLink className="mt-4" href="/">
               Back to Home
