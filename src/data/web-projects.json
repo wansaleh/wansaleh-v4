@@ -8,7 +8,8 @@
       "Music",
       "Database"
     ],
-    "publishedAt": "2021-06-01T00:00:00.000Z"
+    "publishedAt": "2021-06-01T00:00:00.000Z",
+    "description": "Diskograf is a database for Malaysian music. It is a free service that allows you to search for and add information about music albums and singles in Malaysia."
   },
   {
     "id": "hbb",
@@ -19,7 +20,8 @@
       "Non-Profit",
       "Medical"
     ],
-    "publishedAt": "2020-03-01T00:00:00.000Z"
+    "publishedAt": "2020-03-01T00:00:00.000Z",
+    "description": "Hospital Beyond Boundaries (HBB) is a non-profit organization that provides medical services to the community."
   },
   {
     "id": "hafizhamidun",
@@ -30,7 +32,8 @@
       "Entertainment",
       "Artist"
     ],
-    "publishedAt": "2020-12-17T00:00:00.000Z"
+    "publishedAt": "2020-12-17T00:00:00.000Z",
+    "description": "Hafiz Hamidun is an award-winning artist and music producer from Malaysia."
   },
   {
     "id": "inteam",
@@ -41,7 +44,8 @@
       "Entertainment",
       "Artist"
     ],
-    "publishedAt": "2020-02-12T00:00:00.000Z"
+    "publishedAt": "2020-02-12T00:00:00.000Z",
+    "description": "Inteam is a renowned Malaysian religios (nasyid) group from Malaysia."
   },
   {
     "id": "tuisyenmaya",
@@ -52,7 +56,8 @@
       "Education",
       "Online Tuition"
     ],
-    "publishedAt": "2021-02-15T00:00:00.000Z"
+    "publishedAt": "2021-02-15T00:00:00.000Z",
+    "description": "TuisyenMaya is a platform that connects students with tutors and tutors with students."
   },
   {
     "id": "oongoo",
@@ -62,7 +67,8 @@
     "tags": [
       "Non-Profit"
     ],
-    "publishedAt": "2020-06-10T00:00:00.000Z"
+    "publishedAt": "2020-06-10T00:00:00.000Z",
+    "description": "Oongoo is a non-profit organization that provides education and training services to the community."
   },
   {
     "id": "beegood",
@@ -73,7 +79,8 @@
       "Music",
       "Label"
     ],
-    "publishedAt": "2021-01-27T00:00:00.000Z"
+    "publishedAt": "2021-01-27T00:00:00.000Z",
+    "description": "BeeGood Music is a music label that was founded in 2018 by a group of music lovers. The label is based in Kuala Lumpur, Malaysia. The label is a one-stop-shop for music lovers to find the best music and music production services."
   },
   {
     "id": "anam",
@@ -84,7 +91,8 @@
       "Award Show",
       "Music"
     ],
-    "publishedAt": "2020-11-09T00:00:00.000Z"
+    "publishedAt": "2020-11-09T00:00:00.000Z",
+    "description": "Anugerah Nasyid Malaysia (ANAM) is a Malaysian award show for nasyid (religious music) that is held annually in Kuala Lumpur, Malaysia."
   },
   {
     "id": "rekaman",
@@ -95,10 +103,11 @@
       "Music",
       "Studio"
     ],
-    "publishedAt": "2020-07-10T00:00:00.000Z"
+    "publishedAt": "2020-07-10T00:00:00.000Z",
+    "description": "Rekaman Music is a music recording studio based in Kuala Lumpur, Malaysia."
   },
   {
-    "id": "herbalanmy",
+    "id": "herbalandmy",
     "title": "Herbaland Malaysia",
     "url": "https://herbaland.com.my",
     "thumbnail": "/images/webthumbs/herbalandmy.png",
@@ -106,7 +115,8 @@
       "Health",
       "Lifestyle"
     ],
-    "publishedAt": "2020-04-29T00:00:00.000Z"
+    "publishedAt": "2020-04-29T00:00:00.000Z",
+    "description": "Herbaland Malaysia is a Malaysian health and lifestyle company that provides health and lifestyle products."
   },
   {
     "id": "hydrococomy",
@@ -116,7 +126,8 @@
     "tags": [
       "Food & Beverage"
     ],
-    "publishedAt": "2020-02-12T00:00:00.000Z"
+    "publishedAt": "2020-02-12T00:00:00.000Z",
+    "description": "HydroCoco Malaysia is a Malaysian food and beverage company that provides food and beverage products."
   },
   {
     "id": "naqsyi",
@@ -127,7 +138,8 @@
       "Food & Beverage",
       "Health"
     ],
-    "publishedAt": "2021-11-26T00:00:00.000Z"
+    "publishedAt": "2021-11-26T00:00:00.000Z",
+    "description": "Naqsyi is a Malaysian food and health company that provides food and health products."
   },
   {
     "id": "hkc",
@@ -138,7 +150,8 @@
       "Education",
       "Online Tuition"
     ],
-    "publishedAt": "2021-08-31T00:00:00.000Z"
+    "publishedAt": "2021-08-31T00:00:00.000Z",
+    "description": "Hikmah Quranic Centre is an online Quran tuition provider."
   },
   {
     "id": "fibreconsultant",
@@ -149,7 +162,8 @@
       "Service Provicer",
       "Reseller"
     ],
-    "publishedAt": "2021-11-14T00:00:00.000Z"
+    "publishedAt": "2021-11-14T00:00:00.000Z",
+    "description": "Fibre Consultant is a service provider and reseller of fibre optic broadband network in Malaysia."
   },
   {
     "id": "panduantarawih",
@@ -160,7 +174,8 @@
       "Education",
       "Islamic"
     ],
-    "publishedAt": "2020-04-24T00:00:00.000Z"
+    "publishedAt": "2020-04-24T00:00:00.000Z",
+    "description": "Panduan Tarawih is a Malaysian Islamic educational website that provides information on solat Tarawih, the prayer that performed during Ramadhan."
   },
   {
     "id": "inteamquran",
@@ -171,7 +186,8 @@
       "Education",
       "Islamic"
     ],
-    "publishedAt": "2020-05-03T00:00:00.000Z"
+    "publishedAt": "2020-05-03T00:00:00.000Z",
+    "description": "Inteam Quran is a compilation of Quran recitations by Ustaz Khairul Anuar Basri."
   },
   {
     "id": "uobwelcome",

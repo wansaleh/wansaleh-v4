@@ -13,6 +13,7 @@ interface Project {
   thumbnail: string;
   tags: string[];
   publishedAt: string;
+  description?: string;
 }
 
 export default function WebPage() {
@@ -27,7 +28,7 @@ export default function WebPage() {
               Web Projects
             </h1>
 
-            <div className="lg:grid-cols-2 lg:grid md:grid-cols-2 gap-12">
+            <div className="lg:grid-cols-2 md:grid-cols-2 grid grid-cols-1 gap-12">
               {orderBy(webProjects, 'publishedAt', 'desc').map(
                 (project: Project) => (
                   <div key={project.id} className="group relative">
@@ -74,6 +75,10 @@ export default function WebPage() {
                         </span>
                       ))}
                     </div>
+
+                    <p className="mx-auto mt-4 max-w-md text-sm">
+                      {project.description}
+                    </p>
                   </div>
                 )
               )}
