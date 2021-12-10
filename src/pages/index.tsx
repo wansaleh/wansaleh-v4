@@ -7,21 +7,24 @@ export default function HomePage() {
     <>
       <Seo />
 
-      <main>
-        <section>
-          <div className="layout flex flex-col justify-center items-center min-h-screen font-extralight text-center">
-            <h1 className="font-sans font-light tracking-tighter">
-              <a href="https://diskograf.com/wansaleh">Music</a> &amp;{' '}
-              <Link href="/web">
-                <a>Code</a>
-              </Link>
-              <br />
-              <span className="font-extralight">by Wan Saleh</span>
-            </h1>
-            {/* <h2>Producer &amp; web developer from Malaysia.</h2> */}
-          </div>
-        </section>
-      </main>
+      <h1 className="lg:flex-row lg:text-7xl lg:space-x-5 flex flex-col font-sans text-5xl font-semibold tracking-tighter">
+        <span>
+          <a
+            href="https://diskograf.com/wansaleh"
+            className="text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-orange-600"
+          >
+            Music
+          </a>{' '}
+          &amp;{' '}
+          <Link href="/web">
+            <a className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-cyan-600">
+              Code
+            </a>
+          </Link>
+        </span>
+        <span className="font-extralight">by Wan Saleh</span>
+      </h1>
+      {/* <h2>Producer &amp; web developer from Malaysia.</h2> */}
     </>
   );
 }

@@ -7,14 +7,6 @@ html {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-}
-
 h1 {
   @apply lg:text-6xl text-4xl;
 }
@@ -27,6 +19,6 @@ h3 {
 
 @layer base {
   .layout {
-    @apply mx-auto max-w-6xl px-6;
+    @apply px-6 mx-auto max-w-6xl;
   }
 }
