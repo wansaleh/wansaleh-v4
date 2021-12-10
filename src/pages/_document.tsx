@@ -17,6 +17,17 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
             referrerPolicy="no-referrer"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
+            rel="stylesheet"
+          />
+
           <link
             href="https://api.fontshare.com/css?f[]=clash-display@1&display=swap"
             rel="stylesheet"
