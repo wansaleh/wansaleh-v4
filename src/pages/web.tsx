@@ -60,7 +60,9 @@ export default function WebPage() {
             </h3>
 
             <div className="text-sm font-medium text-gray-400">
-              {project.url.replace(/https?:\/\//, '').replace('/', '')}
+              <span className="group-hover:underline">
+                {project.url.replace(/https?:\/\//, '').replace('/', '')}
+              </span>
               <span className="mx-1.5">&middot;</span>
               {formatDistanceToNowStrict(parseISO(project.publishedAt))} ago
             </div>
