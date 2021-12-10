@@ -26,11 +26,22 @@ export default function WebPage() {
       <div className="lg:grid-cols-2 md:grid-cols-2 grid grid-cols-1 gap-12">
         {orderBy(webProjects, 'publishedAt', 'desc').map((project: Project) => (
           <div key={project.id} className="group relative">
-            <img
-              src={project.thumbnail}
-              alt={project.title}
-              className="group-hover:ring-2 group-hover:ring-brand overflow-hidden rounded-xl border border-gray-300 shadow-lg"
-            />
+            <div className="group-hover:ring-2 group-hover:ring-gray-500 overflow-hidden relative rounded-xl ring-1 ring-gray-200 shadow-lg transition-all duration-200 ease-out">
+              <img
+                src={project.thumbnail}
+                alt={project.title}
+                className="overflow-hidden rounded-xl"
+              />
+
+              <div className="group-hover:opacity-100 absolute inset-0 w-full h-full bg-opacity-25 bg-gradient-to-t from-[rgba(0,0,0,0.75)] to-transparent opacity-0 transition duration-300 delay-100 group-hover:transform-gpu group-hover:translate-y-0 translate-y-4">
+                <div className="absolute bottom-0 p-4 w-full font-medium text-white">
+                  <p className="mx-auto mt-4 max-w-md text-base leading-normal">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <h3 className="mt-4 text-lg font-semibold">
               <a href={project.url} target="_blank" rel="noopener noreferrer">
                 {project.title}
@@ -48,8 +59,9 @@ export default function WebPage() {
               `}</style>
             </h3>
 
-            <div className="text-sm text-gray-500">
-              {project.url.replace(/https?:\/\//, '').replace('/', '')} &bull;{' '}
+            <div className="text-sm font-medium text-gray-400">
+              {project.url.replace(/https?:\/\//, '').replace('/', '')}
+              <span className="mx-1.5">&middot;</span>
               {formatDistanceToNowStrict(parseISO(project.publishedAt))} ago
             </div>
 
@@ -63,10 +75,6 @@ export default function WebPage() {
                 </span>
               ))}
             </div>
-
-            <p className="mx-auto mt-4 max-w-md text-sm">
-              {project.description}
-            </p>
           </div>
         ))}
       </div>

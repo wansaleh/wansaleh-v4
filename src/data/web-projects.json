@@ -198,7 +198,8 @@
       "Banking",
       "Landing Page"
     ],
-    "publishedAt": "2020-09-14T00:00:00.000Z"
+    "publishedAt": "2020-09-14T00:00:00.000Z",
+    "description": "UOB Card Welcome is a landing page for UOB."
   },
   {
     "id": "uobcybersale2020",
@@ -209,6 +210,7 @@
       "Banking",
       "Landing Page"
     ],
-    "publishedAt": "2020-07-23T00:00:00.000Z"
+    "publishedAt": "2020-07-23T00:00:00.000Z",
+    "description": "UOB Cybersale 2020 is a landing page for UOB."
   }
 ]

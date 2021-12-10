@@ -20,7 +20,7 @@
     "@mantine/core": "^3.3.5",
     "@mantine/hooks": "^3.3.5",
     "@mantine/next": "^3.3.5",
-    "@tailwindcss/forms": "^0.3.4",
+    "@tailwindcss/forms": "^0.4.0",
     "@twind/next": "^1.0.9",
     "clsx": "^1.1.1",
     "date-fns": "^2.27.0",
@@ -51,7 +51,7 @@
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2",
     "tailwindcss": "^3.0.0",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.3"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,}": [
