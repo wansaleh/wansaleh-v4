@@ -33,19 +33,28 @@ export default function WebPage() {
                 className="overflow-hidden rounded-xl"
               />
 
-              <div className="group-hover:opacity-100 absolute inset-0 w-full h-full bg-opacity-25 bg-gradient-to-t from-[rgba(0,0,0,0.75)] to-transparent opacity-0 transition duration-300 delay-100 group-hover:transform-gpu group-hover:translate-y-0 translate-y-4">
+              <div className="group-hover:opacity-100 absolute inset-0 w-full h-full bg-opacity-25 bg-gradient-to-t from-[rgba(0,0,0,0.6)] to-transparent opacity-0 transition duration-300 group-hover:transform-gpu group-hover:translate-y-0 translate-y-2">
                 <div className="absolute bottom-0 p-4 w-full font-medium text-white">
-                  <p className="mx-auto mt-4 max-w-md text-base leading-normal">
+                  <p className="mx-auto mt-4 max-w-md text-lg leading-snug">
                     {project.description}
                   </p>
                 </div>
               </div>
             </div>
 
-            <h3 className="mt-4 text-lg font-semibold">
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                {project.title}
+            <h3 className="mt-4 text-lg font-semibold">{project.title}</h3>
+
+            <div className="text-sm font-medium text-gray-400">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group-hover:underline"
+              >
+                {project.url.replace(/https?:\/\//, '').replace('/', '')}
               </a>
+              <span className="mx-1.5">&middot;</span>
+              {formatDistanceToNowStrict(parseISO(project.publishedAt))} ago
               <style jsx>{`
                 a:before {
                   content: '';
@@ -57,14 +66,6 @@ export default function WebPage() {
                   bottom: 0;
                 }
               `}</style>
-            </h3>
-
-            <div className="text-sm font-medium text-gray-400">
-              <span className="group-hover:underline">
-                {project.url.replace(/https?:\/\//, '').replace('/', '')}
-              </span>
-              <span className="mx-1.5">&middot;</span>
-              {formatDistanceToNowStrict(parseISO(project.publishedAt))} ago
             </div>
 
             <div className="mt-1">
