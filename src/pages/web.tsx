@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { formatDistanceToNowStrict, parseISO } from 'date-fns';
+import { format, formatDistanceToNowStrict, parseISO } from 'date-fns';
 import orderBy from 'lodash/orderBy';
 
 import webProjects from '@/data/web-projects.json';
@@ -33,8 +33,8 @@ export default function WebPage() {
                 className="overflow-hidden rounded-xl"
               />
 
-              <div className="group-hover:opacity-100 absolute inset-0 w-full h-full bg-opacity-25 bg-gradient-to-t from-[rgba(0,0,0,0.6)] to-transparent opacity-0 transition duration-300 group-hover:transform-gpu group-hover:translate-y-0 translate-y-2">
-                <div className="absolute bottom-0 p-4 w-full font-medium text-white">
+              <div className="group-hover:opacity-100 group-hover:transform-gpu group-hover:translate-y-0 bg-brand backdrop-blur flex absolute inset-0 items-center w-full h-full bg-opacity-70 opacity-0 transition duration-300">
+                <div className="p-4 w-full font-medium text-white">
                   <p className="mx-auto mt-4 max-w-md text-lg leading-snug">
                     {project.description}
                   </p>
@@ -54,7 +54,7 @@ export default function WebPage() {
                 {project.url.replace(/https?:\/\//, '').replace('/', '')}
               </a>
               <span className="mx-1.5">&middot;</span>
-              {formatDistanceToNowStrict(parseISO(project.publishedAt))} ago
+              {format(parseISO(project.publishedAt), 'MMMM yyyy')}
               <style jsx>{`
                 a:before {
                   content: '';

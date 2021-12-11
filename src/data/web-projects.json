@@ -212,5 +212,29 @@
     ],
     "publishedAt": "2020-07-23T00:00:00.000Z",
     "description": "UOB Cybersale 2020 is a landing page for UOB."
+  },
+  {
+    "id": "kengkawanproject",
+    "title": "Kengkawan Project",
+    "url": "https://kengkawanproject.netlify.app/",
+    "thumbnail": "/images/webthumbs/kengkawanproject.png",
+    "tags": [
+      "Non-Profit"
+    ],
+    "publishedAt": "2019-08-17T00:00:00.000Z",
+    "description": "Kengkawan Project is doing charitable and community work within and outside Malaysia.",
+    "defunct": true
+  },
+  {
+    "id": "lll",
+    "title": "Learn Love Live",
+    "url": "https://lllv2.netlify.app/",
+    "thumbnail": "/images/webthumbs/lll.png",
+    "tags": [
+      "Non-Profit"
+    ],
+    "publishedAt": "2018-09-11T00:00:00.000Z",
+    "description": "Learn to Love. Love to Live. Live to Learn and Love.",
+    "defunct": true
   }
 ]
