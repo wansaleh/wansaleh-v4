@@ -17,9 +17,9 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@mantine/core": "^3.3.5",
-    "@mantine/hooks": "^3.3.5",
-    "@mantine/next": "^3.3.5",
+    "@mantine/core": "^3.4.3",
+    "@mantine/hooks": "^3.4.3",
+    "@mantine/next": "^3.4.3",
     "@tailwindcss/forms": "^0.4.0",
     "@twind/next": "^1.0.9",
     "clsx": "^1.1.1",
@@ -37,21 +37,21 @@
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.37",
     "@types/tailwindcss": "^2.2.4",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "^5.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^12.0.7",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.1.3",
     "next-sitemap": "^1.6.203",
-    "postcss": "^8.4.4",
+    "postcss": "^8.4.5",
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2",
-    "tailwindcss": "^3.0.1",
-    "typescript": "^4.5.3"
+    "tailwindcss": "^3.0.7",
+    "typescript": "^4.5.4"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,}": [
