@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { format, formatDistanceToNowStrict, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import orderBy from 'lodash/orderBy';
 
 import webProjects from '@/data/web-projects.json';
