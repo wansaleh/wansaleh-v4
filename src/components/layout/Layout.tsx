@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <Nav />
 
-      <main className="layout flex relative flex-col justify-center items-center min-h-screen font-extralight text-center">
+      <main className="layout flex relative flex-col justify-center items-center min-h-screen font-extralight">
         {children}
 
         <Footer />
