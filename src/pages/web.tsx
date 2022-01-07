@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { format, parseISO } from 'date-fns';
-import orderBy from 'lodash/orderBy';
+import { orderBy } from 'lodash-es';
 
 import webProjects from '@/data/web-projects.json';
 
