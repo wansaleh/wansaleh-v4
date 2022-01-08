@@ -18,10 +18,7 @@ export default function PostCard({ post }: { post: Post }) {
         </div>
 
         <div className="mt-auto">
-          <button
-            type="button"
-            className="duration-300 flex font-semibold items-center transition group-hover:text-brand"
-          >
+          <button type="button" className="flex font-semibold items-center">
             Read Article
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +28,7 @@ export default function PostCard({ post }: { post: Post }) {
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-8 inline-block ml-2 stroke-current"
+              className="h-8 inline-block ml-2 stroke-current transition group-hover:transform group-hover:translate-x-2"
             >
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 16 16 12 12 8" />
