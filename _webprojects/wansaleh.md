@@ -7,7 +7,7 @@ tags:
 - Personal
 publishedAt: 2021-12-20T00:00:00.000Z
 stack:
-- Svelte
-- SvelteKit
+- React
+- Next.js
 description: By Wan Saleh is my personal and official web site.
 ---
