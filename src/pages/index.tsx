@@ -14,7 +14,7 @@ export default function HomePage() {
               <a>Music</a>
             </Link>{' '}
             &amp;{' '}
-            <Link href="/web">
+            <Link href="/code">
               <a>Code</a>
             </Link>
           </span>

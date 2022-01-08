@@ -45,7 +45,10 @@ export default function DiscographyPage({
 
       <div className="min-h-screen py-20 lg:py-40">
         <div className="layout">
-          <PageTitle title="Music Works" />
+          <PageTitle
+            title="Music Works"
+            subtitle="My job. My passion. Some of the works I've involved in."
+          />
         </div>
 
         <div className="layout max-w-[96rem]">

@@ -19,12 +19,12 @@ export default function Nav() {
         </a>
       </Link>
 
-      <ul className="flex font-semibold items-center text-sm lg:gap-2">
+      <ul className="flex font-semibold items-center text-sm lg:gap-1">
         <li>
           <Link href="/discography">
             <a
               className={clsx(
-                'border-2 border-transparent duration-200 px-2 py-1 rounded-md transition hover:border-current',
+                'border-2 border-transparent border-y-0 duration-200 px-2 py-0.5 rounded-md transition hover:text-brand',
                 router.pathname === '/discography' && '!border-brand'
               )}
             >
@@ -33,14 +33,14 @@ export default function Nav() {
           </Link>
         </li>
         <li>
-          <Link href="/web">
+          <Link href="/code">
             <a
               className={clsx(
-                'border-2 border-transparent duration-200 px-2 py-1 rounded-md transition hover:border-current',
-                router.pathname === '/web' && '!border-brand'
+                'border-2 border-transparent border-y-0 duration-200 px-2 py-0.5 rounded-md transition hover:text-brand',
+                router.pathname === '/code' && '!border-brand'
               )}
             >
-              Web
+              Code
             </a>
           </Link>
         </li>
@@ -48,15 +48,15 @@ export default function Nav() {
           <Link href="/blog">
             <a
               className={clsx(
-                'border-2 border-transparent duration-200 px-2 py-1 rounded-md transition hover:border-current',
-                router.pathname === '/blog' && '!border-brand'
+                'border-2 border-transparent border-y-0 duration-200 px-2 py-0.5 rounded-md transition hover:text-brand',
+                router.pathname.startsWith('/blog') && '!border-brand'
               )}
             >
               Blog
             </a>
           </Link>
         </li>
-        <li>
+        <li className="ml-2">
           <ThemeSelect />
         </li>
       </ul>

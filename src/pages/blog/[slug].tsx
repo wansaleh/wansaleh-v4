@@ -4,6 +4,8 @@ import smartypants from 'remark-smartypants';
 
 import { getAllPosts, getPostBySlug, Post } from '@/lib/posts';
 
+import PageTitle from '@/components/PageTitle';
+
 type Params = {
   params: {
     slug: string;
@@ -39,13 +41,10 @@ export default function PostPage({ post }: { post: Post }) {
   return (
     <>
       <div className="layout min-h-screen py-20 text-left lg:py-40">
-        <div className="max-w-3xl mb-8 mx-auto">
-          <h1 className="mb-4 tracking-tight">{post.title}</h1>
-
-          <div className="text-gray-500 text-xl">
-            {format(post.date, 'MMMM dd, yyyy')} &mdash;{' '}
-            {post.readingTime?.text} &mdash; {post.tags.join(', ')}
-          </div>
+        <PageTitle title={post.title} large={false} />
+        <div className="-mt-10 mb-8 mx-auto text-center text-gray-500 text-xl">
+          {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}{' '}
+          &mdash; {post.tags.join(', ')}
         </div>
 
         <div className="mb-8">

@@ -24,7 +24,7 @@ Preamp memainkan tiga peranan dalam rakaman. Satu, memberikan kuasa phantom 48V 
 
 Preamp mikrofon yang paling popular dan paling banyak digunakan di seluruh dunia. Boleh dikatakan kita semua pernah mendengar rekod-rekod yang telah dirakamkan melalui preamp ini. Sejarah Neve 1073 bermula pada musim panas tahun 1970, ketika Rupert Neve & Co. menghantar konsol model A88 kepada Wessex Sound Studios. Bukan sahaja ia merupakan 24 konsol pertama yang pernah dipasang di London, tetapi ia dilengkapi dengan upgred khas, modul input *channel* mic pre/EQ 1073 yang baru direka. Juga 1073 merupakan mic pre yang [paling banyak diklon](https://www.soundpure.com/a/expert-advice/recording/choosing-a-neve-1073-clone/) dalam sejarah. Dari jenama-jenama seperti BAE, Warm Audio, Golden Age, UK Sound dan sebagainya.
 
-Terdapat banyak konfigurasi/bentuk 1073, dari bentuk rackmount, 500 series, lunchbox, dengan/tanpa EQ, dan lain-lain.
+Terdapat banyak konfigurasi/bentuk 1073, dari bentuk *rackmount*, 500 series, lunchbox, dengan/tanpa EQ, dan lain-lain.
 
 Harga (1073 preamp only): ~RM 6,000
 
@@ -60,7 +60,7 @@ Harga: ~RM 19,000
 
 LA-610 (atau SOLO/610 - versi tanpa EQ dan kompresor) memberikan bunyi konsol tiub Putnam 610 klasik dalam reka bentuk preamp mikrofon mudah alih yang kompak. Preamp ini memberikan kehangatan (*warmess*) vintaj dengan reka bentuk mic pre konsol asal, dan akan meningkatkan taraf bunyi mikrofon atau instrumen dengan nada ikoniknya.
 
-Terdapat dua bentuk preamp ini dalam jualan: SOLO/610 (lunchbox) dan LA-610 MkII (dalam gambar -- rackmount, *channel strip* dengan EQ dan LA-2A *type compressor*)
+Terdapat dua bentuk preamp ini dalam jualan: SOLO/610 (lunchbox) dan LA-610 MkII (dalam gambar -- *rackmount*, *channel strip* dengan EQ dan LA-2A *type compressor*)
 
 Harga: ~RM 5,500 (SOLO/60) / ~RM 8,500 (LA-610 Mk-II)
 

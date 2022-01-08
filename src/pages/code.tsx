@@ -40,9 +40,12 @@ export default function WebPage({
 
   return (
     <div className="layout min-h-screen py-20 lg:py-40">
-      <Seo templateTitle="Web Projects" />
+      <Seo templateTitle="Projects" />
 
-      <PageTitle title="Web Projects" />
+      <PageTitle
+        title="Projects"
+        subtitle="My web and app development projects."
+      />
 
       <div className="flex flex-wrap gap-0.5 justify-center mb-12 relative text-lg z-10">
         <button
