@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
 import { filter, orderBy } from 'lodash-es';

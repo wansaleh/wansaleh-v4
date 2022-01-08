@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { format, parseISO } from 'date-fns';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

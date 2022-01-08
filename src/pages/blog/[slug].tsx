@@ -53,7 +53,6 @@ export default function PostPage({ post }: { post: Post }) {
         </div>
 
         <div className="mb-8">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <div className="aspect-video relative">
             <Image
               src={post.cover}
