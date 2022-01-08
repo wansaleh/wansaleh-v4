@@ -1,7 +1,7 @@
 ---
 id: hadith
 title: Hadith Pendek
-url: https://by.wansaleh.com
+url: https://hadith.wansaleh.com
 thumbnail: https://res.cloudinary.com/wansaleh/image/upload/c_scale,w_600/f_auto/site-v4/projects/hadithshorts-v2.png
 tags:
 - Education
