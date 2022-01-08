@@ -9,12 +9,12 @@ export default function PageTitle({
 }) {
   return (
     <div className="mb-12">
-      <h1 className="lg:text-8xl relative mx-auto text-5xl font-semibold tracking-tight text-center">
+      <h1 className="font-semibold mx-auto relative text-5xl text-center tracking-tight lg:text-8xl">
         <span className="relative z-10">{title}</span>
       </h1>
 
       {subtitle && (
-        <p className="mt-10 text-2xl font-normal text-center text-gray-500">
+        <p className="font-normal mt-10 text-2xl text-center text-gray-500">
           {subtitle}
         </p>
       )}

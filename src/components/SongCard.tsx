@@ -33,12 +33,12 @@ export default function SongCard({ song }: { song: Song }) {
   return (
     <>
       <div className="group link-overlay relative">
-        <div className="aspect-square dark:ring-gray-900 group-hover:ring-offset-gray-100 dark:group-hover:ring-offset-gray-900 group-hover:ring-2 group-hover:ring-offset-4 group-hover:ring-brand overflow-hidden bg-black rounded-md shadow-lg transition-all duration-200 ease-out">
-          <div className="relative w-full h-full">
+        <div className="aspect-square bg-black duration-200 ease-out overflow-hidden rounded-md shadow-lg transition-all dark:group-hover:ring-offset-gray-900 dark:ring-gray-900 group-hover:ring-2 group-hover:ring-brand group-hover:ring-offset-4 group-hover:ring-offset-gray-100">
+          <div className="h-full relative w-full">
             <img
               src={song.artworkURL}
               alt={song.title}
-              className="object-contain overflow-hidden w-full h-full rounded-md"
+              className="h-full object-contain overflow-hidden rounded-md w-full"
               loading="lazy"
               width="300"
               height="300"
@@ -46,7 +46,7 @@ export default function SongCard({ song }: { song: Song }) {
           </div>
         </div>
 
-        <h2 className="mt-4 text-lg font-semibold leading-tight">
+        <h2 className="font-semibold leading-tight mt-4 text-lg">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
@@ -57,21 +57,21 @@ export default function SongCard({ song }: { song: Song }) {
           </a>
         </h2>
 
-        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 leading-tight mt-0.5">
+        <div className="font-medium leading-tight mt-0.5 text-gray-600 text-sm dark:text-gray-400">
           {song.artistNames.join(', ')}
         </div>
 
-        <div className="dark:text-gray-400 mt-1 text-xs font-medium leading-tight text-gray-600">
+        <div className="font-medium leading-tight mt-1 text-gray-600 text-xs dark:text-gray-400">
           <span>{roles} by Wan Saleh</span>
         </div>
 
-        <div className="dark:text-gray-400 mt-1 text-xs font-medium leading-none text-gray-600">
+        <div className="font-medium leading-none mt-1 text-gray-600 text-xs dark:text-gray-400">
           <span>
             Released {format(parseISO(song.released_at), 'MMMM yyyy')}
           </span>
         </div>
 
-        <div className="links group-hover:opacity-100 flex relative z-50 gap-1 items-center -mx-1 mt-2 text-sm font-medium text-gray-500 opacity-0 transition duration-300 transform group-hover:translate-y-0 -translate-y-1">
+        <div className="-mx-1 -translate-y-1 duration-300 flex font-medium gap-1 items-center links mt-2 opacity-0 relative text-gray-500 text-sm transform transition z-50 group-hover:opacity-100 group-hover:translate-y-0">
           {song.data.applemusic && (
             <a
               href={song.data.applemusic}
@@ -114,7 +114,7 @@ export default function SongCard({ song }: { song: Song }) {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 249 325.5"
               enableBackground="new 0 0 249 325.5"
-              className="h-[1.25em] ml-0.5 -mt-1 inline-block"
+              className="-mt-1 h-[1.25em] inline-block ml-0.5"
               fill="currentColor"
               xmlSpace="preserve"
             >

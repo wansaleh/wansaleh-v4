@@ -43,13 +43,13 @@ export default function DiscographyPage({
     <>
       <Seo templateTitle="Music Works & Discography" />
 
-      <div className="lg:py-40 py-20 min-h-screen">
+      <div className="min-h-screen py-20 lg:py-40">
         <div className="layout">
           <PageTitle title="Music Works" />
         </div>
 
         <div className="layout max-w-[96rem]">
-          <div className="lg:grid-cols-5 md:grid-cols-3 grid grid-cols-1 gap-12">
+          <div className="gap-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
             {loadedSongs.map((song) => (
               <SongCard key={song.id} song={song} />
             ))}
@@ -58,13 +58,13 @@ export default function DiscographyPage({
           {total > loadedSongs.length && (
             <div className="mt-20 text-center">
               <button
-                className="py-4 px-4 bg-brand hover:bg-purple-800 focus:ring-brand focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 text-white transition ease-in duration-100 text-center text-lg font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg min-w-[15rem] relative"
+                className="bg-brand duration-100 ease-in font-semibold min-w-[15rem] px-4 py-4 relative rounded-lg shadow-md text-center text-lg text-white transition dark:focus:ring-offset-gray-900 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-gray-100"
                 onClick={() => loadMore()}
                 disabled={loading}
               >
                 {loading ? (
                   <svg
-                    className="inline-block mr-2 -mt-1 w-6 h-6 text-white animate-spin"
+                    className="-mt-1 animate-spin h-6 inline-block mr-2 text-white w-6"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"

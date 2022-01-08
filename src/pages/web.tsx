@@ -39,30 +39,30 @@ export default function WebPage({
   }
 
   return (
-    <div className="layout lg:py-40 py-20 min-h-screen">
+    <div className="layout min-h-screen py-20 lg:py-40">
       <Seo templateTitle="Web Projects" />
 
       <PageTitle title="Web Projects" />
 
-      <div className="flex relative z-10 flex-wrap justify-center mb-12 text-lg gap-0.5">
+      <div className="flex flex-wrap gap-0.5 justify-center mb-12 relative text-lg z-10">
         <button
           type="button"
           className={clsx(
-            'p-1.5 px-3 leading-none hover:bg-gray-500/20 rounded-full',
+            'leading-none p-1.5 px-3 rounded-full hover:bg-gray-500/20',
             activeTag === 'all' && 'font-semibold bg-gray-500/20'
           )}
           onClick={() => setActiveTag('all')}
         >
           All
-          <span className="opacity-30 mx-1">&middot;</span>
+          <span className="mx-1 opacity-30">&middot;</span>
           <span className="text-sm">{projects.length}</span>
         </button>
-        {tags.map(({ tag, count }) => (
+        {tags.map(({ tag }) => (
           <button
             key={tag}
             type="button"
             className={clsx(
-              'p-1.5 px-3 leading-none hover:bg-gray-500/20 rounded-full',
+              'leading-none p-1.5 px-3 rounded-full hover:bg-gray-500/20',
               activeTag === tag && 'font-semibold bg-gray-500/20'
             )}
             onClick={() => setActiveTag(tag)}
@@ -72,7 +72,7 @@ export default function WebPage({
         ))}
       </div>
 
-      <div className="lg:grid-cols-2 md:grid-cols-2 grid grid-cols-1 gap-8 justify-center place-items-center">
+      <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-2">
         <AnimatePresence initial={false}>
           {orderBy(filteredProjects, 'publishedAt', 'desc').map(
             (project: Project) => (
@@ -92,9 +92,9 @@ function WebProject({ project }: { project: Project }) {
       initial={{ opacity: 0, y: -32 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 32 }}
-      className="group link-overlay backdrop-blur-sm hover:ring-offset-gray-100 dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-offset-4 hover:ring-brand relative p-4 bg-gray-500 bg-opacity-10 rounded-xl transition duration-300"
+      className="backdrop-blur-sm bg-gray-500 bg-opacity-10 duration-300 group link-overlay p-4 relative rounded-xl transition dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-4 hover:ring-offset-gray-100"
     >
-      <div className="overflow-hidden relative rounded-lg shadow-lg transition-all duration-200 ease-out">
+      <div className="duration-200 ease-out overflow-hidden relative rounded-lg shadow-lg transition-all">
         <img
           src={project.thumbnail}
           alt={project.title}
@@ -104,31 +104,31 @@ function WebProject({ project }: { project: Project }) {
           height="375"
         />
 
-        <div className="group-hover:opacity-100 group-hover:transform-gpu group-hover:translate-y-0 bg-darkbg backdrop-blur flex absolute inset-0 items-center w-full h-full bg-opacity-80 rounded-md opacity-0 transition duration-300">
-          <div className="p-4 w-full font-light text-white">
+        <div className="absolute backdrop-blur bg-darkbg bg-opacity-80 duration-300 flex h-full inset-0 items-center opacity-0 rounded-md transition w-full group-hover:opacity-100 group-hover:transform-gpu group-hover:translate-y-0">
+          <div className="font-light p-4 text-white w-full">
             <p
-              className="mx-auto mt-4 max-w-md text-2xl tracking-normal"
+              className="max-w-md mt-4 mx-auto text-2xl tracking-normal"
               dangerouslySetInnerHTML={{ __html: project.description }}
             />
           </div>
         </div>
       </div>
 
-      <h2 className="mt-4 text-lg font-semibold">
+      <h2 className="font-semibold mt-4 text-lg">
         {project.title}
         {project.defunct && (
-          <span className="px-1.5 text-xs font-medium text-orange-500 border border-current rounded-full ml-1">
+          <span className="border border-current font-medium ml-1 px-1.5 rounded-full text-orange-500 text-xs">
             Defunct
           </span>
         )}
       </h2>
 
-      <div className="dark:text-gray-400 text-sm font-medium text-gray-600">
+      <div className="font-medium text-gray-600 text-sm dark:text-gray-400">
         <a
           href={project.url}
           target="_blank"
           rel="external noopener noreferrer"
-          className="group-hover:underline link"
+          className="link group-hover:underline"
         >
           {project.url.replace(/https?:\/\//, '').replace('/', '')}
         </a>
@@ -136,8 +136,8 @@ function WebProject({ project }: { project: Project }) {
         {format(parseISO(project.publishedAt), 'MMMM yyyy')}
       </div>
 
-      <div className="flex flex-wrap mt-1 text-xs leading-none text-gray-500">
-        <ul className="tags mt-0">
+      <div className="flex flex-wrap leading-none mt-1 text-gray-500 text-xs">
+        <ul className="mt-0 tags">
           {project.tags.map((tag) => (
             <li key={tag} className="inline-block">
               {tag}
@@ -147,7 +147,7 @@ function WebProject({ project }: { project: Project }) {
 
         <span className="mx-2">/</span>
 
-        <ul className="tags mt-0">
+        <ul className="mt-0 tags">
           {project.stack?.map((stack) => (
             <li key={stack} className="inline-block">
               {stack}
