@@ -15,7 +15,7 @@ export async function getStaticProps() {
 export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
   return (
     <>
-      <Seo templateTitle="Posts" />
+      <Seo templateTitle="Blog" />
 
       <div className="layout min-h-screen py-20 lg:py-40">
         <PageTitle
