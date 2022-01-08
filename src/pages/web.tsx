@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { filter, orderBy } from 'lodash-es';
 import { useState } from 'react';
 
-import { getAllProjects, getAllTags, Project, Tag } from '@/lib/web-projects';
+import { getAllProjects, getAllTags, Project, Tag } from '@/lib/projects';
 
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';

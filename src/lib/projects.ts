@@ -3,7 +3,7 @@ import matter from 'gray-matter';
 import { orderBy, uniq } from 'lodash-es';
 import { join } from 'path';
 
-const projectsDirectory = join(process.cwd(), '_webprojects');
+const projectsDirectory = join(process.cwd(), '_projects');
 
 export type Project = {
   id: string;
