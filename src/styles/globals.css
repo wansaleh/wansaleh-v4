@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  @apply bg-fixed bg-lightbg dark:bg-darkbg dark:text-white text-gray-900;
+  @apply bg-fixed bg-lightbg text-gray-900 dark:bg-darkbg dark:text-white;
 }
 
 h1 {
@@ -44,11 +44,15 @@ strong {
   }
 
   .link-overlay a.link:before {
-    @apply absolute bottom-0 cursor-pointer left-0 right-0 top-0;
+    @apply absolute bottom-0 cursor-pointer left-0 right-0 top-0 z-10;
     content: '';
   }
 }
 
 .caption a {
   @apply underline;
+}
+
+.prose img + span {
+  @apply -mt-8 block font-medium text-gray-500 text-sm;
 }

@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import smartypants from 'remark-smartypants';
 
 import { coverLoader, getBlurUrl } from '@/lib/images';
@@ -77,6 +78,7 @@ export default function PostPage({ post }: { post: Post }) {
         <ReactMarkdown
           className="backdrop-blur-md bg-gray-500 bg-opacity-10 content max-w-4xl mx-auto p-6 prose rounded-xl lg:p-16 lg:prose-xl dark:prose-dark"
           remarkPlugins={[smartypants]}
+          rehypePlugins={[rehypeRaw]}
         >
           {post.content}
         </ReactMarkdown>
