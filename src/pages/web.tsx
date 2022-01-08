@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
 import { format, parseISO } from 'date-fns';
-import { orderBy } from 'lodash-es';
+import { filter, orderBy } from 'lodash-es';
 import { useState } from 'react';
 
 import { getAllProjects, getAllTags, Project, Tag } from '@/lib/web-projects';
@@ -27,8 +27,18 @@ export default function WebPage({
 }) {
   const [activeTag, setActiveTag] = useState('all');
 
+  let filteredProjects = projects;
+
+  if (activeTag !== 'all') {
+    filteredProjects = filter(projects, (project: Project) =>
+      project.tags.includes(activeTag)
+    );
+  } else {
+    filteredProjects = projects;
+  }
+
   return (
-    <div className="py-40">
+    <div className="layout lg:py-40 py-20 min-h-screen">
       <Seo templateTitle="Web Projects" />
 
       <PageTitle title="Web Projects" />
@@ -62,9 +72,11 @@ export default function WebPage({
       </div>
 
       <div className="lg:grid-cols-2 md:grid-cols-2 grid grid-cols-1 gap-8 justify-center place-items-center">
-        {orderBy(projects, 'publishedAt', 'desc').map((project: Project) => (
-          <WebProject project={project} key={project.id} />
-        ))}
+        {orderBy(filteredProjects, 'publishedAt', 'desc').map(
+          (project: Project) => (
+            <WebProject project={project} key={project.id} />
+          )
+        )}
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export default function Nav() {
   const router = useRouter();
 
   return (
-    <div className="flex absolute top-0 right-0 left-0 justify-between items-center p-6">
+    <div className="flex absolute top-0 right-0 left-0 z-50 justify-between items-center p-6">
       <Link href="/">
         <a className="lg:text-base group flex gap-2 items-center text-sm font-semibold leading-tight">
           <span className="group-hover:text-brand transition duration-300">
@@ -35,6 +35,18 @@ export default function Nav() {
               )}
             >
               Web
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/blog">
+            <a
+              className={clsx(
+                'hover:border-current py-0 px-1 rounded-md border-2 border-transparent transition duration-200',
+                router.pathname === '/blog' && '!border-brand'
+              )}
+            >
+              Blog
             </a>
           </Link>
         </li>
