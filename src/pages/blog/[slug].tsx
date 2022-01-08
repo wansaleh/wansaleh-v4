@@ -43,7 +43,7 @@ export default function PostPage({ post }: { post: Post }) {
     <>
       <Seo templateTitle={post.title + ' | Blog'} />
 
-      <div className="layout min-h-screen py-20 text-left lg:py-40">
+      <div className="layout min-h-screen py-24 text-left lg:py-40">
         <PageTitle title={post.title} large={false} />
         <div className="-mt-10 mb-8 mx-auto text-center text-gray-500 text-xl">
           {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}{' '}

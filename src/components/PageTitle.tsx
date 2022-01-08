@@ -13,19 +13,25 @@ export default function PageTitle({
   large?: boolean;
 }) {
   return (
-    <div className="mb-20">
+    <div className="mb-10">
       <h1
         className={clsx(
           'flex font-semibold items-center justify-center mx-auto relative text-center',
-          large && 'text-6xl lg:text-7xl',
+          large && 'text-5xl lg:text-7xl',
           !large && 'text-4xl lg:text-5xl'
         )}
       >
-        {large && <LeavesLeft className="fill-brand h-[1em] w-[1em]" />}
-        <span className="relative z-10">{title}</span>
-        {large && (
-          <LeavesLeft className="-scale-x-100 fill-brand h-[1em] transform w-[1em]" />
-        )}
+        <span className="relative z-10">
+          {large && (
+            <LeavesLeft className="absolute fill-brand h-full right-full top-0 w-[1em]" />
+          )}
+
+          {title}
+
+          {large && (
+            <LeavesLeft className="-scale-x-100 absolute fill-brand h-full left-full top-0 transform w-[1em]" />
+          )}
+        </span>
       </h1>
 
       {subtitle && (

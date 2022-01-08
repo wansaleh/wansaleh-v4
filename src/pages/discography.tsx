@@ -43,7 +43,7 @@ export default function DiscographyPage({
     <>
       <Seo templateTitle="Music Works & Discography" />
 
-      <div className="min-h-screen py-20 lg:py-40">
+      <div className="min-h-screen py-24 lg:py-40">
         <div className="layout">
           <PageTitle
             title="Music Works"

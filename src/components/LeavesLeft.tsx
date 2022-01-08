@@ -1,8 +1,8 @@
 export default function LeavesLeft(props) {
   return (
     <svg
-      width="47"
-      height="88"
+      // width="47"
+      // height="88"
       viewBox="0 0 47 88"
       fill="currentColor"
       {...props}
