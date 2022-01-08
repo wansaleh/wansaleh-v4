@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import Logo2 from '../images/Logo2';
+import ThemeSelect from '../ThemeSelect';
 
 export default function Nav() {
   const router = useRouter();
@@ -18,10 +19,15 @@ export default function Nav() {
         </a>
       </Link>
 
-      <ul className="flex font-semibold space-x-4 text-sm tracking-tight">
+      <ul className="flex font-semibold items-center text-sm lg:gap-2">
         <li>
           <Link href="/discography">
-            <a className="border-2 border-transparent px-1 py-0 rounded-md hover:border-black">
+            <a
+              className={clsx(
+                'border-2 border-transparent duration-200 px-2 py-1 rounded-md transition hover:border-current',
+                router.pathname === '/discography' && '!border-brand'
+              )}
+            >
               Discography
             </a>
           </Link>
@@ -30,8 +36,8 @@ export default function Nav() {
           <Link href="/web">
             <a
               className={clsx(
-                'border-2 border-transparent px-1 py-0 rounded-md hover:border-black',
-                router.pathname === '/web' && 'border-black'
+                'border-2 border-transparent duration-200 px-2 py-1 rounded-md transition hover:border-current',
+                router.pathname === '/web' && '!border-brand'
               )}
             >
               Web
@@ -42,13 +48,16 @@ export default function Nav() {
           <Link href="/blog">
             <a
               className={clsx(
-                'border-2 border-transparent duration-200 px-1 py-0 rounded-md transition hover:border-current',
+                'border-2 border-transparent duration-200 px-2 py-1 rounded-md transition hover:border-current',
                 router.pathname === '/blog' && '!border-brand'
               )}
             >
               Blog
             </a>
           </Link>
+        </li>
+        <li>
+          <ThemeSelect />
         </li>
       </ul>
     </div>
