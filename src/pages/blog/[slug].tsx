@@ -1,7 +1,9 @@
 import { format } from 'date-fns';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import smartypants from 'remark-smartypants';
 
+import { coverLoader, getBlurUrl } from '@/lib/images';
 import { getAllPosts, getPostBySlug, Post } from '@/lib/posts';
 
 import PageTitle from '@/components/PageTitle';
@@ -52,7 +54,17 @@ export default function PostPage({ post }: { post: Post }) {
 
         <div className="mb-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={post.cover} alt={post.title} className="rounded-xl" />
+          <div className="aspect-video relative">
+            <Image
+              src={post.cover}
+              alt={post.title}
+              className="object-cover rounded-xl"
+              loader={coverLoader}
+              layout="fill"
+              placeholder="blur"
+              blurDataURL={getBlurUrl(post.cover)}
+            />
+          </div>
           {post.coverCaption && (
             <ReactMarkdown
               className="caption font-medium leading-tight mt-2 text-gray-500 text-xs"

@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { coverLoader, getBlurUrl } from '@/lib/images';
 import { Post } from '@/lib/posts';
 
 export default function PostCard({ post }: { post: Post }) {
@@ -18,11 +19,15 @@ export default function PostCard({ post }: { post: Post }) {
         {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}
       </div>
 
-      <div className="my-4">
-        <img
+      <div className="aspect-[3] my-4 relative">
+        <Image
           src={post.cover}
           alt={post.title}
-          className="aspect-[3] object-cover rounded-lg"
+          className="object-cover rounded-lg"
+          loader={coverLoader}
+          layout="fill"
+          placeholder="blur"
+          blurDataURL={getBlurUrl(post.cover)}
         />
       </div>
 
