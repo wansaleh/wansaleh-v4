@@ -1,24 +1,20 @@
 import { gql } from 'graphql-request';
 
 import gqlFetch from './gql-fetch';
+import type { RawSong } from './songs';
 
-const QUERY_TOTAL_SONGS = gql`
-  query GetTotalSongs {
+const QUERY_BY_USERNAME = gql`
+  query GetUserSongs($offset: Int = 0, $limit: Int = 20) {
     songs_aggregate(where: { artists: { artist_id: { _eq: 87 } } }) {
       aggregate {
         count
       }
     }
-  }
-`;
-
-const QUERY_BY_USERNAME = gql`
-  query GetUserSongs($username: String!, $offset: Int = 0, $limit: Int = 20) {
     songs(
       where: {
         published_at: { _is_null: false }
         deleted_at: { _is_null: true }
-        artists: { artist: { user: { username: { _eq: $username } } } }
+        artists: { artist_id: { _eq: 87 } }
       }
       order_by: { released_at: desc }
       limit: $limit
@@ -66,15 +62,16 @@ const QUERY_BY_USERNAME = gql`
   }
 `;
 
-export default async function fetchSongs(offset = 0) {
-  const dataTotal = await gqlFetch(QUERY_TOTAL_SONGS, null);
+export default async function fetchSongs(offset = 0): Promise<{
+  songs: RawSong[];
+  total: number;
+}> {
   const data = await gqlFetch(QUERY_BY_USERNAME, {
-    username: 'wansaleh',
     offset: offset ? Number(offset) : 0,
   });
 
   return {
     songs: data?.songs || [],
-    total: dataTotal?.songs_aggregate?.aggregate?.count || 0,
+    total: data?.songs_aggregate?.aggregate?.count || 0,
   };
 }

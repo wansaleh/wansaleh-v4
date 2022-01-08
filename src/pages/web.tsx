@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
 import { format, parseISO } from 'date-fns';
+import { AnimatePresence, motion } from 'framer-motion';
 import { filter, orderBy } from 'lodash-es';
 import { useState } from 'react';
 
@@ -72,11 +73,13 @@ export default function WebPage({
       </div>
 
       <div className="lg:grid-cols-2 md:grid-cols-2 grid grid-cols-1 gap-8 justify-center place-items-center">
-        {orderBy(filteredProjects, 'publishedAt', 'desc').map(
-          (project: Project) => (
-            <WebProject project={project} key={project.id} />
-          )
-        )}
+        <AnimatePresence initial={false}>
+          {orderBy(filteredProjects, 'publishedAt', 'desc').map(
+            (project: Project) => (
+              <WebProject project={project} key={project.id} />
+            )
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -84,7 +87,13 @@ export default function WebPage({
 
 function WebProject({ project }: { project: Project }) {
   return (
-    <div className="group link-overlay backdrop-blur-sm hover:ring-offset-gray-100 dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-offset-4 hover:ring-brand relative p-4 bg-gray-500 bg-opacity-10 rounded-xl transition duration-300">
+    <motion.div
+      key={project.id}
+      initial={{ opacity: 0, y: -32 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 32 }}
+      className="group link-overlay backdrop-blur-sm hover:ring-offset-gray-100 dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-offset-4 hover:ring-brand relative p-4 bg-gray-500 bg-opacity-10 rounded-xl transition duration-300"
+    >
       <div className="overflow-hidden relative rounded-lg shadow-lg transition-all duration-200 ease-out">
         <img
           src={project.thumbnail}
@@ -153,6 +162,6 @@ function WebProject({ project }: { project: Project }) {
           content: '·';
         }
       `}</style>
-    </div>
+    </motion.div>
   );
 }
