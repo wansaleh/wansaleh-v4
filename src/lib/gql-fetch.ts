@@ -4,8 +4,8 @@ const normalEndpoint = process.env.NEXT_PUBLIC_HASURA_ENDPOINT;
 
 export default async function gqlFetch(
   query: string,
-  variables: { [key: string]: string } = {}
-): Promise<unknown> {
+  variables: { [key: string]: unknown } = {}
+): Promise<any> {
   const client = new GraphQLClient(normalEndpoint as string);
 
   try {
