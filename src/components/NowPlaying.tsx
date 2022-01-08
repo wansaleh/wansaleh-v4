@@ -7,7 +7,9 @@ export default function NowPlaying({
 }: {
   showLink?: boolean;
 }) {
-  const { data: nowPlaying } = useSWR('/api/spotify/nowplaying.json');
+  const { data: nowPlaying } = useSWR('/api/spotify/nowplaying.json', {
+    refreshInterval: 10000,
+  });
 
   return (
     <>
