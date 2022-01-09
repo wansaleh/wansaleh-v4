@@ -13,14 +13,13 @@ export default function ProjectCard({ project }: { project: Project }) {
       exit={{ opacity: 0, y: 32 }}
       className="backdrop-blur-sm bg-gray-500 bg-opacity-10 duration-300 group link-overlay p-4 relative rounded-xl transition w-full dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-4 hover:ring-offset-gray-100"
     >
-      <div className="duration-200 ease-out overflow-hidden relative rounded-lg shadow-lg transition-all">
+      <div className="aspect-[16/10] duration-200 ease-out image overflow-hidden relative rounded-lg shadow-lg transition-all">
         <Image
           src={project.thumbnail}
           alt={project.title}
-          className="overflow-hidden rounded-lg"
+          className="object-cover rounded-lg"
           loading="lazy"
-          width="600"
-          height="375"
+          layout="fill"
           placeholder="blur"
           blurDataURL={project.thumbnail.replace(
             'c_scale,w_600',
