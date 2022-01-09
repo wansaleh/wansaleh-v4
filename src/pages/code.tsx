@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { AnimatePresence } from 'framer-motion';
-import { filter, orderBy } from 'lodash-es';
 import { useState } from 'react';
 
 import { getAllProjects, getAllTags, Project, Tag } from '@/lib/projects';
@@ -30,7 +29,7 @@ export default function WebPage({
   let filteredProjects = projects;
 
   if (activeTag !== 'all') {
-    filteredProjects = filter(projects, (project: Project) =>
+    filteredProjects = projects.filter((project: Project) =>
       project.tags.includes(activeTag)
     );
   } else {
@@ -38,15 +37,17 @@ export default function WebPage({
   }
 
   return (
-    <div className="layout min-h-screen py-24 lg:py-40">
+    <div className="min-h-screen py-24 w-full lg:py-40">
       <Seo templateTitle="Projects" />
 
-      <PageTitle
-        title="Projects"
-        subtitle="My web and app development projects."
-      />
+      <div className="layout">
+        <PageTitle
+          title="Projects"
+          subtitle="My web and app development projects."
+        />
+      </div>
 
-      <div className="flex flex-wrap gap-0.5 justify-center mb-12 relative text-lg z-10">
+      <div className="flex flex-wrap gap-0.5 justify-center layout mb-12 relative text-lg z-10">
         <button
           type="button"
           className={clsx(
@@ -74,14 +75,14 @@ export default function WebPage({
         ))}
       </div>
 
-      <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-2">
-        <AnimatePresence initial={false}>
-          {orderBy(filteredProjects, 'publishedAt', 'desc').map(
-            (project: Project) => (
+      <div className="layout max-w-[96rem]">
+        <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-3">
+          <AnimatePresence initial={false}>
+            {filteredProjects.map((project: Project) => (
               <ProjectCard project={project} key={project.id} />
-            )
-          )}
-        </AnimatePresence>
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

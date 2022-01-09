@@ -53,6 +53,8 @@ strong {
   @apply underline;
 }
 
-.prose img + span {
-  @apply -mt-8 block font-medium text-gray-500 text-sm;
+.prose {
+  img + span {
+    @apply -mt-4 block font-medium leading-tight text-gray-500 text-sm lg:-mt-6;
+  }
 }

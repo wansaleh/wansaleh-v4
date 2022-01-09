@@ -20,7 +20,7 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
       <div className="layout min-h-screen py-24 lg:py-40">
         <PageTitle
           title="Blog"
-          subtitle="I want to write. But I'm lazy as hell."
+          subtitle="I want to write more. But I'm lazy as hell."
         />
 
         <div className="gap-8 grid grid-cols-1 w-full lg:grid-cols-2">

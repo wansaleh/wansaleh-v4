@@ -15,7 +15,6 @@ module.exports = {
       colors: { brand, lightbg, darkbg },
       fontFamily: {
         sans: ['General Sans', 'Inter var', ...fontFamily.sans],
-        head: ['Clash Grotesk', ...fontFamily.sans],
       },
 
       typography(theme) {

@@ -1,6 +1,6 @@
+import { sort } from 'fast-sort';
 import fs from 'fs';
 import matter from 'gray-matter';
-import { orderBy, uniq } from 'lodash-es';
 import { join } from 'path';
 
 const projectsDirectory = join(process.cwd(), '_projects');
@@ -44,21 +44,21 @@ export function getProjectBySlug(slug: string): Project {
 
 export function getAllProjects(): Project[] {
   const slugs = getProjectSlugs();
-  return orderBy(
-    slugs.map((slug): Project => getProjectBySlug(slug)),
-    'publishedAt',
-    'desc'
+  return sort(slugs.map<Project>((slug) => getProjectBySlug(slug))).desc(
+    (project) => project.publishedAt
   );
 }
 
 export function getAllTags(): Tag[] {
   const projects = getAllProjects();
 
-  const _tags: string[] = uniq(
-    projects
-      .map((project) => project.tags)
-      .filter(Boolean)
-      .flat()
+  const _tags: string[] = Array.from(
+    new Set(
+      projects
+        .map((project) => project.tags)
+        .filter(Boolean)
+        .flat()
+    )
   );
 
   const tags: { tag: string; count: number }[] = [];
@@ -70,5 +70,5 @@ export function getAllTags(): Tag[] {
     tags.push({ tag, count });
   });
 
-  return orderBy(tags, 'count', 'desc');
+  return sort(tags).desc((tag) => tag.count);
 }

@@ -1,7 +1,6 @@
-import { filter, map } from 'lodash-es';
 import slugify from 'slugify';
 
-interface Data {
+type Data = {
   artwork: string;
   spotify: string;
   youtube: string;
@@ -11,32 +10,32 @@ interface Data {
   artworkThumb: string;
   artworkCustom?: string;
   artworkMedium: string;
-}
+};
 
-interface Role {
+type Role = {
   title: string;
   tag: string;
-}
+};
 
-interface Artist {
+type Artist = {
   artist: {
     id: number;
     name: string;
     prefix_title?: string;
   };
   role: Role;
-}
+};
 
-interface Genre {
+type Genre = {
   order: number;
   genre: {
     slug: string;
     title: string;
     color: string;
   };
-}
+};
 
-export interface RawSong {
+export type RawSong = {
   id: number;
   title: string;
   data: Data;
@@ -45,20 +44,22 @@ export interface RawSong {
   genres: Genre[];
   notes?: string;
   // youtube_data: any;
-}
+};
 
-export interface Song extends RawSong {
+export type Song = RawSong & {
   permalink: string;
   artistNames: string[];
   artworkURL: string;
   myRoles: string[];
-}
+};
 
 export function prepareSong(song: RawSong): Song {
   const permalink = getDiskografLink(song);
   const artistNames = getArtistNames(song);
   const artworkURL = getArtworkURL(song);
-  const myRoles = map(filter(song.artists, ['artist.id', 87]), 'role.title');
+  const myRoles = song.artists
+    .filter(({ artist }) => artist.id === 87)
+    .map(({ role }) => role.title);
 
   return {
     ...song,
@@ -91,9 +92,11 @@ export function getArtworkURL(song: RawSong, size = 'artwork'): string {
 }
 
 export function getArtistNames(song: RawSong): string[] {
-  return map(filter(song.artists, ['role.tag', 'primary']), ({ artist }) =>
-    ((artist.prefix_title || '') + ' ' + artist.name).trim()
-  );
+  return song.artists
+    .filter(({ role }) => role.tag === 'primary')
+    .map(({ artist }) =>
+      ((artist.prefix_title || '') + ' ' + artist.name).trim()
+    );
 }
 
 export default function getDiskografLink(song: RawSong): string {

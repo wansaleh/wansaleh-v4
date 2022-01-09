@@ -61,14 +61,12 @@ export default function SongCard({ song }: { song: Song }) {
           {song.artistNames.join(', ')}
         </div>
 
-        <div className="font-medium leading-tight mt-1 text-gray-600 text-xs dark:text-gray-400">
-          <span>{roles} by Wan Saleh</span>
+        <div className="font-medium leading-tight mt-2 text-gray-600 text-xs dark:text-gray-400">
+          {roles} <span className="opacity-60">by Wan Saleh</span>
         </div>
 
-        <div className="font-medium leading-none mt-1 text-gray-600 text-xs dark:text-gray-400">
-          <span>
-            Released {format(parseISO(song.released_at), 'MMMM yyyy')}
-          </span>
+        <div className="font-medium leading-none mt-2 text-gray-600 text-xs dark:text-gray-400">
+          {format(parseISO(song.released_at), 'MMMM yyyy')}
         </div>
 
         <div className="-mx-1 -translate-y-1 duration-300 flex font-medium gap-1 items-center links mt-2 opacity-0 relative text-gray-500 text-sm transform transition z-50 group-hover:opacity-100 group-hover:translate-y-0">
