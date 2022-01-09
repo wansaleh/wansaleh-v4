@@ -44,7 +44,7 @@ export function getProjectBySlug(slug: string): Project {
 
 export function getAllProjects(): Project[] {
   const slugs = getProjectSlugs();
-  return sort(slugs.map<Project>((slug) => getProjectBySlug(slug))).desc(
+  return sort(slugs.map((slug) => getProjectBySlug(slug))).desc(
     (project) => project.publishedAt
   );
 }
