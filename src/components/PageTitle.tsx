@@ -21,15 +21,15 @@ export default function PageTitle({
           !large && 'text-4xl lg:text-5xl'
         )}
       >
-        <span className="relative z-10">
+        <span className="px-[0.2em] relative z-10">
           {large && (
-            <LeavesLeft className="absolute fill-brand h-full right-full top-0 w-[1em]" />
+            <LeavesLeft className="absolute fill-brand h-full right-full top-0" />
           )}
 
           {title}
 
           {large && (
-            <LeavesLeft className="-scale-x-100 absolute fill-brand h-full left-full top-0 transform w-[1em]" />
+            <LeavesLeft className="-scale-x-100 absolute fill-brand h-full left-full top-0 transform" />
           )}
         </span>
       </h1>
