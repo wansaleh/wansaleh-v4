@@ -15,6 +15,7 @@ export async function getStaticProps() {
       songs: data.songs.map(prepareSong),
       total: data.total,
     },
+    revalidate: 1,
   };
 }
 
