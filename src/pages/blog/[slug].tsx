@@ -46,9 +46,9 @@ export default function PostPage({ post }: { post: Post }) {
     <>
       <Seo templateTitle={post.title + ' | Blog'} />
 
-      <div className="layout min-h-screen py-24 text-left lg:py-40">
+      <div className="layout lg:py-40 py-24 min-h-screen text-left">
         <PageTitle title={post.title} large={false} />
-        <div className="-mt-4 mb-8 mx-auto text-center text-gray-500 text-xl">
+        <div className="mx-auto mb-8 -mt-4 text-xl text-center text-gray-500">
           {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}{' '}
           &mdash; {post.tags.join(', ')}
         </div>
@@ -67,7 +67,7 @@ export default function PostPage({ post }: { post: Post }) {
           </div>
           {post.coverCaption && (
             <ReactMarkdown
-              className="caption font-medium leading-tight mt-2 text-gray-500 text-xs"
+              className="caption mt-2 text-xs font-medium leading-tight text-gray-500"
               remarkPlugins={[smartypants]}
             >
               {post.coverCaption}
@@ -76,7 +76,7 @@ export default function PostPage({ post }: { post: Post }) {
         </div>
 
         <ReactMarkdown
-          className="backdrop-blur-md bg-gray-500 bg-opacity-10 content max-w-4xl mx-auto p-6 prose rounded-xl lg:p-16 lg:prose-xl dark:prose-dark"
+          className="backdrop-blur-md content prose prose-a:decoration-1 prose-a:decoration-slate-500 prose-a:transition lg:p-16 lg:prose-xl dark:prose-invert hover:prose-a:decoration-2 hover:prose-a:decoration-current p-6 mx-auto max-w-4xl bg-gray-500 bg-opacity-10 rounded-xl"
           remarkPlugins={[smartypants]}
           rehypePlugins={[rehypeRaw]}
         >
