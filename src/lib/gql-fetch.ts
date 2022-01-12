@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLClient } from 'graphql-request';
 
 const normalEndpoint = process.env.NEXT_PUBLIC_HASURA_ENDPOINT;
