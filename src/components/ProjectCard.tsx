@@ -11,7 +11,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       initial={{ opacity: 0, y: -32 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 32 }}
-      className="backdrop-blur-sm group link-overlay dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-4 hover:ring-offset-gray-100 relative p-4 w-full bg-gray-500 bg-opacity-10 rounded-xl transition duration-300"
+      className="backdrop-blur-lg bg-gray-500/10 group link-overlay dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-4 hover:ring-offset-gray-100 relative p-4 w-full rounded-xl transition duration-300"
     >
       <div className="aspect-[16/10] duration-200 ease-out image overflow-hidden relative rounded-lg shadow-lg transition-all">
         <Image

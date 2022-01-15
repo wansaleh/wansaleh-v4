@@ -1,0 +1,16 @@
+/*
+ * Skypack CDN - @georgedoescode/generative-utils@1.0.37
+ *
+ * Learn more:
+ *   📙 Package Documentation: https://www.skypack.dev/view/@georgedoescode/generative-utils
+ *   📘 Skypack Documentation: https://www.skypack.dev/docs
+ *
+ * Pinned URL: (Optimized for Production)
+ *   ▶️ Normal: https://cdn.skypack.dev/pin/@georgedoescode/generative-utils@v1.0.37-h1ixtguoxSvQwieN7rSd/mode=imports/optimized/@georgedoescode/generative-utils.js
+ *   ⏩ Minified: https://cdn.skypack.dev/pin/@georgedoescode/generative-utils@v1.0.37-h1ixtguoxSvQwieN7rSd/mode=imports,min/optimized/@georgedoescode/generative-utils.js
+ *
+ */
+
+// Browser-Optimized Imports (Don't directly import the URLs below in your application!)
+export * from '/-/@georgedoescode/generative-utils@v1.0.37-h1ixtguoxSvQwieN7rSd/dist=es2019,mode=imports/optimized/@georgedoescode/generative-utils.js';
+export {default} from '/-/@georgedoescode/generative-utils@v1.0.37-h1ixtguoxSvQwieN7rSd/dist=es2019,mode=imports/optimized/@georgedoescode/generative-utils.js';

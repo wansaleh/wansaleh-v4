@@ -16,17 +16,17 @@ html {
 }
 
 body {
-  @apply bg-fixed bg-lightbg text-gray-900 dark:bg-darkbg dark:text-white;
+  @apply bg-lightbg dark:bg-darkbg dark:text-white text-gray-900 bg-fixed;
 }
 
 h1 {
-  @apply text-4xl lg:text-6xl;
+  @apply lg:text-6xl text-4xl;
 }
 h2 {
-  @apply text-3xl lg:text-5xl;
+  @apply lg:text-5xl text-3xl;
 }
 h3 {
-  @apply text-2xl lg:text-4xl;
+  @apply lg:text-4xl text-2xl;
 }
 
 b,
@@ -36,7 +36,7 @@ strong {
 
 @layer base {
   .layout {
-    @apply max-w-6xl mx-auto px-6 w-full;
+    @apply px-6 mx-auto w-full max-w-6xl;
   }
 
   .link-overlay {
@@ -44,7 +44,7 @@ strong {
   }
 
   .link-overlay a.link:before {
-    @apply absolute bottom-0 cursor-pointer left-0 right-0 top-0 z-10;
+    @apply absolute top-0 right-0 bottom-0 left-0 z-10 cursor-pointer;
     content: '';
   }
 }
@@ -55,6 +55,10 @@ strong {
 
 .prose {
   img + span {
-    @apply -mt-4 block font-medium leading-tight text-gray-500 text-sm lg:-mt-6;
+    @apply lg:-mt-6 block -mt-4 text-sm font-medium leading-tight text-gray-500;
   }
+}
+
+body > svg {
+  @apply -z-10 overflow-visible fixed top-0 right-0 bottom-0 left-0 w-screen h-screen opacity-40;
 }
