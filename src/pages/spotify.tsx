@@ -1,3 +1,5 @@
+import useSWR from 'swr';
+
 import { getSavedTracks, getTopTracks, TTrack } from '@/lib/spotify';
 
 import NowPlaying from '@/components/NowPlaying';
@@ -5,36 +7,33 @@ import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
 import Track from '@/components/Track';
 
-export async function getServerSideProps() {
-  const top = await getTopTracks();
-  const saved = await getSavedTracks();
+// export async function getServerSideProps() {
+//   const top = await getTopTracks();
+//   const saved = await getSavedTracks();
 
-  return {
-    props: { top, saved },
-  };
-}
+//   return {
+//     props: { top, saved },
+//   };
+// }
 
-export default function SpotifyPage({
-  top,
-  saved,
-}: {
-  top: TTrack[];
-  saved: TTrack[];
-}) {
+export default function SpotifyPage() {
+  const { data: top } = useSWR('/api/spotify/top.json');
+  const { data: saved } = useSWR('/api/spotify/saved.json');
+
   return (
     <>
       <Seo templateTitle="Listens" />
 
-      <div className="layout min-h-screen py-20 lg:py-40">
+      <div className="layout lg:py-40 py-20 min-h-screen">
         <PageTitle title="Listens" />
 
-        <div className="border-2 border-current max-w-2xl mb-10 mx-auto rounded-xl">
+        <div className="mx-auto mb-10 max-w-2xl rounded-xl border-2 border-current">
           <NowPlaying />
         </div>
 
-        <div className="gap-16 grid-cols-2 md:grid">
+        <div className="md:grid grid-cols-2 gap-16">
           <div>
-            <h2 className="font-light mb-4 text-4xl text-gray-500 tracking-tight">
+            <h2 className="mb-4 text-4xl font-light tracking-tight text-gray-500">
               Saved Tracks{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,7 @@ export default function SpotifyPage({
               </svg>
             </h2>
 
-            <div className="max-w-xl mb-10 mx-auto">
+            <div className="mx-auto mb-10 max-w-xl">
               {saved?.map((track: TTrack) => (
                 <Track key={track.songUrl} track={track} />
               ))}
@@ -53,7 +52,7 @@ export default function SpotifyPage({
           </div>
 
           <div>
-            <h2 className="font-light mb-4 text-4xl text-gray-500 tracking-tight">
+            <h2 className="mb-4 text-4xl font-light tracking-tight text-gray-500">
               Top Tracks{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +63,7 @@ export default function SpotifyPage({
               </svg>
             </h2>
 
-            <div className="max-w-xl mb-10 mx-auto">
+            <div className="mx-auto mb-10 max-w-xl">
               {top?.map((track: TTrack) => (
                 <Track key={track.songUrl} track={track} />
               ))}
