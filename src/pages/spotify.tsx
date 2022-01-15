@@ -45,9 +45,13 @@ export default function SpotifyPage() {
             </h2>
 
             <div className="mx-auto mb-10 max-w-xl">
-              {saved?.map((track: TTrack) => (
-                <Track key={track.songUrl} track={track} />
-              ))}
+              {saved ? (
+                saved?.map((track: TTrack) => (
+                  <Track key={track.songUrl} track={track} />
+                ))
+              ) : (
+                <>Loading tracks...</>
+              )}
             </div>
           </div>
 
@@ -64,9 +68,13 @@ export default function SpotifyPage() {
             </h2>
 
             <div className="mx-auto mb-10 max-w-xl">
-              {top?.map((track: TTrack) => (
-                <Track key={track.songUrl} track={track} />
-              ))}
+              {top ? (
+                top.map((track: TTrack) => (
+                  <Track key={track.songUrl} track={track} />
+                ))
+              ) : (
+                <>Loading tracks...</>
+              )}
             </div>
           </div>
         </div>
