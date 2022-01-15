@@ -24,8 +24,7 @@ export default function Nav() {
           <Link href="/discography">
             <a
               className={clsx(
-                'border-2 border-transparent border-y-0 duration-200 px-2 py-0.5 rounded-md transition hover:text-brand',
-                router.pathname === '/discography' && '!border-brand'
+                router.pathname.startsWith('/discography') && 'active'
               )}
             >
               Discography
@@ -35,10 +34,7 @@ export default function Nav() {
         <li>
           <Link href="/code">
             <a
-              className={clsx(
-                'border-2 border-transparent border-y-0 duration-200 px-2 py-0.5 rounded-md transition hover:text-brand',
-                router.pathname === '/code' && '!border-brand'
-              )}
+              className={clsx(router.pathname.startsWith('/code') && 'active')}
             >
               Code
             </a>
@@ -47,10 +43,7 @@ export default function Nav() {
         <li>
           <Link href="/blog">
             <a
-              className={clsx(
-                'border-2 border-transparent border-y-0 duration-200 px-2 py-0.5 rounded-md transition hover:text-brand',
-                router.pathname.startsWith('/blog') && '!border-brand'
-              )}
+              className={clsx(router.pathname.startsWith('/blog') && 'active')}
             >
               Blog
             </a>
@@ -59,6 +52,20 @@ export default function Nav() {
         <li className="ml-2">
           <ThemeSelect />
         </li>
+
+        <style jsx>{`
+          a {
+            @apply mx-2 relative;
+          }
+          a:after {
+            content: '';
+            @apply w-4 h-1 rounded-full bg-brand absolute -top-1.5 left-1/2 transform -translate-x-1/2 opacity-0 transition;
+          }
+          a:hover:after,
+          a.active:after {
+            @apply opacity-100;
+          }
+        `}</style>
       </ul>
     </div>
   );
