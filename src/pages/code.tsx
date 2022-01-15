@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 import { getAllProjects, getAllTags, Project, Tag } from '@/lib/projects';
@@ -77,11 +76,9 @@ export default function WebPage({
 
       <div className="layout max-w-[96rem]">
         <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence initial={false}>
-            {filteredProjects.map((project: Project) => (
-              <ProjectCard project={project} key={project.id} />
-            ))}
-          </AnimatePresence>
+          {filteredProjects.map((project: Project) => (
+            <ProjectCard project={project} key={project.id} />
+          ))}
         </div>
       </div>
     </div>

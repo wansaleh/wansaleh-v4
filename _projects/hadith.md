@@ -4,6 +4,7 @@ title: Hadith Pendek
 url: https://hadith.wansaleh.com
 thumbnail: https://res.cloudinary.com/wansaleh/image/upload/c_scale,w_600/f_auto/site-v4/projects/hadithshorts-v2.png
 tags:
+- Side Projects
 - Education
 - Islamic
 publishedAt: 2021-12-31T00:00:00.000Z
