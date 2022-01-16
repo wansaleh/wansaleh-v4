@@ -1,6 +1,5 @@
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import { useEffect } from 'react';
 import { SWRConfig } from 'swr';
 
 import '@/styles/globals.css';
