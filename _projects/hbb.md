@@ -5,7 +5,7 @@ url: https://hbb.org.my
 thumbnail: https://res.cloudinary.com/wansaleh/image/upload/c_scale,w_600/f_auto/site-v4/projects/hbb.png
 tags:
 - Non-Profit
-- Medical
+- Healthcare
 publishedAt: 2020-03-01T00:00:00.000Z
 stack:
 - React
