@@ -61,36 +61,38 @@ export default function PostPage({ post }: { post: Post }) {
     <>
       <Seo templateTitle={post.title + ' | Blog'} />
 
-      <div className="layout min-h-screen py-24 text-left lg:py-40">
+      <div className="layout pt-24 text-left lg:pt-40">
         <PageTitle title={post.title} large={false} />
         <div className="-mt-4 mb-8 mx-auto text-center text-gray-500 text-xl">
           {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}{' '}
           &mdash; {post.tags.join(', ')}
           {views && <> &mdash; {views} views</>}
         </div>
+      </div>
 
-        <div className="mb-8">
-          <div className="aspect-video relative">
-            <Image
-              src={post.cover}
-              alt={post.title}
-              className="object-cover rounded-xl"
-              loader={coverLoader}
-              layout="fill"
-              placeholder="blur"
-              blurDataURL={getBlurUrl(post.cover)}
-            />
-          </div>
-          {post.coverCaption && (
-            <ReactMarkdown
-              className="caption font-medium leading-tight mt-2 text-gray-500 text-xs"
-              remarkPlugins={[smartypants]}
-            >
-              {post.coverCaption}
-            </ReactMarkdown>
-          )}
+      <div className="layout max-w-7xl mb-8 w-full">
+        <div className="aspect-video relative">
+          <Image
+            src={post.cover}
+            alt={post.title}
+            className="object-cover rounded-xl"
+            loader={coverLoader}
+            layout="fill"
+            placeholder="blur"
+            blurDataURL={getBlurUrl(post.cover)}
+          />
         </div>
+        {post.coverCaption && (
+          <ReactMarkdown
+            className="caption font-medium leading-tight p-4 text-center text-gray-500 text-sm"
+            remarkPlugins={[smartypants]}
+          >
+            {post.coverCaption}
+          </ReactMarkdown>
+        )}
+      </div>
 
+      <div className="pb-24 lg:pb-40">
         <ReactMarkdown
           className="backdrop-blur-md bg-gray-500 bg-opacity-10 content max-w-4xl mx-auto p-6 prose prose-a:decoration-1 prose-a:decoration-slate-500 prose-a:transition rounded-xl lg:p-16 lg:prose-xl dark:prose-invert hover:prose-a:decoration-2 hover:prose-a:decoration-current"
           remarkPlugins={[smartypants]}
