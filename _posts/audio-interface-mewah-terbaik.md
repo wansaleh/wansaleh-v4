@@ -1,7 +1,7 @@
 ---
 title: Audio Interface Mewah Terbaik
 subtitle: Antaramuka audio bangsawan yang terbaik di dunia. Bukan untuk kita golongan marhaen ni. 😩
-description: "Audio interface. Mungkin peranti utama yang perlu dibeli bila ingin membina/setup sebuah studio. (Sengit dengan *monitor speakers*). Tak kira studio rumah, semipro, atau studio profesional, audio interface adalah keperluan dan wajib ada."
+description: "Audio interface. Mungkin peranti utama yang perlu dibeli bila ingin membina/setup sebuah studio. Tak kira studio rumah, semipro, atau studio profesional, audio interface adalah keperluan dan wajib ada."
 author: Wan Saleh
 cover: https://images.ctfassets.net/115i0w1y6lcd/35lWiaJQWBWeVp895JXEkU/bc879f770b39e572058028064ee5c8ba/apollo_x.jpg
 date: 2021-05-12T12:00:00Z

@@ -1,5 +1,6 @@
 import { getAllPosts, Post } from '@/lib/posts';
 
+import FeaturedPostCard from '@/components/FeaturedPostCard';
 import PageTitle from '@/components/PageTitle';
 import PostCard from '@/components/PostCard';
 import Seo from '@/components/Seo';
@@ -13,6 +14,9 @@ export async function getStaticProps() {
 }
 
 export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
+  const featuredPost = allPosts[0];
+  const posts = allPosts.slice(1);
+
   return (
     <>
       <Seo templateTitle="Blog" />
@@ -23,8 +27,12 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
           subtitle="I want to write more. But I'm lazy as hell."
         />
 
+        <div className="my-20">
+          <FeaturedPostCard post={featuredPost} />
+        </div>
+
         <div className="gap-8 grid grid-cols-1 w-full lg:grid-cols-2">
-          {allPosts.map((post) => (
+          {posts.map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}
         </div>
