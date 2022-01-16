@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GraphQLClient } from 'graphql-request';
 
-const normalEndpoint = process.env.NEXT_PUBLIC_HASURA_ENDPOINT;
+const normalEndpoint = process.env.HASURA_ENDPOINT;
 
 export default async function gqlFetch(
   query: string,
