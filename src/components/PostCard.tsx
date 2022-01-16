@@ -24,7 +24,9 @@ export default function PostCard({ post }: { post: Post }) {
           alt={post.title}
           className="object-cover rounded-lg"
           loader={coverLoader}
-          layout="fill"
+          // layout="fill"
+          width={500}
+          height={166.67}
           placeholder="blur"
           blurDataURL={getBlurUrl(post.cover)}
         />

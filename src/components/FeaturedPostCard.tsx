@@ -15,7 +15,9 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
             alt={post.title}
             className="object-cover rounded-xl"
             loader={coverLoader}
-            layout="fill"
+            // layout="fill"
+            width={550}
+            height={550}
             placeholder="blur"
             blurDataURL={getBlurUrl(post.cover)}
           />
