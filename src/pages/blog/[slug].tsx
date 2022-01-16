@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import smartypants from 'remark-smartypants';
@@ -42,6 +43,20 @@ export async function getStaticPaths() {
 }
 
 export default function PostPage({ post }: { post: Post }) {
+  const [views, setViews] = useState(null);
+
+  useEffect(() => {
+    async function loadViews() {
+      const views = await fetch(`/api/post-views?slug=${post.slug}`).then(
+        (res) => res.json()
+      );
+
+      setViews(views);
+    }
+
+    loadViews();
+  }, [post.slug]);
+
   return (
     <>
       <Seo templateTitle={post.title + ' | Blog'} />
@@ -51,6 +66,7 @@ export default function PostPage({ post }: { post: Post }) {
         <div className="-mt-4 mb-8 mx-auto text-center text-gray-500 text-xl">
           {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}{' '}
           &mdash; {post.tags.join(', ')}
+          {views && <> &mdash; {views} views</>}
         </div>
 
         <div className="mb-8">
