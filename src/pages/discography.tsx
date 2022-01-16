@@ -7,7 +7,7 @@ import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
 import SongCard from '@/components/SongCard';
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const url =
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'

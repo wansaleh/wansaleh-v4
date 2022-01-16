@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
 import { getAllProjects, getAllTags, Project, Tag } from '@/lib/projects';
@@ -7,14 +8,14 @@ import PageTitle from '@/components/PageTitle';
 import ProjectCard from '@/components/ProjectCard';
 import Seo from '@/components/Seo';
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const projects = getAllProjects();
   const tags = getAllTags();
 
   return {
     props: { projects, tags },
   };
-}
+};
 
 export default function WebPage({
   projects,
