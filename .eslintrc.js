@@ -17,6 +17,8 @@ module.exports = {
     'no-console': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
 
+    'prefer-template': 'warn',
+
     'react/display-name': 'off',
 
     //#region  //*=========== Unused Import ===========

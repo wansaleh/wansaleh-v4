@@ -9,26 +9,27 @@ export default function PostCard({ post }: { post: Post }) {
   return (
     <div className="backdrop-blur-md bg-gray-500/10 duration-300 flex flex-col group link-overlay p-6 relative rounded-xl transition lg:p-8 dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-2 hover:ring-offset-gray-100">
       <h2 className="font-semibold mb-2 text-2xl lg:text-3xl">
-        <Link href={`/blog/${post.slug}`}>
-          <a className="link">{post.title}</a>
+        <Link href={`/blog/${post.frontmatter.slug}`}>
+          <a className="link">{post.frontmatter.title}</a>
         </Link>
       </h2>
 
       <div className="text-gray-500 text-lg">
-        {format(post.date, 'MMMM dd, yyyy')} &mdash; {post.readingTime?.text}
+        {format(post.frontmatter.date as Date, 'MMMM dd, yyyy')} &mdash;{' '}
+        {post.frontmatter.readingTime?.text}
       </div>
 
       <div className="aspect-[3] my-4 relative">
         <Image
-          src={post.cover}
-          alt={post.title}
+          src={post.frontmatter.cover as string}
+          alt={post.frontmatter.title}
           className="object-cover rounded-lg"
           loader={coverLoader}
           // layout="fill"
           width={500}
           height={166.67}
           placeholder="blur"
-          blurDataURL={getBlurUrl(post.cover)}
+          blurDataURL={getBlurUrl(post.frontmatter.cover)}
         />
       </div>
 
