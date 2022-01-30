@@ -24,16 +24,16 @@ export default function SpotifyPage() {
     <>
       <Seo templateTitle="Listens" />
 
-      <div className="layout lg:py-40 py-20 min-h-screen">
+      <div className="layout max-w-7xl min-h-screen py-20 lg:py-40">
         <PageTitle title="Listens" />
 
-        <div className="mx-auto mb-10 max-w-2xl rounded-xl border-2 border-current">
+        <div className="border-2 border-current max-w-2xl mb-10 mx-auto rounded-xl">
           <NowPlaying />
         </div>
 
-        <div className="md:grid grid-cols-2 gap-16">
+        <div className="gap-16 grid-cols-2 md:grid">
           <div>
-            <h2 className="mb-4 text-4xl font-light tracking-tight text-gray-500">
+            <h2 className="font-light mb-4 text-4xl text-gray-500 tracking-tight">
               Saved Tracks{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ export default function SpotifyPage() {
               </svg>
             </h2>
 
-            <div className="mx-auto mb-10 max-w-xl">
+            <div className="mb-10 mx-auto">
               {saved ? (
                 saved?.map((track: TTrack) => (
                   <Track key={track.songUrl} track={track} />
@@ -56,7 +56,7 @@ export default function SpotifyPage() {
           </div>
 
           <div>
-            <h2 className="mb-4 text-4xl font-light tracking-tight text-gray-500">
+            <h2 className="font-light mb-4 text-4xl text-gray-500 tracking-tight">
               Top Tracks{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ export default function SpotifyPage() {
               </svg>
             </h2>
 
-            <div className="mx-auto mb-10 max-w-xl">
+            <div className="mb-10 mx-auto">
               {top ? (
                 top.map((track: TTrack) => (
                   <Track key={track.songUrl} track={track} />

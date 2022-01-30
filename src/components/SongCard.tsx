@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { format, parseISO } from 'date-fns';
+import Image from 'next/image';
 
 import arrayToSentence from '@/lib/array-to-sentence';
 import { Song } from '@/lib/songs';
@@ -34,24 +35,24 @@ export default function SongCard({ song }: { song: Song }) {
     <>
       <div className="group link-overlay relative">
         <div className="aspect-square bg-black duration-200 ease-out overflow-hidden rounded-md shadow-lg transition-all dark:group-hover:ring-offset-gray-900 dark:ring-gray-900 group-hover:ring-2 group-hover:ring-brand group-hover:ring-offset-4 group-hover:ring-offset-gray-100">
-          <div className="h-full relative w-full">
-            <img
-              src={song.artworkURL}
-              alt={song.title}
-              className="h-full object-contain overflow-hidden rounded-md w-full"
-              loading="lazy"
-              width="300"
-              height="300"
-            />
-          </div>
+          <Image
+            src={song.artworkURL}
+            alt={song.title}
+            className="h-full object-contain overflow-hidden rounded-md scale-[102%] w-full"
+            loading="lazy"
+            width="600"
+            height="600"
+          />
         </div>
 
-        <div className="font-medium mb-1 mt-4 text-[0.7rem]">
-          {song.genres.map(({ genre, order }) => (
-            <span key={order} className="mr-2.5">
-              {genre.title}
-            </span>
-          ))}
+        <div className="flex flex-wrap font-medium gap-1.5 mt-4 text-[0.7rem] text-gray-500">
+          <div className="flex gap-1.5">
+            {song.genres.slice(0, 2).map(({ genre, order }) => (
+              <span key={order}>{genre.title}</span>
+            ))}
+          </div>
+          <div>/</div>
+          <div>{format(parseISO(song.released_at), 'MMMM yyyy')}</div>
         </div>
 
         <h2 className="font-semibold leading-tight text-lg">
@@ -69,13 +70,15 @@ export default function SongCard({ song }: { song: Song }) {
           {song.artistNames.join(', ')}
         </div>
 
-        <div className="font-medium leading-tight mt-2 text-gray-600 text-xs dark:text-gray-400">
-          {roles} <span className="opacity-60">by Wan Saleh</span>
+        <div className="font-medium leading-tight mt-2 text-gray-500 text-xs dark:text-gray-500">
+          {roles}
         </div>
 
-        <div className="font-medium leading-none mt-2 text-gray-600 text-xs dark:text-gray-400">
-          {format(parseISO(song.released_at), 'MMMM yyyy')}
-        </div>
+        {process.env.NODE_ENV === 'development' && (
+          <div className="font-medium leading-tight mt-2 text-gray-500 text-xs dark:text-gray-500">
+            id: {song.id}
+          </div>
+        )}
 
         <div className="-mx-1 -translate-y-1 duration-300 flex font-medium gap-1 items-center links mt-2 opacity-0 relative text-gray-500 text-sm transform transition z-50 group-hover:opacity-100 group-hover:translate-y-0">
           {song.data.applemusic && (

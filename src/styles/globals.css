@@ -36,7 +36,7 @@ strong {
 
 @layer base {
   .layout {
-    @apply max-w-6xl mx-auto px-6 w-full;
+    @apply max-w-[96rem] mx-auto px-6 w-full;
   }
 
   .link-overlay {
