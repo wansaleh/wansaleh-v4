@@ -14,7 +14,7 @@ module.exports = {
     extend: {
       colors: { brand, lightbg, darkbg },
       fontFamily: {
-        sans: ['General Sans', 'Inter var', ...fontFamily.sans],
+        sans: ['Inter var', ...fontFamily.sans],
       },
 
       typography(theme) {

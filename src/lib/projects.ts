@@ -38,7 +38,7 @@ export function getProjectBySlug(slug: string): Project {
     publishedAt: (data.publishedAt as Date).toISOString(),
     stack: data.stack,
     description: data.description,
-    defunct: data.defunct || null,
+    defunct: data.defunct ?? false,
   };
 }
 

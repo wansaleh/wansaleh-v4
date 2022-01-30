@@ -46,7 +46,15 @@ export default function SongCard({ song }: { song: Song }) {
           </div>
         </div>
 
-        <h2 className="font-semibold leading-tight mt-4 text-lg">
+        <div className="font-medium mb-1 mt-4 text-[0.7rem]">
+          {song.genres.map(({ genre, order }) => (
+            <span key={order} className="mr-2.5">
+              {genre.title}
+            </span>
+          ))}
+        </div>
+
+        <h2 className="font-semibold leading-tight text-lg">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
