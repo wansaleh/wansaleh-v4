@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
+import fetchSongs from '@/lib/fetch-songs';
 import { prepareSong, Song } from '@/lib/songs';
 
 import PageTitle from '@/components/PageTitle';
@@ -8,12 +9,7 @@ import Seo from '@/components/Seo';
 import SongCard from '@/components/SongCard';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://by.wansaleh.com';
-
-  const data = await fetch(`${url}/api/songs`).then((res) => res.json());
+  const data = await fetchSongs();
 
   return {
     props: {
