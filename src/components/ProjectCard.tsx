@@ -71,7 +71,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <ul className="mt-0 tags">
           {project.stack?.map(({ id, name, color }) => (
             <li key={id} className="inline-block">
-              {color}
+              {name}
             </li>
           ))}
         </ul>
