@@ -1,3 +1,4 @@
+import { Client } from '@notionhq/client';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,7 +9,25 @@ import { prepareSong, Song } from '@/lib/songs';
 import profilePic from '../../public/images/avatar2.jpg';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetchSongsById([28, 5635, 2272, 7, 38]);
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  });
+  const response = await notion.databases.query({
+    database_id: 'c6193808725b45adb21ccea578af239e',
+  });
+  let ids: number[] | null = null;
+  if (
+    'properties' in response.results[0] &&
+    'rich_text' in response.results[0].properties.Value
+  ) {
+    ids = response.results[0].properties.Value.rich_text[0].plain_text
+      .split(/\s?,\s?/)
+      .map(Number);
+  }
+
+  const data = await fetchSongsById(
+    ids || [28, 5635, 2272, 7, 38, 34, 44, 71, 68, 79, 19]
+  );
 
   return {
     props: {
@@ -39,7 +58,7 @@ export default function HomePage({ songs }: { songs: Song[] }) {
       </div>
 
       <div className="md:col-span-2 lg:col-span-3">
-        <div className="gap-6 grid grid-cols-2 lg:gap-8 lg:grid-cols-3">
+        <div className="gap-6 grid grid-cols-2 lg:gap-68 lg:grid-cols-3">
           {songs.map((song) => (
             <div key={song.id} className="">
               <div className="aspect-square overflow-hidden relative rounded-xl">

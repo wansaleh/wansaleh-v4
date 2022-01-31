@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 
-import { Project } from '@/lib/projects';
+import { Project } from '@/lib/projects-notion';
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
@@ -59,9 +59,9 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <div className="flex flex-wrap leading-none mt-1 text-gray-500 text-xs">
         <ul className="mt-0 tags">
-          {project.tags.map((tag) => (
-            <li key={tag} className="inline-block">
-              {tag}
+          {project.tags.map(({ id, name, color }) => (
+            <li key={id} className="inline-block">
+              {name}
             </li>
           ))}
         </ul>
@@ -69,9 +69,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         <span className="mx-2">/</span>
 
         <ul className="mt-0 tags">
-          {project.stack?.map((stack) => (
-            <li key={stack} className="inline-block">
-              {stack}
+          {project.stack?.map(({ id, name, color }) => (
+            <li key={id} className="inline-block">
+              {color}
             </li>
           ))}
         </ul>

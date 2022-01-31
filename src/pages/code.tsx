@@ -2,15 +2,18 @@ import clsx from 'clsx';
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
-import { getAllProjects, getAllTags, Project, Tag } from '@/lib/projects';
+import {
+  getAllProjects as getAllProjectNotion,
+  Project,
+  Tag,
+} from '@/lib/projects-notion';
 
 import PageTitle from '@/components/PageTitle';
 import ProjectCard from '@/components/ProjectCard';
 import Seo from '@/components/Seo';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = getAllProjects();
-  const tags = getAllTags();
+  const { projects, tags } = await getAllProjectNotion();
 
   return {
     props: { projects, tags },
@@ -25,12 +28,13 @@ export default function WebPage({
   tags: Tag[];
 }) {
   const [activeTag, setActiveTag] = useState('all');
+  // console.log(projects2);
 
   let filteredProjects = projects;
 
   if (activeTag !== 'all') {
     filteredProjects = projects.filter((project: Project) =>
-      project.tags.includes(activeTag)
+      project.tags.map(({ name }) => name).includes(activeTag)
     );
   } else {
     filteredProjects = projects;
@@ -60,17 +64,17 @@ export default function WebPage({
           <span className="mx-1 opacity-30">&middot;</span>
           <span className="text-sm">{projects.length}</span>
         </button>
-        {tags.map(({ tag }) => (
+        {tags.map(({ id, name, color }) => (
           <button
-            key={tag}
+            key={id}
             type="button"
             className={clsx(
               'leading-none p-1.5 px-3 rounded-full hover:bg-gray-500/20',
-              activeTag === tag && 'font-semibold bg-gray-500/20'
+              activeTag === name && 'font-semibold bg-gray-500/20'
             )}
-            onClick={() => setActiveTag(tag)}
+            onClick={() => setActiveTag(name)}
           >
-            {tag}
+            {name}
           </button>
         ))}
       </div>
