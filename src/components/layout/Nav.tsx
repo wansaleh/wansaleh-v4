@@ -10,14 +10,18 @@ export default function Nav() {
 
   return (
     <div className="absolute flex items-center justify-between left-0 p-6 right-0 top-0 z-50">
-      <Link href="/">
-        <a className="flex font-semibold gap-2 group items-center leading-tight text-sm lg:text-base">
-          <span className="duration-300 transition group-hover:text-brand">
-            <Logo2 className="h-[2em]" />
-          </span>
-          <span className="sr-only md:not-sr-only">By Wan Saleh</span>
-        </a>
-      </Link>
+      {router.pathname !== '/' && (
+        <Link href="/">
+          <a className="flex font-semibold gap-2 group items-center leading-tight text-sm lg:text-base">
+            <span className="duration-300 transition group-hover:text-brand">
+              <Logo2 className="h-[2em]" />
+            </span>
+            <span className="sr-only md:not-sr-only">By Wan Saleh</span>
+          </a>
+        </Link>
+      )}
+
+      <div className="flex-1" />
 
       <ul className="flex font-semibold items-center text-sm lg:gap-1">
         <li>

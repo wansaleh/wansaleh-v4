@@ -40,21 +40,23 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function HomePage({ songs }: { songs: Song[] }) {
   return (
     <div className="gap-10 grid grid-cols-1 layout min-h-screen py-24 w-full md:grid-cols-3 lg:grid-cols-4 lg:py-40">
-      <div className="">
-        <Image
-          src={profilePic}
-          width={160}
-          height={160}
-          alt=""
-          className="rounded-full"
-        />
+      <div>
+        <div className="sticky top-10">
+          <Image
+            src={profilePic}
+            width={160}
+            height={160}
+            alt=""
+            className="rounded-full"
+          />
 
-        <h2 className="mb-4 mt-8 text-3xl">Hi, I’m Wan!</h2>
-        <p className="leading-relaxed text-lg">
-          I am a music producer in Malaysia. Also a composer, studio engineer,
-          mixer and mastering engineer. I run my studio in Ara Damansara,
-          Selangor.
-        </p>
+          <h2 className="font-semibold mb-4 mt-8 text-3xl">Hi, I’m Wan!</h2>
+          <p className="leading-relaxed text-lg">
+            I am a music producer in Malaysia. Also a composer, studio engineer,
+            mixer and mastering engineer. I run my studio in Ara Damansara,
+            Selangor.
+          </p>
+        </div>
       </div>
 
       <div className="md:col-span-2 lg:col-span-3">
