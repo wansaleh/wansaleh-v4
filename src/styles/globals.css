@@ -44,8 +44,7 @@ strong {
   }
 
   .link-overlay a.link:before {
-    @apply absolute bottom-0 cursor-pointer left-0 right-0 top-0 z-10;
-    content: '';
+    @apply absolute bottom-0 content-[''] cursor-pointer left-0 right-0 top-0 z-10;
   }
 }
 
@@ -61,4 +60,10 @@ strong {
 
 body > svg {
   @apply -z-10 bottom-0 fixed h-screen left-0 opacity-40 overflow-visible right-0 top-0 w-screen;
+}
+
+.add-comma {
+  span:not(:last-child):after {
+    @apply content-['_·_'];
+  }
 }

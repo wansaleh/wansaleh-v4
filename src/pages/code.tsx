@@ -28,7 +28,6 @@ export default function WebPage({
   tags: Tag[];
 }) {
   const [activeTag, setActiveTag] = useState('all');
-  // console.log(projects2);
 
   let filteredProjects = projects;
 
@@ -80,7 +79,7 @@ export default function WebPage({
       </div>
 
       <div className="layout max-w-[96rem]">
-        <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-3">
+        <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-4">
           {filteredProjects.map((project: Project) => (
             <ProjectCard project={project} key={project.id} />
           ))}

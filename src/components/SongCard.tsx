@@ -45,17 +45,7 @@ export default function SongCard({ song }: { song: Song }) {
           />
         </div>
 
-        <div className="flex flex-wrap font-medium gap-1.5 mt-4 text-[0.7rem] text-gray-500">
-          <div className="flex gap-1.5">
-            {song.genres.slice(0, 2).map(({ genre, order }) => (
-              <span key={order}>{genre.title}</span>
-            ))}
-          </div>
-          <div>/</div>
-          <div>{format(parseISO(song.released_at), 'MMMM yyyy')}</div>
-        </div>
-
-        <h2 className="font-semibold leading-tight text-lg">
+        <h2 className="font-semibold leading-tight mt-4 text-xl">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
@@ -70,7 +60,17 @@ export default function SongCard({ song }: { song: Song }) {
           {song.artistNames.join(', ')}
         </div>
 
-        <div className="font-medium leading-tight mt-2 text-gray-500 text-xs dark:text-gray-500">
+        <div className="flex flex-wrap font-medium gap-1.5 mt-1 text-gray-500 text-xs">
+          <div className="add-comma">
+            {song.genres.slice(0, 2).map(({ genre, order }) => (
+              <span key={order}>{genre.title}</span>
+            ))}
+          </div>
+          <div>/</div>
+          <div>{format(parseISO(song.released_at), 'MMMM yyyy')}</div>
+        </div>
+
+        <div className="font-medium leading-tight mt-1 text-gray-500 text-xs dark:text-gray-500">
           {roles}
         </div>
 
