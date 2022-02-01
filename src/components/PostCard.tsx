@@ -15,7 +15,7 @@ export default function PostCard({ post }: { post: Post }) {
       </h2>
 
       <div className="text-gray-500 text-lg">
-        {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}{' '}
+        {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')}{' '}
         {/* &mdash; {post.readingTime?.text} */}
       </div>
 

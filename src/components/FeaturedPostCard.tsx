@@ -32,7 +32,7 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
         </h2>
 
         <div className="text-gray-500/80 text-xl">
-          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}
+          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')}
           {/* {' '}
           &mdash; {post.readingTime?.text} */}
         </div>
