@@ -45,7 +45,7 @@ export default function SongCard({ song }: { song: Song }) {
           />
         </div>
 
-        <h2 className="font-semibold leading-tight mt-4 text-xl">
+        <h2 className="font-bold leading-tight mt-4 text-xl">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
@@ -56,7 +56,7 @@ export default function SongCard({ song }: { song: Song }) {
           </a>
         </h2>
 
-        <div className="font-medium leading-tight mt-0.5 text-gray-600 text-sm dark:text-gray-400">
+        <div className="font-bold leading-tight mt-0.5 text-gray-500 text-sm">
           {song.artistNames.join(', ')}
         </div>
 

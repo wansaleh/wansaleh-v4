@@ -44,7 +44,7 @@ const SONG_FRAGMENT = gql`
 `;
 
 const QUERY_BY_USERNAME = gql`
-  query GetUserSongs($offset: Int = 0, $limit: Int = 20) {
+  query GetUserSongs($offset: Int = 0, $limit: Int = 30) {
     songs_aggregate(where: { artists: { artist_id: { _eq: 87 } } }) {
       aggregate {
         count

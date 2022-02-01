@@ -1,69 +1,53 @@
-import { Client } from '@notionhq/client';
-import { sort } from 'fast-sort';
-import fs from 'fs';
-import matter from 'gray-matter';
-import { join } from 'path';
-
-const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
-
-const databaseId = '88bda3d3ea544970aa238a386c360054';
-
 export type Project = {
   id: string;
   title: string;
   url: string;
   thumbnail: string;
-  tags: Tag[];
+  tags: string[];
   publishedAt: string;
-  stack?: Tag[];
+  stack?: string[];
   description: string;
   defunct?: boolean;
 };
 
-export type Tag = {
-  name: string;
-  id?: string | undefined;
-  color?: string | undefined;
-};
-
 export async function getAllProjects(): Promise<{
   projects: Project[];
-  tags: Tag[];
+  tags: string[];
 }> {
-  const dbinfo = await notion.databases.retrieve({
-    database_id: databaseId,
-  });
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    sorts: [
-      {
-        property: 'Publish Date',
-        direction: 'descending',
-      },
-    ],
-  });
+  const response = await fetch(
+    'https://notion-api.splitbee.io/v1/table/88bda3d3ea544970aa238a386c360054'
+  ).then((res) => res.json());
 
-  const projects = response.results.map((page: any) => {
-    return {
-      id: page.id,
-      title: page.properties.Name.title[0].plain_text,
-      url: page.properties.URL.url,
-      thumbnail: page.properties.Thumbnail.url,
-      tags: page.properties.Tags.multi_select,
-      publishedAt: page.properties['Publish Date'].date.start,
-      stack: page.properties['Tech Stack'].multi_select,
-      description: page.properties.Description.rich_text[0].plain_text,
-      defunct: page.properties['Defunct?'].checkbox,
-    };
-  });
+  const projects = response
+    .map((page: any) => {
+      return {
+        id: page.id,
+        title: page.Name,
+        url: page.URL,
+        thumbnail: page.Thumbnail,
+        tags: page.Tags,
+        publishedAt: page['Publish Date'],
+        stack: page['Tech Stack'],
+        description: page.Description,
+        defunct: page['Defunct?'] ?? false,
+        hidden: page['Hidden?'] ?? false,
+      };
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
 
-  let tags: Tag[] = [];
+  let tags: string[] = [];
 
-  if ('multi_select' in dbinfo.properties.Tags) {
-    tags = dbinfo.properties.Tags.multi_select.options;
-  }
+  tags = Array.from(
+    new Set(
+      projects
+        .map((project) => project.tags)
+        .filter(Boolean)
+        .flat()
+    )
+  );
 
   return { projects, tags };
 }

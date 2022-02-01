@@ -26,7 +26,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <div className="absolute backdrop-blur bg-darkbg bg-opacity-80 duration-300 flex h-full inset-0 items-center opacity-0 rounded-md transition w-full group-hover:opacity-100 group-hover:transform-gpu group-hover:translate-y-0">
           <div className="font-light p-4 text-white w-full">
             <p
-              className="max-w-md mt-4 mx-auto text-2xl tracking-normal"
+              className="leading-tight max-w-md mt-4 mx-auto text-lg tracking-normal"
               dangerouslySetInnerHTML={{ __html: project.description }}
             />
           </div>
@@ -59,9 +59,9 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <div className="flex flex-wrap leading-none mt-1 text-gray-500 text-xs">
         <ul className="mt-0 tags">
-          {project.tags.map(({ id, name, color }) => (
-            <li key={id} className="inline-block">
-              {name}
+          {project.tags.map((tag) => (
+            <li key={tag} className="inline-block">
+              {tag}
             </li>
           ))}
         </ul>
@@ -69,9 +69,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         <span className="mx-2">/</span>
 
         <ul className="mt-0 tags">
-          {project.stack?.map(({ id, name, color }) => (
-            <li key={id} className="inline-block">
-              {name}
+          {project.stack?.map((stack) => (
+            <li key={stack} className="inline-block">
+              {stack}
             </li>
           ))}
         </ul>
