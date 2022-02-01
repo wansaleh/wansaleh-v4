@@ -62,21 +62,7 @@ export default function HomePage({ songs }: { songs: Song[] }) {
       <div className="md:col-span-2 lg:col-span-3">
         <div className="gap-6 grid grid-cols-2 lg:gap-68 lg:grid-cols-3">
           {songs.map((song) => (
-            <div key={song.id}>
-              <div className="aspect-square overflow-hidden relative rounded-xl">
-                <Image
-                  src={song.artworkURL}
-                  alt={song.title}
-                  className="h-full object-contain scale-[102%] w-full"
-                  loading="lazy"
-                  layout="fill"
-                />
-              </div>
-              <div className="font-bold mt-3 text-xl">{song.title}</div>
-              <div className="font-normal mt-0 text-base text-gray-500">
-                {song.artistNames.join(', ')}
-              </div>
-            </div>
+            <SongCard key={song.id} song={song} />
           ))}
 
           <Link href="/discography">
@@ -85,6 +71,31 @@ export default function HomePage({ songs }: { songs: Song[] }) {
             </a>
           </Link>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function SongCard({ song }: { song: Song }) {
+  let artistNames = song.artistNames.join(', ');
+  if (song.artistNames.length === 2) {
+    artistNames = `${song.artistNames[0]} ft. ${song.artistNames[1]}`;
+  }
+
+  return (
+    <div key={song.id}>
+      <div className="aspect-square overflow-hidden relative rounded-xl">
+        <Image
+          src={song.artworkURL}
+          alt={song.title}
+          className="h-full object-contain scale-[102%] w-full"
+          loading="lazy"
+          layout="fill"
+        />
+      </div>
+      <div className="font-bold mt-3 text-xl">{song.title}</div>
+      <div className="font-bold mb-6 text-base text-slate-500">
+        {artistNames}
       </div>
     </div>
   );
