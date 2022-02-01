@@ -1,9 +1,9 @@
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { coverLoader, getBlurUrl } from '@/lib/images';
-import { Post } from '@/lib/posts';
+import { Post } from '@/lib/posts-notion';
 
 export default function FeaturedPostCard({ post }: { post: Post }) {
   return (
@@ -11,33 +11,34 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
       <div className="w-1/2">
         <div className="aspect-square relative">
           <Image
-            src={post.frontmatter.cover as string}
-            alt={post.frontmatter.title}
+            src={post.cover as string}
+            alt={post.title}
             className="object-cover rounded-xl"
             loader={coverLoader}
             // layout="fill"
             width={550}
             height={550}
             placeholder="blur"
-            blurDataURL={getBlurUrl(post.frontmatter.cover)}
+            blurDataURL={getBlurUrl(post.cover)}
           />
         </div>
       </div>
 
       <div className="flex flex-col justify-end w-1/2">
         <h2 className="font-semibold max-w-xl mb-4 text-4xl transition lg:text-5xl group-hover:text-brand">
-          <Link href={`/blog/${post.frontmatter.slug}`}>
-            <a className="link">{post.frontmatter.title}</a>
+          <Link href={`/blog/${post.slug}`}>
+            <a className="link">{post.title}</a>
           </Link>
         </h2>
 
         <div className="text-gray-500/80 text-xl">
-          {format(post.frontmatter.date as Date, 'MMMM dd, yyyy')} &mdash;{' '}
-          {post.frontmatter.readingTime?.text}
+          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}
+          {/* {' '}
+          &mdash; {post.readingTime?.text} */}
         </div>
 
         <p className="leading-relaxed max-w-xl mt-4 text-xl">
-          {post.frontmatter.description}
+          {post.description}
         </p>
 
         <div className="mt-auto">

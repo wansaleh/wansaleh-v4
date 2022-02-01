@@ -92,7 +92,7 @@ function SongCard({ song }: { song: Song }) {
 
   return (
     <div key={song.id}>
-      <div className="aspect-square overflow-hidden relative rounded-xl">
+      <div className="aspect-square overflow-hidden relative rounded-xl shadow-lg">
         <Image
           src={song.artworkURL}
           alt={song.title}

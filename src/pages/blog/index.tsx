@@ -1,4 +1,4 @@
-import { getAllPosts, Post } from '@/lib/posts';
+import { getAllPostsNotion, Post } from '@/lib/posts-notion';
 
 import FeaturedPostCard from '@/components/FeaturedPostCard';
 import PageTitle from '@/components/PageTitle';
@@ -6,7 +6,7 @@ import PostCard from '@/components/PostCard';
 import Seo from '@/components/Seo';
 
 export async function getStaticProps() {
-  const allPosts: Post[] = await getAllPosts();
+  const allPosts: Post[] = await getAllPostsNotion();
 
   return {
     props: { allPosts },
@@ -33,7 +33,7 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
 
         <div className="gap-8 grid grid-cols-1 w-full lg:grid-cols-2">
           {posts.map((post) => (
-            <PostCard key={post.frontmatter.slug} post={post} />
+            <PostCard key={post.id} post={post} />
           ))}
         </div>
       </div>

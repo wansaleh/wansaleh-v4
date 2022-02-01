@@ -1,5 +1,4 @@
 import fs from 'fs';
-import matter from 'gray-matter';
 import { bundleMDX } from 'mdx-bundler';
 import { join } from 'path';
 import readingTime, { ReadTimeResults } from 'reading-time';

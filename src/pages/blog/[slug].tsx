@@ -1,13 +1,12 @@
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import smartypants from 'remark-smartypants';
 
 import useMDX from '@/lib/hooks/use-mdx';
 import { coverLoader, getBlurUrl } from '@/lib/images';
-import { getAllPosts, getPostBySlug, Post } from '@/lib/posts';
+import { getAllPostsNotion, getPostBySlug, Post } from '@/lib/posts-notion';
 
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
@@ -19,23 +18,24 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = await getPostBySlug(params.slug);
+  const { post, code } = await getPostBySlug(params.slug);
 
   return {
     props: {
       post,
+      code,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts();
+  const posts = await getAllPostsNotion();
 
   return {
     paths: posts.map((post) => {
       return {
         params: {
-          slug: post.frontmatter.slug,
+          slug: post.slug,
         },
       };
     }),
@@ -43,32 +43,31 @@ export async function getStaticPaths() {
   };
 }
 
-export default function PostPage({ post }: { post: Post }) {
+export default function PostPage({ post, code }: { post: Post; code: string }) {
   const [views, setViews] = useState(null);
-  const { Component, toc } = useMDX(post.code);
+  const { Component } = useMDX(code);
 
   useEffect(() => {
     async function loadViews() {
-      const views = await fetch(
-        `/api/post-views?slug=${post.frontmatter.slug}`
-      ).then((res) => res.json());
+      const views = await fetch(`/api/post-views?slug=${post.slug}`).then(
+        (res) => res.json()
+      );
 
       setViews(views);
     }
 
     loadViews();
-  }, [post.frontmatter.slug]);
+  }, [post.slug]);
 
   return (
     <>
-      <Seo templateTitle={`${post.frontmatter.title} | Blog`} />
+      <Seo templateTitle={`${post.title} | Blog`} />
 
       <div className="layout pt-24 text-left lg:pt-40">
-        <PageTitle title={post.frontmatter.title as string} large={false} />
+        <PageTitle title={post.title as string} large={false} />
         <div className="-mt-4 mb-8 mx-auto text-center text-gray-500 text-xl">
-          {format(post.frontmatter.date as Date, 'MMMM dd, yyyy')} &mdash;{' '}
-          {post.frontmatter.readingTime?.text} &mdash;{' '}
-          {post.frontmatter.tags?.join(', ')}
+          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}{' '}
+          &mdash; {post.readingTime?.text} &mdash; {post.tags?.join(', ')}
           {views && <> &mdash; {views} views</>}
         </div>
       </div>
@@ -76,23 +75,23 @@ export default function PostPage({ post }: { post: Post }) {
       <div className="layout max-w-7xl mb-8 w-full">
         <div className="aspect-video relative">
           <Image
-            src={post.frontmatter.cover as string}
-            alt={post.frontmatter.title}
+            src={post.cover as string}
+            alt={post.title}
             className="object-cover rounded-xl"
             loader={coverLoader}
             layout="fill"
             placeholder="blur"
-            blurDataURL={getBlurUrl(post.frontmatter.cover)}
+            blurDataURL={getBlurUrl(post.cover)}
           />
         </div>
-        {post.frontmatter.coverCaption && (
+        {/* {post.coverCaption && (
           <ReactMarkdown
             className="caption font-medium leading-tight p-4 text-center text-gray-500 text-sm"
             remarkPlugins={[smartypants]}
           >
-            {post.frontmatter.coverCaption}
+            {post.coverCaption}
           </ReactMarkdown>
-        )}
+        )} */}
       </div>
 
       <div className="pb-24 lg:pb-40">
