@@ -7,24 +7,22 @@ import { Post } from '@/lib/posts-notion';
 
 export default function FeaturedPostCard({ post }: { post: Post }) {
   return (
-    <div className="backdrop-blur-md duration-300 flex gap-8 group link-overlay relative rounded-xl transition">
-      <div className="w-1/2">
-        <div className="aspect-square relative">
-          <Image
-            src={post.cover as string}
-            alt={post.title}
-            className="object-cover rounded-xl"
-            loader={coverLoader}
-            // layout="fill"
-            width={550}
-            height={550}
-            placeholder="blur"
-            blurDataURL={getBlurUrl(post.cover)}
-          />
-        </div>
+    <div className="backdrop-blur-md duration-300 gap-8 grid grid-cols-1 group link-overlay mb-20 relative rounded-xl transition lg:grid-cols-2">
+      <div className="aspect-video relative lg:aspect-square">
+        <Image
+          src={post.cover as string}
+          alt={post.title}
+          className="object-cover rounded-xl"
+          loader={coverLoader}
+          layout="fill"
+          // width={550}
+          // height={550}
+          placeholder="blur"
+          blurDataURL={getBlurUrl(post.cover)}
+        />
       </div>
 
-      <div className="flex flex-col justify-end w-1/2">
+      <div className="flex flex-col justify-end">
         <h2 className="font-semibold max-w-xl mb-4 text-4xl transition lg:text-5xl group-hover:text-brand">
           <Link href={`/blog/${post.slug}`}>
             <a className="link">{post.title}</a>

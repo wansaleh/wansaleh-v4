@@ -27,7 +27,7 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
           subtitle="I want to write more. But I'm lazy as hell."
         />
 
-        <div className="my-20">
+        <div className="mt-12 lg:mt-20">
           <FeaturedPostCard post={featuredPost} />
         </div>
 

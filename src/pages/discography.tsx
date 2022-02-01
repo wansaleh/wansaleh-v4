@@ -53,7 +53,7 @@ export default function DiscographyPage({
         />
       </div>
 
-      <div className="layout max-w-[96rem] mt-20">
+      <div className="layout max-w-[96rem] mt-12 lg:mt-20">
         <div className="gap-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {loadedSongs.map((song) => (
             <SongCard key={song.id} song={song} />
