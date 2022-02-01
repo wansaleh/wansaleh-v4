@@ -4,6 +4,7 @@ import { SWRConfig } from 'swr';
 
 import '@/styles/globals.css';
 
+// import 'react-notion-x/src/styles.css';
 import Layout from '@/components/layout/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {

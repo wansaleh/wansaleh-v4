@@ -60,6 +60,14 @@ strong {
   img + span {
     @apply -mt-4 block font-medium leading-tight text-gray-500 text-sm lg:-mt-6;
   }
+
+  .notion-callout {
+    @apply bg-gray-500/20 border-2 border-gray-500/20 p-6 pl-10 relative rounded-lg;
+
+    .notion-emoji {
+      @apply -left-[0.9em] absolute bg-lightbg border-2 border-gray-500/30 flex h-[1.75em] items-center justify-center rounded-full text-3xl w-[1.75em] dark:bg-darkbg;
+    }
+  }
 }
 
 body > svg {

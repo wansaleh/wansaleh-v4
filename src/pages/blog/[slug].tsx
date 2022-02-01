@@ -1,10 +1,11 @@
 import { format, parse } from 'date-fns';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { NotionRenderer } from 'react-notion';
 import smartypants from 'remark-smartypants';
 
-import useMDX from '@/lib/hooks/use-mdx';
 import { coverLoader, getBlurUrl } from '@/lib/images';
 import { getAllPostsNotion, getPostBySlug, Post } from '@/lib/posts-notion';
 
@@ -18,12 +19,12 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const { post, code } = await getPostBySlug(params.slug);
+  const { post, blockMap } = await getPostBySlug(params.slug);
 
   return {
     props: {
       post,
-      code,
+      blockMap,
     },
   };
 }
@@ -43,9 +44,15 @@ export async function getStaticPaths() {
   };
 }
 
-export default function PostPage({ post, code }: { post: Post; code: string }) {
+export default function PostPage({
+  post,
+  blockMap,
+}: {
+  post: Post;
+  blockMap: any;
+}) {
+  const router = useRouter();
   const [views, setViews] = useState(null);
-  const { Component } = useMDX(code);
 
   useEffect(() => {
     async function loadViews() {
@@ -63,40 +70,71 @@ export default function PostPage({ post, code }: { post: Post; code: string }) {
     <>
       <Seo templateTitle={`${post.title} | Blog`} />
 
-      <div className="layout pt-24 text-left lg:pt-40">
-        <PageTitle title={post.title as string} large={false} />
-        <div className="-mt-4 mb-8 mx-auto text-center text-gray-500 text-xl">
-          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}{' '}
-          &mdash; {post.readingTime?.text} &mdash; {post.tags?.join(', ')}
-          {views && <> &mdash; {views} views</>}
-        </div>
-      </div>
-
-      <div className="layout max-w-7xl mb-8 w-full">
-        <div className="aspect-video relative">
+      <div className="mb-8 mt-20 w-full">
+        <div className="aspect-[3] relative">
           <Image
             src={post.cover as string}
             alt={post.title}
-            className="object-cover rounded-xl"
+            className="object-center object-cover"
             loader={coverLoader}
             layout="fill"
             placeholder="blur"
             blurDataURL={getBlurUrl(post.cover)}
           />
+
+          <button
+            className="absolute bg-black/30 flex font-bold items-center m-4 p-1 px-3 rounded-md text-sm text-white transition hover:bg-black/60"
+            onClick={() => router.back()}
+          >
+            <svg
+              className="mr-1 stroke-current"
+              height="1.25em"
+              width="1.25em"
+              fill="none"
+              stroke="#000"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line x1="19" x2="5" y1="12" y2="12" />
+              <polyline points="12 19 5 12 12 5" />
+            </svg>
+            Back
+          </button>
         </div>
-        {/* {post.coverCaption && (
+        {post.coverCaption && (
           <ReactMarkdown
             className="caption font-medium leading-tight p-4 text-center text-gray-500 text-sm"
             remarkPlugins={[smartypants]}
           >
             {post.coverCaption}
           </ReactMarkdown>
-        )} */}
+        )}
       </div>
 
-      <div className="pb-24 lg:pb-40">
-        <article className="backdrop-blur-md bg-gray-500 bg-opacity-10 content max-w-4xl mx-auto p-6 prose prose-a:decoration-1 prose-a:decoration-slate-500 prose-a:transition rounded-xl lg:p-16 lg:prose-xl dark:prose-invert hover:prose-a:decoration-2 hover:prose-a:decoration-current">
-          <Component />
+      <div className="layout">
+        <PageTitle title={post.title as string} large={false} />
+        <div className="mb-4 mx-auto text-center text-gray-500 text-xl">
+          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}
+          {post.readingTime && (
+            <> &mdash; {post.readingTime?.text}</>
+          )} &mdash; {post.tags?.join(', ')}
+          {views && <> &mdash; {views} views</>}
+        </div>
+      </div>
+
+      <div className="layout pb-24 lg:pb-40">
+        <article className="mx-auto prose prose-a:decoration-slate-500 prose-a:transition lg:prose-lg dark:prose-invert hover:prose-a:decoration-2 hover:prose-a:decoration-current">
+          <ReactMarkdown
+            remarkPlugins={[smartypants]}
+            className="font-semibold leading-relaxed text-2xl text-gray-500"
+          >
+            {post.description}
+          </ReactMarkdown>
+
+          <NotionRenderer blockMap={blockMap} />
         </article>
       </div>
     </>
