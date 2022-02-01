@@ -106,7 +106,7 @@ export default function PostPage({
         </div>
         {post.coverCaption && (
           <ReactMarkdown
-            className="caption font-medium leading-tight p-4 text-center text-gray-500 text-sm"
+            className="caption font-medium layout leading-tight max-w-5xl p-4 text-center text-gray-500 text-sm"
             remarkPlugins={[smartypants]}
           >
             {post.coverCaption}
