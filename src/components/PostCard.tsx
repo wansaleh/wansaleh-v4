@@ -24,7 +24,7 @@ export default function PostCard({ post }: { post: Post }) {
 
       {!post.published && <div className="font-bold mb-2">Unpublished</div>}
 
-      <h2 className="font-semibold mb-0 text-2xl tracking-tight lg:text-3xl">
+      <h2 className="font-semibold mb-0 text-2xl lg:text-3xl">
         <Link href={`/blog/${post.slug}`}>
           <a className="link transition group-hover:text-brand">{post.title}</a>
         </Link>

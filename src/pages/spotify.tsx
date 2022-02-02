@@ -33,7 +33,7 @@ export default function SpotifyPage() {
 
         <div className="gap-16 grid-cols-2 md:grid">
           <div>
-            <h2 className="font-light mb-4 text-4xl text-gray-500 tracking-tight">
+            <h2 className="font-light mb-4 text-4xl text-gray-500">
               Saved Tracks{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export default function SpotifyPage() {
           </div>
 
           <div>
-            <h2 className="font-light mb-4 text-4xl text-gray-500 tracking-tight">
+            <h2 className="font-light mb-4 text-4xl text-gray-500">
               Top Tracks{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -2,6 +2,7 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { SWRConfig } from 'swr';
 
+import '@/styles/font-graphik.css';
 import '@/styles/globals.css';
 
 // import 'react-notion-x/src/styles.css';
