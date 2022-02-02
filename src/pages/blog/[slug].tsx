@@ -1,9 +1,10 @@
 import { format, parse } from 'date-fns';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { NotionRenderer } from 'react-notion';
+import { readingTime } from 'reading-time-estimator';
 import smartypants from 'remark-smartypants';
 
 import { coverLoader, getBlurUrl } from '@/lib/images';
@@ -53,6 +54,8 @@ export default function PostPage({
 }) {
   const router = useRouter();
   const [views, setViews] = useState(null);
+  const [readTime, setReadTime] = useState<any>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     async function loadViews() {
@@ -62,16 +65,19 @@ export default function PostPage({
 
       setViews(views);
     }
-
     loadViews();
+
+    if (ref.current?.textContent) {
+      setReadTime(readingTime(ref.current.textContent));
+    }
   }, [post.slug]);
 
   return (
-    <>
+    <div className="min-h-screen w-full">
       <Seo templateTitle={`${post.title} | Blog`} />
 
       <div className="mb-8 mt-20 w-full">
-        <div className="aspect-[3] relative">
+        <div className="aspect-[4] relative">
           <Image
             src={post.cover as string}
             alt={post.title}
@@ -114,19 +120,21 @@ export default function PostPage({
         )}
       </div>
 
-      <div className="layout">
-        <PageTitle title={post.title as string} large={false} />
+      <div className="layout max-w-5xl">
+        <PageTitle title={post.title} subtitle={post.subtitle} large={false} />
         <div className="mb-4 mx-auto text-center text-gray-500 text-xl">
           {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}
-          {post.readingTime && (
-            <> &mdash; {post.readingTime?.text}</>
-          )} &mdash; {post.tags?.join(', ')}
+          {readTime && <> &mdash; {readTime?.text}</>} &mdash;{' '}
+          {post.tags?.join(', ')}
           {views && <> &mdash; {views} views</>}
         </div>
       </div>
 
       <div className="layout pb-24 lg:pb-40">
-        <article className="mx-auto prose prose-a:decoration-slate-500 prose-a:transition lg:prose-lg dark:prose-invert hover:prose-a:decoration-2 hover:prose-a:decoration-current">
+        <article
+          ref={ref}
+          className="mx-auto prose lg:prose-lg dark:prose-invert"
+        >
           <ReactMarkdown
             remarkPlugins={[smartypants]}
             className="font-semibold leading-relaxed text-2xl text-gray-500"
@@ -137,6 +145,6 @@ export default function PostPage({
           <NotionRenderer blockMap={blockMap} />
         </article>
       </div>
-    </>
+    </div>
   );
 }

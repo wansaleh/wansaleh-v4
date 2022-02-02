@@ -1,13 +1,17 @@
+import { format, parse } from 'date-fns';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { fetchSongsById } from '@/lib/fetch-songs';
+import { getAllPostsNotion, Post } from '@/lib/posts-notion';
 import { prepareSong, Song } from '@/lib/songs';
 
 import profilePic from '../../public/images/avatar2.jpg';
 
 export const getStaticProps: GetStaticProps = async () => {
+  const allPosts: Post[] = await getAllPostsNotion();
+
   const featuredSongsData = await fetch(
     'https://notion-api.splitbee.io/v1/page/c730d2d7e3044427b03f7bcc4eb9aad7'
   ).then((res) => res.json());
@@ -25,26 +29,28 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       songs: data.songs.map(prepareSong),
+      allPosts,
     },
     revalidate: 1,
   };
 };
 
-export default function HomePage({ songs }: { songs: Song[] }) {
+export default function HomePage({
+  songs,
+  allPosts,
+}: {
+  songs: Song[];
+  allPosts: Post[];
+}) {
   return (
-    <div className="gap-10 grid grid-cols-1 layout min-h-screen py-24 w-full md:grid-cols-3 lg:grid-cols-4 lg:py-40">
+    <div className="layout min-h-screen py-24 w-full lg:py-40">
       <div>
-        <div className="sticky top-10">
-          <Image
-            src={profilePic}
-            width={160}
-            height={160}
-            alt=""
-            className="rounded-full"
-          />
+        <div className="mb-40">
+          <h2 className="font-semibold mb-4 mt-8 text-3xl text-slate-500">
+            Hey, I’m Wan!
+          </h2>
 
-          <h2 className="font-semibold mb-4 mt-8 text-3xl">Hi, I’m Wan!</h2>
-          <p className="leading-relaxed text-lg">
+          <p className="leading-tight max-w-3xl text-5xl">
             I am a music producer in Malaysia. Also a composer, studio engineer,
             mixer and mastering engineer. I run my studio in Ara Damansara,
             Selangor.
@@ -52,14 +58,18 @@ export default function HomePage({ songs }: { songs: Song[] }) {
         </div>
       </div>
 
-      <div className="md:col-span-2 lg:col-span-3">
+      <div className="mb-20">
+        <h3 className="font-medium mb-8 text-2xl text-slate-500">
+          Featured Works
+        </h3>
+
         <div className="gap-6 grid grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
           {songs.map((song) => (
             <SongCard key={song.id} song={song} />
           ))}
 
           <Link href="/discography">
-            <a className="aspect-square backdrop-blur-lg bg-gray-500/10 duration-300 flex group items-center justify-center link-overlay p-4 relative rounded-xl text-2xl transition w-full lg:text-4xl dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-4 hover:ring-offset-gray-100">
+            <a className="aspect-square backdrop-blur-lg bg-slate-500/10 duration-300 flex group items-center justify-center link-overlay p-4 relative rounded-xl text-2xl transition w-full lg:text-4xl dark:hover:ring-offset-gray-900 hover:ring-2 hover:ring-brand hover:ring-offset-4 hover:ring-offset-gray-100">
               <svg
                 className="stroke-current"
                 height="4em"
@@ -78,6 +88,49 @@ export default function HomePage({ songs }: { songs: Song[] }) {
               <span className="sr-only">All Discography</span>
             </a>
           </Link>
+        </div>
+      </div>
+
+      <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
+        <div>
+          <h3 className="font-medium mb-8 text-2xl text-slate-500">About</h3>
+
+          <p className="leading-normal max-w-xl mb-10 text-2xl">
+            My name is Wan Saleh, and I am a music producer based in Kuala
+            Lumpur, Malaysia. My business partner is Ikhwan Fatanna, also a
+            composer and producer. Together we run our studio, Rekaman Music in
+            Ara Damansara, Selangor.
+          </p>
+
+          <Image
+            src={profilePic}
+            width={120}
+            height={120}
+            alt=""
+            className="rounded-full"
+          />
+        </div>
+
+        <div>
+          <h3 className="font-medium mb-8 text-2xl text-slate-500">Writing</h3>
+
+          <div>
+            {allPosts.slice(0, 3).map((post) => (
+              <div key={post.id} className="group link-overlay mb-4">
+                <h3 className="font-semibold text-xl transition group-hover:text-brand">
+                  <Link href={`/blog/${post.slug}`}>
+                    <a className="link">{post.title}</a>
+                  </Link>
+                </h3>
+                <div className="font-medium text-gray-500 text-sm">
+                  {format(
+                    parse(post.date, 'yyyy-MM-dd', new Date()),
+                    'MMMM d, yyyy'
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

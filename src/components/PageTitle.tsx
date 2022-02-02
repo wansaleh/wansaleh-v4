@@ -16,7 +16,7 @@ export default function PageTitle({
     <div className="mb-10">
       <h1
         className={clsx(
-          'flex font-black items-center justify-center mx-auto relative text-center tracking-tight',
+          'flex font-semibold items-center justify-center mx-auto relative text-center',
           large && 'text-5xl lg:text-7xl',
           !large && 'text-4xl lg:text-5xl'
         )}
@@ -35,9 +35,9 @@ export default function PageTitle({
       </h1>
 
       {subtitle && (
-        <p className="font-normal mt-4 text-2xl text-center text-gray-500">
+        <h2 className="font-medium max-w-3xl mt-4 mx-auto text-2xl text-center text-gray-500">
           {subtitle}
-        </p>
+        </h2>
       )}
     </div>
   );

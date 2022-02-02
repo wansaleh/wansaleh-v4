@@ -7,7 +7,7 @@ import { Post } from '@/lib/posts-notion';
 
 export default function FeaturedPostCard({ post }: { post: Post }) {
   return (
-    <div className="backdrop-blur-md duration-300 gap-8 grid grid-cols-1 group link-overlay mb-20 relative rounded-xl transition lg:grid-cols-2">
+    <div className="backdrop-blur-md duration-300 gap-10 grid grid-cols-1 group link-overlay mb-20 relative rounded-xl transition lg:grid-cols-2">
       <div className="aspect-video relative lg:aspect-square">
         <Image
           src={post.cover as string}
@@ -23,13 +23,15 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
       </div>
 
       <div className="flex flex-col justify-end">
+        {!post.published && <div className="font-bold mb-2">Unpublished</div>}
+
         <h2 className="font-semibold max-w-xl mb-4 text-4xl transition lg:text-5xl group-hover:text-brand">
           <Link href={`/blog/${post.slug}`}>
             <a className="link">{post.title}</a>
           </Link>
         </h2>
 
-        <div className="text-gray-500/80 text-xl">
+        <div className="font-semibold text-gray-500/80 text-xl">
           {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')}
           {/* {' '}
           &mdash; {post.readingTime?.text} */}

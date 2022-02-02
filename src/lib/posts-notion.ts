@@ -1,3 +1,4 @@
+import { orderBy } from 'lodash-es';
 import readingTime, { ReadTimeResults } from 'reading-time';
 
 export type Post = {
@@ -35,9 +36,11 @@ export async function getPostBySlug(slug: string) {
 }
 
 export async function getAllPostsNotion(): Promise<Post[]> {
-  const posts = await fetch(
+  const posts: Post[] = await fetch(
     'https://notion-api.splitbee.io/v1/table/c381256bf8ab4e4cbf87b8d2eec87fb1'
   ).then((res) => res.json());
 
-  return posts;
+  return orderBy(posts, 'date', 'desc').filter((p) =>
+    process.env.NODE_ENV === 'development' ? true : p.published
+  );
 }

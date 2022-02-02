@@ -14,8 +14,8 @@ export async function getStaticProps() {
 }
 
 export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
-  const featuredPost = allPosts[0];
-  const posts = allPosts.slice(1);
+  const featuredPost = allPosts.find((post) => post.featured) as Post;
+  const posts = allPosts.filter((post) => featuredPost.id !== post.id);
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
           <FeaturedPostCard post={featuredPost} />
         </div>
 
-        <div className="gap-8 grid grid-cols-1 w-full lg:grid-cols-2">
+        <div className="gap-10 grid grid-cols-1 w-full lg:grid-cols-2">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
