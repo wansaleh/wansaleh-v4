@@ -10,7 +10,7 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
     <div className="backdrop-blur-md duration-300 gap-10 grid grid-cols-1 group link-overlay mb-20 relative rounded-xl transition lg:grid-cols-2">
       <div className="aspect-video relative lg:aspect-square">
         <Image
-          src={post.cover as string}
+          src={post.cover}
           alt={post.title}
           className="object-cover rounded-xl"
           loader={coverLoader}

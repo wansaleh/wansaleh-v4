@@ -14,8 +14,10 @@ export async function getStaticProps() {
 }
 
 export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
-  const featuredPost = allPosts.find((post) => post.featured) as Post;
-  const posts = allPosts.filter((post) => featuredPost.id !== post.id);
+  const featuredPost = allPosts.find((post) => Boolean(post.featured)) as Post;
+  const posts = allPosts.filter((post) =>
+    featuredPost ? featuredPost.id !== post.id : true
+  );
 
   return (
     <>

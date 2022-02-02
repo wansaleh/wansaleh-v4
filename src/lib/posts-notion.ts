@@ -1,5 +1,4 @@
 import { orderBy } from 'lodash-es';
-import readingTime, { ReadTimeResults } from 'reading-time';
 
 export type Post = {
   id: string;
@@ -20,8 +19,6 @@ export type Post = {
     fullName: string;
     profilePhoto: string;
   }[];
-  readingTime?: ReadTimeResults;
-  wordCount?: number;
 };
 
 export async function getPostBySlug(slug: string) {
@@ -40,7 +37,9 @@ export async function getAllPostsNotion(): Promise<Post[]> {
     'https://notion-api.splitbee.io/v1/table/c381256bf8ab4e4cbf87b8d2eec87fb1'
   ).then((res) => res.json());
 
-  return orderBy(posts, 'date', 'desc').filter((p) =>
-    process.env.NODE_ENV === 'development' ? true : p.published
-  );
+  return orderBy(posts, 'date', 'desc')
+    .map((p) => ({ ...p, featured: p.featured ?? false }))
+    .filter((p) =>
+      process.env.NODE_ENV === 'development' ? true : p.published
+    );
 }

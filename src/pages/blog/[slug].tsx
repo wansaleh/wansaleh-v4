@@ -34,13 +34,11 @@ export async function getStaticPaths() {
   const posts = await getAllPostsNotion();
 
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      };
-    }),
+    paths: posts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
     fallback: false,
   };
 }
@@ -65,7 +63,9 @@ export default function PostPage({
 
       setViews(views);
     }
-    loadViews();
+    if (post.slug) {
+      loadViews();
+    }
 
     if (ref.current?.textContent) {
       setReadTime(readingTime(ref.current.textContent));
