@@ -31,6 +31,7 @@ export async function getStaticProps({ params }: Params) {
       blockMap,
       posts,
     },
+    revalidate: 10,
   };
 }
 
@@ -43,7 +44,7 @@ export async function getStaticPaths() {
         slug: post.slug,
       },
     })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
