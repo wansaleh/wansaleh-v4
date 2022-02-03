@@ -13,7 +13,7 @@
 html {
   @apply font-sans;
   font-feature-settings: 'case', 'calt', 'cv01', 'cv02', 'cv03', 'cv04',
-    'cv11' on, 'tnum' off;
+    'cv11' off, 'tnum' off;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   scroll-padding-top: 5rem;
@@ -75,14 +75,6 @@ strong {
   img + span {
     @apply -mt-4 block font-medium leading-tight text-gray-500 text-sm lg:-mt-6;
   }
-
-  .notion-callout {
-    @apply bg-gray-500/20 border-2 border-gray-500/20 p-6 pl-10 relative rounded-lg;
-
-    .notion-emoji {
-      @apply -left-[0.9em] absolute bg-lightbg border-2 border-gray-500/30 flex h-[1.75em] items-center justify-center rounded-full text-3xl w-[1.75em] dark:bg-darkbg;
-    }
-  }
 }
 
 body > svg {
@@ -92,5 +84,74 @@ body > svg {
 .add-comma {
   span:not(:last-child):after {
     @apply content-['_·_'];
+  }
+}
+
+.notion-callout {
+  @apply bg-gray-500/20 border-2 border-gray-500/20 p-6 pl-10 relative rounded-lg;
+
+  .notion-emoji {
+    @apply -translate-x-1/2 -translate-y-1/2 absolute bg-lightbg border-2 border-gray-500/30 flex h-[1.75em] items-center justify-center left-0 rounded-full text-3xl top-1/2 w-[1.75em] dark:bg-darkbg;
+  }
+}
+
+.notion-gray_background {
+  @apply bg-gray-500/10 border-gray-500/10;
+  .notion-emoji {
+    @apply border-gray-500/10;
+  }
+}
+.notion-amber_background {
+  @apply bg-amber-500/10 border-amber-500/10;
+  .notion-emoji {
+    @apply border-amber-500/10;
+  }
+}
+.notion-orange_background {
+  @apply bg-orange-500/10 border-orange-500/10;
+  .notion-emoji {
+    @apply border-orange-500/10;
+  }
+}
+.notion-yellow_background {
+  @apply bg-yellow-500/10 border-yellow-500/10;
+  .notion-emoji {
+    @apply border-yellow-500/10;
+  }
+}
+.notion-green_background {
+  @apply bg-green-500/10 border-green-500/10;
+  .notion-emoji {
+    @apply border-green-500/10;
+  }
+}
+.notion-teal_background {
+  @apply bg-teal-500/10 border-teal-500/10;
+  .notion-emoji {
+    @apply border-teal-500/10;
+  }
+}
+.notion-blue_background {
+  @apply bg-blue-500/10 border-blue-500/10;
+  .notion-emoji {
+    @apply border-blue-500/10;
+  }
+}
+.notion-purple_background {
+  @apply bg-purple-500/10 border-purple-500/10;
+  .notion-emoji {
+    @apply border-purple-500/10;
+  }
+}
+.notion-pink_background {
+  @apply bg-pink-500/10 border-pink-500/10;
+  .notion-emoji {
+    @apply border-pink-500/10;
+  }
+}
+.notion-red_background {
+  @apply bg-red-500/10 border-red-500/10;
+  .notion-emoji {
+    @apply border-red-500/10;
   }
 }

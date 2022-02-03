@@ -28,6 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      featuredSongIDs,
       songs: data.songs.map(prepareSong),
       allPosts,
     },
@@ -36,9 +37,11 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function HomePage({
+  featuredSongIDs,
   songs,
   allPosts,
 }: {
+  featuredSongIDs: number[];
   songs: Song[];
   allPosts: Post[];
 }) {
@@ -46,14 +49,18 @@ export default function HomePage({
     <div className="layout min-h-screen py-24 w-full lg:py-40">
       <div>
         <div className="mb-20 lg:mb-40">
-          <h2 className="font-semibold mb-4 mt-8 text-3xl text-slate-500">
-            Hey, I’m Wan!
-          </h2>
+          <h2 className="font-semibold mb-4 mt-8 text-3xl">Hey, I’m Wan!</h2>
 
-          <p className="!leading-tight font-black max-w-2xl text-4xl tracking-tighter lg:text-5xl">
+          <p className="!leading-tight font-light max-w-2xl text-4xl tracking-tight lg:text-5xl">
             I am a music producer in Malaysia. Also a composer, studio engineer,
-            mixer and mastering engineer. I run my studio in Ara Damansara,
-            Selangor.
+            mixer and mastering engineer. I run{' '}
+            <a
+              href="https://rekaman.org"
+              className="decoration-brand underline hover:no-underline"
+            >
+              my studio
+            </a>{' '}
+            in Ara Damansara, Selangor.
           </p>
         </div>
       </div>
@@ -64,8 +71,11 @@ export default function HomePage({
         </h3>
 
         <div className="gap-6 grid grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-          {songs.map((song) => (
-            <SongCard key={song.id} song={song} />
+          {featuredSongIDs.map((id) => (
+            <SongCard
+              key={id}
+              song={songs.find((song) => song.id === id) as Song}
+            />
           ))}
 
           <Link href="/discography">

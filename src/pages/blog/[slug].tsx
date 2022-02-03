@@ -120,8 +120,9 @@ export default function PostPage({
         )}
       </div>
 
-      <div className="layout max-w-5xl">
+      <div className="layout max-w-5xl my-16">
         <PageTitle title={post.title} subtitle={post.subtitle} large={false} />
+
         <div className="mb-4 mx-auto text-center text-gray-500 text-xl">
           {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}
           {readTime && <> &mdash; {readTime?.text}</>} &mdash;{' '}
