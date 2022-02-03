@@ -158,7 +158,7 @@ export default function PostPage({
                 let href = decoratorValue;
                 if (href.startsWith('/')) {
                   const postWithId = posts.find(
-                    (p) => String(p.id).replaceAll('-', '') === href.slice(1)
+                    (p) => p.id.replace(/-/g, '') === href.slice(1)
                   );
                   href = postWithId ? postWithId.slug : href;
                 }
