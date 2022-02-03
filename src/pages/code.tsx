@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { projects, tags },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 

@@ -31,7 +31,7 @@ export async function getStaticProps({ params }: Params) {
       blockMap,
       posts,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 }
 
