@@ -4,6 +4,7 @@ import { SWRConfig } from 'swr';
 
 import '@/styles/font-graphik.css';
 import '@/styles/globals.css';
+import 'react-medium-image-zoom/dist/styles.css';
 
 // import 'react-notion-x/src/styles.css';
 import Layout from '@/components/layout/Layout';

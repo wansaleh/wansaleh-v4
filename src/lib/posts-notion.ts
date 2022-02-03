@@ -29,7 +29,7 @@ export async function getPostBySlug(slug: string) {
     `https://notion-api.splitbee.io/v1/page/${post.id}`
   ).then((res) => res.json());
 
-  return { post, blockMap: data };
+  return { post, blockMap: data, posts };
 }
 
 export async function getAllPostsNotion(): Promise<Post[]> {

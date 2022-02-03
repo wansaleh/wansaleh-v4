@@ -1,8 +1,11 @@
 import { format, parse } from 'date-fns';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import Zoom from 'react-medium-image-zoom';
 import { NotionRenderer } from 'react-notion';
 import { readingTime } from 'reading-time-estimator';
 import smartypants from 'remark-smartypants';
@@ -20,12 +23,13 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const { post, blockMap } = await getPostBySlug(params.slug);
+  const { post, blockMap, posts } = await getPostBySlug(params.slug);
 
   return {
     props: {
       post,
       blockMap,
+      posts,
     },
   };
 }
@@ -46,10 +50,13 @@ export async function getStaticPaths() {
 export default function PostPage({
   post,
   blockMap,
+  posts,
 }: {
   post: Post;
   blockMap: any;
+  posts: Post[];
 }) {
+  const { theme } = useTheme();
   const router = useRouter();
   const [views, setViews] = useState(null);
   const [readTime, setReadTime] = useState<any>(null);
@@ -143,7 +150,51 @@ export default function PostPage({
             {post.description}
           </ReactMarkdown>
 
-          <NotionRenderer blockMap={blockMap} />
+          <NotionRenderer
+            blockMap={blockMap}
+            hideHeader
+            customDecoratorComponents={{
+              a: ({ decoratorValue, children, renderComponent }) => {
+                let href = decoratorValue;
+                if (href.startsWith('/')) {
+                  const postWithId = posts.find(
+                    (p) => p.id.replaceAll('-', '') === href.slice(1)
+                  );
+                  href = postWithId ? postWithId.slug : href;
+                }
+
+                return (
+                  <Link href={href}>
+                    <a className="notion-link">{children}</a>
+                  </Link>
+                );
+              },
+            }}
+            customBlockComponents={{
+              image: ({ renderComponent }) => {
+                return (
+                  <Zoom
+                    overlayBgColorEnd={theme === 'dark' ? 'black' : 'white'}
+                  >
+                    {renderComponent()}
+                  </Zoom>
+                );
+              },
+              // header: ({ renderComponent, ...rest }) => {
+              //   return renderComponent();
+              // },
+              // sub_header: ({ renderComponent, blockValue, ...rest }) => {
+              //   return cloneElement(renderComponent() as ReactElement, {
+              //     id: slugify(blockValue.properties.title[0][0], {
+              //       lower: true,
+              //     }),
+              //   });
+              // },
+              // sub_sub_header: ({ renderComponent, ...rest }) => {
+              //   return renderComponent();
+              // },
+            }}
+          />
         </article>
       </div>
     </div>

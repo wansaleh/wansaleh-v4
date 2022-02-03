@@ -10,17 +10,24 @@ const themes = {
     label: 'Dark Mode',
     icon: MoonIcon,
   },
-  system: {
-    label: 'System Default',
-    icon: SystemIcon,
-  },
+  // system: {
+  //   label: 'System Default',
+  //   icon: SystemIcon,
+  // },
 };
 
 export default function ThemeSelect() {
   const [mounted, setMounted] = useState(false);
-  const { theme = 'system', setTheme } = useTheme();
+  const { theme = 'light', setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  useEffect(() => {
+    if (!themes[theme]) {
+      setTheme('light');
+    }
+  }, [themes[theme]]);
 
   if (!mounted) return null;
 

@@ -75,6 +75,10 @@ strong {
   img + span {
     @apply -mt-4 block font-medium leading-tight text-gray-500 text-sm lg:-mt-6;
   }
+
+  figure {
+    @apply !m-0;
+  }
 }
 
 body > svg {
