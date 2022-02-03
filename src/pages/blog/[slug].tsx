@@ -154,11 +154,11 @@ export default function PostPage({
             blockMap={blockMap}
             hideHeader
             customDecoratorComponents={{
-              a: ({ decoratorValue, children, renderComponent }) => {
+              a: ({ decoratorValue, children }) => {
                 let href = decoratorValue;
                 if (href.startsWith('/')) {
                   const postWithId = posts.find(
-                    (p) => p.id.replaceAll('-', '') === href.slice(1)
+                    (p) => String(p.id).replaceAll('-', '') === href.slice(1)
                   );
                   href = postWithId ? postWithId.slug : href;
                 }
