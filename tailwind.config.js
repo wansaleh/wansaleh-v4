@@ -3,7 +3,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 const lightbg = '#fff';
-const darkbg = '#0f0e17';
+const darkbg = '#000';
 const brand = '#F36163';
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
