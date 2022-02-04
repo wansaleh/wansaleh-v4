@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ReactElement } from 'react';
 
-import LeavesLeft from './LeavesLeft';
+// import LeavesLeft from './LeavesLeft';
 
 export default function PageTitle({
   title,
@@ -16,21 +16,21 @@ export default function PageTitle({
     <div className="mb-10">
       <h1
         className={clsx(
-          'flex font-black items-center justify-center mx-auto relative text-center tracking-tight',
+          'flex font-extrabold items-center justify-center mx-auto relative text-center tracking-tight',
           large && 'text-5xl lg:text-7xl',
           !large && 'text-4xl lg:text-5xl'
         )}
       >
         <span className="px-[0.2em] relative z-10">
-          {large && (
+          {/* {large && (
             <LeavesLeft className="absolute fill-brand h-full right-full top-0" />
-          )}
+          )} */}
 
           {title}
 
-          {large && (
+          {/* {large && (
             <LeavesLeft className="-scale-x-100 absolute fill-brand h-full left-full top-0 transform" />
-          )}
+          )} */}
         </span>
       </h1>
 

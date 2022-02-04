@@ -3,15 +3,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import { useEffect, useRef, useState } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Zoom from 'react-medium-image-zoom';
 import { NotionRenderer } from 'react-notion';
 import { readingTime } from 'reading-time-estimator';
 import smartypants from 'remark-smartypants';
 
+// import useMDX from '@/lib/hooks/use-mdx';
 import { coverLoader, getBlurUrl } from '@/lib/images';
-import { getAllPostsNotion, getPostBySlug, Post } from '@/lib/posts-notion';
+import {
+  getAllPostsNotion,
+  getPostBySlug,
+  getPostMDX,
+  Post,
+} from '@/lib/posts-notion';
 
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
@@ -25,10 +31,13 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const { post, blockMap, posts } = await getPostBySlug(params.slug);
 
+  // const { code } = await getPostMDX(mdString);
+
   return {
     props: {
       post,
       blockMap,
+      // code,
       posts,
     },
     revalidate: 1,
@@ -51,10 +60,12 @@ export async function getStaticPaths() {
 export default function PostPage({
   post,
   blockMap,
+  // code,
   posts,
 }: {
   post: Post;
   blockMap: any;
+  // code: string;
   posts: Post[];
 }) {
   const { theme } = useTheme();
@@ -62,6 +73,8 @@ export default function PostPage({
   const [views, setViews] = useState(null);
   const [readTime, setReadTime] = useState<any>(null);
   const ref = useRef<HTMLElement>(null);
+
+  // const { Component } = useMDX(code);
 
   useEffect(() => {
     async function loadViews() {
@@ -151,6 +164,8 @@ export default function PostPage({
             {post.description}
           </ReactMarkdown>
 
+          {/* <Component /> */}
+
           <NotionRenderer
             blockMap={blockMap}
             hideHeader
@@ -181,19 +196,6 @@ export default function PostPage({
                   </Zoom>
                 );
               },
-              // header: ({ renderComponent, ...rest }) => {
-              //   return renderComponent();
-              // },
-              // sub_header: ({ renderComponent, blockValue, ...rest }) => {
-              //   return cloneElement(renderComponent() as ReactElement, {
-              //     id: slugify(blockValue.properties.title[0][0], {
-              //       lower: true,
-              //     }),
-              //   });
-              // },
-              // sub_sub_header: ({ renderComponent, ...rest }) => {
-              //   return renderComponent();
-              // },
             }}
           />
         </article>

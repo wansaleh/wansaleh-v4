@@ -7,7 +7,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="backdrop-blur-lg bg-gray-500/10 duration-300 group h-full link-overlay relative ring-1 ring-gray-500/10 rounded-xl shadow-lg transition w-full dark:hover:ring-offset-gray-900 hover:-translate-y-1 hover:ring-gray-500/20 hover:shadow-xl"
+      className="bg-gray-500/10 duration-300 group h-full link-overlay relative ring-1 ring-gray-500/10 rounded-xl shadow-lg transition w-full dark:hover:ring-offset-gray-900 hover:ring-gray-500/20 hover:shadow-xl"
     >
       <div className="aspect-[16/10] duration-200 ease-out image overflow-hidden relative rounded-t-xl transition-all">
         <Image
