@@ -66,7 +66,11 @@ export default function PostPage({
   const { theme } = useTheme();
   const router = useRouter();
   const [views, setViews] = useState(null);
-  const [readTime, setReadTime] = useState<any>(null);
+  const [readTime, setReadTime] = useState<{
+    minutes: number;
+    words: number;
+    text: string;
+  } | null>(null);
   const ref = useRef<HTMLElement>(null);
 
   // const { Component } = useMDX(code);
