@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
-import { cloneElement, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Zoom from 'react-medium-image-zoom';
 import { NotionRenderer } from 'react-notion';
@@ -12,12 +12,7 @@ import smartypants from 'remark-smartypants';
 
 // import useMDX from '@/lib/hooks/use-mdx';
 import { coverLoader, getBlurUrl } from '@/lib/images';
-import {
-  getAllPostsNotion,
-  getPostBySlug,
-  getPostMDX,
-  Post,
-} from '@/lib/posts-notion';
+import { getAllPostsNotion, getPostBySlug, Post } from '@/lib/posts-notion';
 
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
@@ -190,6 +185,7 @@ export default function PostPage({
               image: ({ renderComponent }) => {
                 return (
                   <Zoom
+                    zoomMargin={0}
                     overlayBgColorEnd={theme === 'dark' ? 'black' : 'white'}
                   >
                     {renderComponent()}

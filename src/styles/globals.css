@@ -159,3 +159,20 @@ body > svg {
     @apply border-red-500/10;
   }
 }
+
+.notion-row {
+  display: flex;
+  overflow: hidden;
+}
+
+.notion-column {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+[data-rmiz-modal-content] {
+  figcaption {
+    @apply p-2 text-xs;
+    color: var(--tw-prose-captions);
+  }
+}
