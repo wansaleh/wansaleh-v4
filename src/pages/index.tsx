@@ -7,7 +7,9 @@ import { fetchSongsById } from '@/lib/fetch-songs';
 import { getAllPostsNotion, Post } from '@/lib/posts-notion';
 import { prepareSong, Song } from '@/lib/songs';
 
-import profilePic from '../../public/images/avatar2.jpg';
+import PeepSVG from '@/components/images/Peep';
+
+// import profilePic from '../../public/images/avatar2.jpg';
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts: Post[] = await getAllPostsNotion();
@@ -47,21 +49,25 @@ export default function HomePage({
 }) {
   return (
     <div className="layout min-h-screen py-24 w-full lg:py-40">
-      <div>
-        <div className="mb-20 lg:mb-40">
+      <div className="gap-10 grid grid-cols-1 items-center mb-20 lg:grid-cols-2 lg:mb-40">
+        <div className="">
           <h2 className="font-semibold mb-4 mt-8 text-3xl">Hey, I’m Wan!</h2>
 
-          <p className="!leading-tight font-light max-w-2xl text-4xl tracking-tight lg:text-5xl">
+          <p className="!leading-tight font-light text-4xl tracking-tight lg:text-5xl">
             I am a music producer in Malaysia. Also a composer, studio engineer,
             mixer and mastering engineer. I run{' '}
             <a
               href="https://rekaman.org"
-              className="decoration-brand underline hover:no-underline"
+              className="decoration-gray-500/50 underline hover:no-underline"
             >
               my studio
             </a>{' '}
             in Ara Damansara, Selangor.
           </p>
+        </div>
+
+        <div className="bg-brand rounded-xl">
+          <PeepSVG className="h-full w-full" />
         </div>
       </div>
 
@@ -112,13 +118,13 @@ export default function HomePage({
             Ara Damansara, Selangor.
           </p>
 
-          <Image
+          {/* <Image
             src={profilePic}
             width={120}
             height={120}
             alt=""
             className="rounded-full"
-          />
+          /> */}
         </div>
 
         <div>
