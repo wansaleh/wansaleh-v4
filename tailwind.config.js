@@ -3,9 +3,9 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 const lightbg = '#fff';
-const darkbg = '#000';
+const darkbg = '#080807';
 // const brand = '#F36163';
-const brand = colors.teal[500];
+const brand = colors.sky[500];
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
