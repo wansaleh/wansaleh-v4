@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import { format, parse } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -65,7 +64,6 @@ export default function PostPage({
   posts: Post[];
 }) {
   const { theme } = useTheme();
-  const router = useRouter();
   const [views, setViews] = useState(null);
   const [readTime, setReadTime] = useState<{
     minutes: number;
@@ -108,28 +106,6 @@ export default function PostPage({
             placeholder="blur"
             blurDataURL={getBlurUrl(post.cover)}
           />
-
-          <button
-            className="absolute bg-black/30 flex font-bold items-center m-4 p-1 px-3 rounded-md text-sm text-white transition hover:bg-black/60"
-            onClick={() => router.back()}
-          >
-            <svg
-              className="mr-1 stroke-current"
-              height="1.25em"
-              width="1.25em"
-              fill="none"
-              stroke="#000"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line x1="19" x2="5" y1="12" y2="12" />
-              <polyline points="12 19 5 12 12 5" />
-            </svg>
-            Back
-          </button>
         </div>
         {post.coverCaption && (
           <ReactMarkdown
@@ -141,69 +117,110 @@ export default function PostPage({
         )}
       </div>
 
-      <div className="layout max-w-5xl my-16">
-        <PageTitle title={post.title} subtitle={post.subtitle} large={false} />
+      <div className="layout mb-32 mt-16">
+        <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
+          <div>
+            <Link href="/blog">
+              <a className="flex items-center hover:text-brand">
+                <svg
+                  className="mr-1 stroke-current"
+                  height="1em"
+                  width="1em"
+                  fill="none"
+                  stroke="#141212"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line x1="19" x2="5" y1="12" y2="12" />
+                  <polyline points="12 19 5 12 12 5" />
+                </svg>
+                All Posts
+              </a>
+            </Link>
+          </div>
 
-        <div className="mb-4 mx-auto text-center text-gray-500 text-xl">
-          {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy')}
-          {readTime && <> &mdash; {readTime?.text}</>} &mdash;{' '}
-          {post.tags?.join(', ')}
-          {views && <> &mdash; {views} views</>}
+          <div className="lg:col-span-3">
+            <div className="mb-4 text-gray-500 text-left">
+              Published{' '}
+              {format(
+                parse(post.date, 'yyyy-MM-dd', new Date()),
+                'MMMM d, yyyy'
+              )}{' '}
+              in {post.tags?.join(', ')}
+            </div>
+
+            <PageTitle
+              title={post.title}
+              subtitle={post.subtitle}
+              large={false}
+              center={false}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="layout pb-24 lg:pb-40">
-        <article
-          ref={ref}
-          className={clsx(
-            'mx-auto prose lg:prose-lg dark:prose-invert',
-            'prose-headings:text-gray-500',
-            'prose-a:decoration-2 prose-a:no-underline prose-a:text-brand prose-a:underline-offset-2 hover:prose-a:underline'
-          )}
-        >
-          <ReactMarkdown
-            remarkPlugins={[smartypants]}
-            className="font-semibold leading-relaxed text-2xl text-gray-500"
-          >
-            {post.description}
-          </ReactMarkdown>
+        <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
+          <div>
+            {readTime && <>{readTime?.text}</>}
+            {views && <> &mdash; {views} views</>}
+          </div>
 
-          {/* <Component /> */}
+          <div className="lg:col-span-3">
+            <article
+              ref={ref}
+              className={clsx(
+                'prose lg:prose-lg dark:prose-invert',
+                'prose-headings:text-gray-500',
+                'prose-a:decoration-2 prose-a:no-underline prose-a:text-brand prose-a:underline-offset-2 hover:prose-a:underline'
+              )}
+            >
+              <ReactMarkdown
+                remarkPlugins={[smartypants]}
+                className="font-semibold text-gray-500"
+              >
+                {post.description}
+              </ReactMarkdown>
 
-          <NotionRenderer
-            blockMap={blockMap}
-            hideHeader
-            customDecoratorComponents={{
-              a: ({ decoratorValue, children }) => {
-                let href = decoratorValue;
-                if (href.startsWith('/')) {
-                  const postWithId = posts.find(
-                    (p) => p.id.replace(/-/g, '') === href.slice(1)
-                  );
-                  href = postWithId ? postWithId.slug : href;
-                }
+              {/* <Component /> */}
 
-                return (
-                  <Link href={href}>
-                    <a className="notion-link">{children}</a>
-                  </Link>
-                );
-              },
-            }}
-            customBlockComponents={{
-              image: ({ renderComponent }) => {
-                return (
-                  <Zoom
-                    zoomMargin={0}
-                    overlayBgColorEnd={theme === 'dark' ? 'black' : 'white'}
-                  >
-                    {renderComponent()}
-                  </Zoom>
-                );
-              },
-            }}
-          />
-        </article>
+              <NotionRenderer
+                blockMap={blockMap}
+                hideHeader
+                customDecoratorComponents={{
+                  a: ({ decoratorValue, children }) => {
+                    let href = decoratorValue;
+                    if (href.startsWith('/')) {
+                      const postWithId = posts.find(
+                        (p) => p.id.replace(/-/g, '') === href.slice(1)
+                      );
+                      href = postWithId ? postWithId.slug : href;
+                    }
+
+                    return (
+                      <Link href={href}>
+                        <a className="notion-link">{children}</a>
+                      </Link>
+                    );
+                  },
+                }}
+                customBlockComponents={{
+                  image: ({ renderComponent }) => {
+                    return (
+                      <Zoom
+                        zoomMargin={0}
+                        overlayBgColorEnd={theme === 'dark' ? 'black' : 'white'}
+                      >
+                        {renderComponent()}
+                      </Zoom>
+                    );
+                  },
+                }}
+              />
+            </article>
+          </div>
+        </div>
       </div>
     </div>
   );

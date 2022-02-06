@@ -7,35 +7,33 @@ export default function PageTitle({
   title,
   subtitle,
   large = true,
+  center = true,
 }: {
   title: ReactElement | string;
   subtitle?: ReactElement | string;
   large?: boolean;
+  center?: boolean;
 }) {
   return (
     <div className="mb-10">
       <h1
         className={clsx(
-          'flex font-extrabold items-center justify-center mx-auto relative text-center tracking-tight',
+          'font-bold text-center tracking-tight',
           large && 'text-5xl lg:text-7xl',
-          !large && 'text-4xl lg:text-5xl'
+          !large && 'text-4xl lg:text-5xl',
+          !center && '!text-left'
         )}
       >
-        <span className="px-[0.2em] relative z-10">
-          {/* {large && (
-            <LeavesLeft className="absolute fill-brand h-full right-full top-0" />
-          )} */}
-
-          {title}
-
-          {/* {large && (
-            <LeavesLeft className="-scale-x-100 absolute fill-brand h-full left-full top-0 transform" />
-          )} */}
-        </span>
+        {title}
       </h1>
 
       {subtitle && (
-        <h2 className="font-medium max-w-3xl mt-4 mx-auto text-2xl text-center text-gray-500">
+        <h2
+          className={clsx(
+            'font-medium mt-4 text-2xl text-center text-gray-500',
+            !center && '!text-left'
+          )}
+        >
           {subtitle}
         </h2>
       )}

@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  @apply bg-fixed bg-lightbg text-gray-900 tracking-tight dark:bg-darkbg dark:text-white;
+  @apply bg-fixed bg-lightbg text-gray-900 tracking-normal dark:bg-darkbg dark:text-white;
 }
 
 h1 {
@@ -54,6 +54,10 @@ strong {
 
 .caption a {
   @apply underline;
+}
+
+.prose p:first-of-type {
+  margin-top: 0;
 }
 
 /* .prose {
