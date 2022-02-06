@@ -50,9 +50,13 @@ export async function getAllPostsNotion(): Promise<Post[]> {
   ).then((res) => res.json());
 
   return orderBy(posts, 'date', 'desc')
-    .map((p) => ({ ...p, featured: p.featured ?? false }))
-    .filter((p) =>
-      process.env.NODE_ENV === 'development' ? true : p.published
+    .map((post) => ({
+      ...post,
+      featured: post.featured ?? false,
+      cover: Array.isArray(post.cover) ? post.cover[0].rawUrl : post.cover,
+    }))
+    .filter((post) =>
+      process.env.NODE_ENV === 'development' ? true : post.published
     );
 }
 

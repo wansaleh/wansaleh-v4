@@ -54,11 +54,11 @@ export default function HomePage({
           <h2 className="font-semibold mb-4 mt-8 text-3xl">Hey, I’m Wan!</h2>
 
           <p className="!leading-tight font-light text-4xl tracking-tight lg:text-5xl">
-            I am a music producer in Malaysia. Also a composer, studio engineer,
-            mixer and mastering engineer. I run{' '}
+            I am a music producer, mixer and mastering engineer from Malaysia. I
+            run{' '}
             <a
               href="https://rekaman.org"
-              className="decoration-gray-500/50 underline hover:no-underline"
+              className="decoration-4 decoration-gray-500/50 underline underline-offset-4 hover:text-brand"
             >
               my studio
             </a>{' '}

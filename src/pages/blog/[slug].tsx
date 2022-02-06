@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { format, parse } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -154,7 +155,11 @@ export default function PostPage({
       <div className="layout pb-24 lg:pb-40">
         <article
           ref={ref}
-          className="mx-auto prose lg:prose-lg dark:prose-invert"
+          className={clsx(
+            'mx-auto prose lg:prose-lg dark:prose-invert',
+            'prose-headings:text-gray-500',
+            'prose-a:decoration-2 prose-a:no-underline prose-a:text-brand prose-a:underline-offset-2 hover:prose-a:underline'
+          )}
         >
           <ReactMarkdown
             remarkPlugins={[smartypants]}
