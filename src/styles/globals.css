@@ -60,30 +60,11 @@ strong {
   margin-top: 0;
 }
 
-/* .prose {
-  a {
-    @apply no-underline text-brand;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    a {
-      @apply font-semibold text-gray-500;
-    }
-  }
-
-  img + span {
-    @apply -mt-4 block font-medium leading-tight text-gray-500 text-sm lg:-mt-6;
-  }
-
+.prose {
   figure {
     @apply !m-0;
   }
-} */
+}
 
 body > svg {
   @apply -z-10 bottom-0 fixed h-screen left-0 opacity-40 overflow-visible right-0 top-0 w-screen;
