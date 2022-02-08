@@ -22,15 +22,15 @@ export async function getAllProjects(): Promise<{
     .map((page: any) => {
       return {
         id: page.id,
-        title: page.Name,
-        url: page.URL,
-        thumbnail: page.Thumbnail,
-        tags: page.Tags,
-        publishedAt: page['Publish Date'],
-        stack: page['Tech Stack'],
-        description: page.Description,
-        defunct: page['Defunct?'] ?? false,
-        hidden: page['Hidden?'] ?? false,
+        title: page.title,
+        url: page.url,
+        thumbnail: page.thumbnailUrl,
+        tags: page.tags,
+        publishedAt: page.date,
+        stack: page.techStack,
+        description: page.description,
+        defunct: page.defunct ?? false,
+        hidden: page.hidden ?? false,
       };
     })
     .sort(

@@ -56,7 +56,7 @@ export async function getAllPostsNotion(): Promise<Post[]> {
       cover: Array.isArray(post.cover) ? post.cover[0].rawUrl : post.cover,
     }))
     .filter((post) =>
-      process.env.NODE_ENV === 'development' ? true : post.published
+      process.env.NODE_ENV === 'development' ? true : !!post.published
     );
 }
 

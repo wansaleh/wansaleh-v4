@@ -22,7 +22,9 @@ export default function PostCard({ post }: { post: Post }) {
         />
       </div>
 
-      {!post.published && <div className="font-bold mb-2">Unpublished</div>}
+      {!post.published && (
+        <div className="font-bold mb-2 text-red-500">Unpublished</div>
+      )}
 
       <h2 className="font-semibold mb-0 text-2xl lg:text-3xl">
         <Link href={`/blog/${post.slug}`}>

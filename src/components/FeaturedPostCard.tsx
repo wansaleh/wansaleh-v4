@@ -23,7 +23,9 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
       </div>
 
       <div className="flex flex-col justify-end">
-        {!post.published && <div className="font-bold mb-2">Unpublished</div>}
+        {!post.published && (
+          <div className="font-bold mb-2 text-red-500">Unpublished</div>
+        )}
 
         <h2 className="font-bold max-w-xl mb-4 text-4xl tracking-tight transition lg:text-5xl group-hover:text-brand">
           <Link href={`/blog/${post.slug}`}>
