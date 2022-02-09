@@ -22,7 +22,7 @@ export default function FeaturedPostCard({ post }: { post: Post }) {
         />
       </div>
 
-      <div className="flex flex-col justify-end p-8">
+      <div className="border-current border-t-2 flex flex-col justify-end p-8 lg:border-l-2 lg:border-t-0">
         {!post.published && (
           <div className="font-bold mb-2 text-red-500">Unpublished</div>
         )}
