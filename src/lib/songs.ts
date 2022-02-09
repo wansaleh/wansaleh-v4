@@ -94,9 +94,7 @@ export function getArtworkURL(song: RawSong, size = 'artwork'): string {
 export function getArtistNames(song: RawSong): string[] {
   return song.artists
     .filter(({ role }) => role.tag === 'primary')
-    .map(({ artist }) =>
-      ((artist.prefix_title || '') + ' ' + artist.name).trim()
-    );
+    .map(({ artist }) => `${artist.prefix_title || ''} ${artist.name}`.trim());
 }
 
 export default function getDiskografLink(song: RawSong): string {

@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
-import fetchSongs from '@/lib/fetch-songs';
+import fetchSongsDiskograf from '@/lib/fetch-songs-diskograf';
 import { prepareSong, Song } from '@/lib/songs';
 
 import PageTitle from '@/components/PageTitle';
@@ -9,7 +9,7 @@ import Seo from '@/components/Seo';
 import SongCard from '@/components/SongCard';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetchSongs();
+  const data = await fetchSongsDiskograf();
 
   return {
     props: {
@@ -63,13 +63,13 @@ export default function DiscographyPage({
         {total > loadedSongs.length && (
           <div className="mt-20 text-center">
             <button
-              className="bg-brand duration-100 ease-in font-semibold min-w-[15rem] px-4 py-4 relative rounded-lg shadow-md text-center text-lg text-white transition dark:focus:ring-offset-gray-900 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-gray-100"
+              className="border-2 border-current ease-in font-semibold min-w-[15rem] px-4 py-4 relative text-center text-lg transition hover:shadow-solid active:shadow-solid"
               onClick={() => loadMore()}
               disabled={loading}
             >
               {loading ? (
                 <svg
-                  className="-mt-1 animate-spin h-6 inline-block mr-2 text-white w-6"
+                  className="-mt-1 animate-spin h-6 inline-block mr-2 text-current w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"

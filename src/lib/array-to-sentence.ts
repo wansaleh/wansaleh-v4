@@ -9,9 +9,7 @@ export default function arrayToSentence(
   options?: { separator?: string; lastSeparator?: string }
 ): string {
   if (!Array.isArray(arr)) {
-    throw new TypeError(
-      'Expected an array, but got a non-array value ' + arr + '.'
-    );
+    throw new TypeError(`Expected an array, but got a non-array value ${arr}.`);
   }
 
   options = Object.assign(
@@ -25,11 +23,11 @@ export default function arrayToSentence(
   for (let i = 0; i < 2; i++) {
     if (typeof options[OPTION_NAMES[i]] !== 'string') {
       throw new TypeError(
-        'Expected `' +
-          OPTION_NAMES[i] +
-          '` option to be a string, but got a non-string value ' +
-          options[OPTION_NAMES[i]] +
-          '.'
+        `Expected \`${
+          OPTION_NAMES[i]
+        }\` option to be a string, but got a non-string value ${
+          options[OPTION_NAMES[i]]
+        }.`
       );
     }
   }

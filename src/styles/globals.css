@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  @apply bg-fixed bg-lightbg text-gray-900 tracking-normal dark:bg-darkbg dark:text-white;
+  @apply bg-fixed bg-lightbg text-darkbg tracking-normal dark:bg-darkbg dark:text-lightbg;
 }
 
 h1 {
@@ -49,6 +49,14 @@ strong {
 
   .link-overlay a.link:before {
     @apply absolute bottom-0 content-[''] cursor-pointer left-0 right-0 top-0 z-10;
+  }
+
+  .shadow-solid {
+    box-shadow: -6px -6px 0 theme('colors.darkbg');
+  }
+
+  .dark .shadow-solid {
+    box-shadow: -6px -6px 0 theme('colors.lightbg');
   }
 }
 

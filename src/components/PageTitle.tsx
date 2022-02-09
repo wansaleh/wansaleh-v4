@@ -18,7 +18,7 @@ export default function PageTitle({
     <div className="mb-10">
       <h1
         className={clsx(
-          'font-bold text-center tracking-tight',
+          'font-bold text-center tracking-tighter',
           large && 'text-5xl lg:text-7xl',
           !large && 'text-4xl lg:text-5xl',
           !center && '!text-left'

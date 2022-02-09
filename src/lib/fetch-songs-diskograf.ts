@@ -82,7 +82,7 @@ const QUERY_BY_ID = gql`
   ${SONG_FRAGMENT}
 `;
 
-export default async function fetchSongs(offset = 0): Promise<{
+export default async function fetchSongsDiskograf(offset = 0): Promise<{
   songs: RawSong[];
   total: number;
 }> {

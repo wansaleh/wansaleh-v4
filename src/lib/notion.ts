@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 

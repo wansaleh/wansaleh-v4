@@ -30,11 +30,11 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
           subtitle="I want to write more. But I'm lazy as hell."
         />
 
-        <div className="mt-12 lg:mt-20">
+        <div className="mb-8 mt-12 lg:mt-20">
           <FeaturedPostCard post={featuredPost} />
         </div>
 
-        <div className="gap-10 grid grid-cols-1 w-full lg:grid-cols-2">
+        <div className="gap-8 grid grid-cols-1 w-full lg:grid-cols-2">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}

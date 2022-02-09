@@ -7,13 +7,13 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="bg-gray-500/10 duration-300 group h-full link-overlay relative ring-1 ring-gray-500/10 rounded-xl shadow-lg transition w-full dark:bg-gray-500/20 hover:ring-gray-500/30 hover:shadow-xl"
+      className="border-2 border-current duration-300 flex flex-col group h-full link-overlay relative transition w-full hover:shadow-solid"
     >
-      <div className="aspect-[16/10] duration-200 ease-out image overflow-hidden relative rounded-t-xl transition-all">
+      <div className="aspect-[16/10] border-b-2 border-current overflow-hidden relative">
         <Image
           src={project.thumbnail}
           alt={project.title}
-          className="object-cover rounded-t-xl"
+          className="object-cover object-top"
           loading="lazy"
           layout="fill"
           placeholder="blur"
@@ -24,8 +24,8 @@ export default function ProjectCard({ project }: { project: Project }) {
         />
       </div>
 
-      <div className="p-8">
-        <h2 className="font-semibold text-2xl">
+      <div className="flex flex-1 flex-col p-8">
+        <h2 className="font-bold text-xl tracking-tight lg:text-2xl">
           {project.title}
           {project.defunct && (
             <span className="border border-current font-medium ml-1 px-1.5 rounded-full text-orange-500 text-xs">
@@ -35,9 +35,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </h2>
 
         <p
-          className="leading-tight max-w-md mt-4 mx-auto text-gray-500 text-lg"
+          className="max-w-md mt-4 mx-auto text-gray-500 text-sm lg:text-base"
           dangerouslySetInnerHTML={{ __html: project.description }}
         />
+
+        <div className="flex-1" />
 
         <div className="font-medium mt-4 text-gray-600 text-sm dark:text-gray-400">
           <a
