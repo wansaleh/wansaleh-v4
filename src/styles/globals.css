@@ -156,6 +156,9 @@ body > svg {
 .notion-row {
   display: flex;
   overflow: hidden;
+  .notion-spacer:last-of-type {
+    @apply hidden;
+  }
 }
 
 .notion-column {
