@@ -1,3 +1,5 @@
+import { orderBy } from 'lodash-es';
+
 export type Project = {
   id: string;
   title: string;
@@ -9,6 +11,7 @@ export type Project = {
   description: string;
   defunct?: boolean;
   hidden?: boolean;
+  featured?: boolean;
 };
 
 export async function getAllProjects(): Promise<{
@@ -19,10 +22,21 @@ export async function getAllProjects(): Promise<{
     'https://notion-api.splitbee.io/v1/table/88bda3d3ea544970aa238a386c360054'
   ).then((res) => res.json());
 
-  const projects = response.sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  const projects = orderBy(
+    response.map((project) => ({
+      ...project,
+      featured: project.featured ?? false,
+    })),
+    ['featured', 'publishedAt'],
+    ['desc', 'desc']
   );
+  // .sort((x, y) => (x.featured === y.featured ? 0 : x.featured ? -1 : 1))
+  // .sort(
+  //   (x, y) =>
+  //     new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime()
+  // );
+
+  console.log(projects);
 
   let tags: string[] = [];
 
