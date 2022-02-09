@@ -36,8 +36,6 @@ export async function getAllProjects(): Promise<{
   //     new Date(y.publishedAt).getTime() - new Date(x.publishedAt).getTime()
   // );
 
-  console.log(projects);
-
   let tags: string[] = [];
 
   tags = Array.from(

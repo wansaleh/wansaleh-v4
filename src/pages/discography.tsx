@@ -63,7 +63,7 @@ export default function DiscographyPage({
         {total > loadedSongs.length && (
           <div className="mt-20 text-center">
             <button
-              className="border-2 border-current ease-in font-semibold min-w-[15rem] px-4 py-4 relative text-center text-lg transition hover:shadow-solid active:shadow-solid"
+              className="border-2 border-current ease-in font-semibold min-w-[15rem] px-4 py-4 relative rounded-lg text-center text-lg transition hover:shadow-solid active:shadow-solid"
               onClick={() => loadMore()}
               disabled={loading}
             >

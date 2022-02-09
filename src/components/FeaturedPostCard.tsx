@@ -7,7 +7,7 @@ import { Post } from '@/lib/posts-notion';
 
 export default function FeaturedPostCard({ post }: { post: Post }) {
   return (
-    <div className="border-2 border-current duration-300 grid grid-cols-1 group group h-full link-overlay link-overlay relative transition w-full lg:grid-cols-2 hover:shadow-solid">
+    <div className="border-2 border-current duration-300 grid grid-cols-1 group group h-full link-overlay link-overlay overflow-hidden relative rounded-lg transition w-full lg:grid-cols-2 hover:shadow-solid">
       <div className="aspect-video relative lg:aspect-square">
         <Image
           src={post.cover}

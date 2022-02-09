@@ -7,7 +7,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="border-2 border-current duration-300 flex flex-col group h-full link-overlay relative transition w-full hover:shadow-solid"
+      className="border-2 border-current duration-300 flex flex-col group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid"
     >
       <div className="aspect-[16/10] border-b-2 border-current overflow-hidden relative">
         <Image
@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         />
       </div>
 
-      <div className="flex flex-1 flex-col p-8">
+      <div className="flex flex-1 flex-col p-6">
         <h2 className="font-bold text-xl tracking-tight lg:text-2xl">
           {project.title}
           {project.defunct && (

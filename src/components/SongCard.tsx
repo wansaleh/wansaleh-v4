@@ -7,7 +7,7 @@ import { Song } from '@/lib/songs';
 
 export default function SongCard({ song }: { song: Song }) {
   return (
-    <div className="border-2 border-current duration-300 group h-full link-overlay relative transition w-full hover:shadow-solid">
+    <div className="border-2 border-current duration-300 group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid">
       <div className="aspect-square bg-darkbg border-b-2 border-current duration-200 ease-out overflow-hidden">
         <Image
           src={song.artworkURL}
