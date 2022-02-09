@@ -48,13 +48,13 @@ export default function HomePage({
 }) {
   return (
     <div className="layout min-h-screen py-24 w-full lg:py-40">
-      <div className="grid grid-cols-1 items-center mb-6 lg:grid-cols-2 lg:mb-8">
-        <div className="border-2 border-b-0 border-current flex flex-col h-full justify-center p-8 lg:border-b-2 lg:border-r-0 lg:p-10">
+      <div className="border-2 border-current grid grid-cols-1 items-center mb-6 overflow-hidden rounded-lg lg:grid-cols-2 lg:mb-8">
+        <div className="flex flex-col h-full justify-center p-8 lg:p-10">
           <h2 className="font-semibold mb-6 text-3xl tracking-tight">
             Hey, I’m Wan!
           </h2>
 
-          <p className="!leading-tight font-light text-4xl tracking-tight xl:text-5xl">
+          <p className="!leading-tight font-light text-3xl tracking-tight xl:text-4xl">
             I am a music producer, mixer and mastering engineer from Malaysia. I
             run{' '}
             <a
@@ -67,14 +67,14 @@ export default function HomePage({
           </p>
         </div>
 
-        <div className="bg-brand border-2 border-current">
+        <div className="bg-brand">
           <PeepSVG className="h-full w-full" />
         </div>
       </div>
 
       <div className="mb-6 lg:mb-8">
         <h3 className="font-bold mb-6 text-2xl tracking-tight lg:mb-8">
-          <span className="border-2 border-current inline-block leading-none p-6">
+          <span className="border-2 border-current inline-block leading-none p-6 rounded-lg">
             Featured Works
           </span>
         </h3>
@@ -88,15 +88,15 @@ export default function HomePage({
           ))}
 
           <Link href="/discography">
-            <a className="border-2 border-current duration-300 flex group h-full items-center justify-center link-overlay relative transition w-full hover:shadow-solid">
+            <a className="border-2 border-current duration-300 flex group h-full items-center justify-center link-overlay relative rounded-lg transition w-full hover:shadow-solid">
               <span className="text-5xl">View All</span>
             </a>
           </Link>
         </div>
       </div>
 
-      <div className="gap-0 grid grid-cols-1 lg:grid-cols-2">
-        <div className="bg-darkbg border-2 border-b-0 border-darkbg h-full p-8 text-lightbg lg:border-b-2 lg:border-r-0 lg:p-10 dark:bg-lightbg dark:border-lightbg dark:text-darkbg">
+      <div className="border-2 border-current gap-0 grid grid-cols-1 overflow-hidden rounded-lg lg:grid-cols-2">
+        <div className="bg-darkbg h-full p-8 text-lightbg lg:p-10 dark:bg-lightbg dark:text-darkbg">
           <h3 className="font-semibold mb-8 text-2xl">About</h3>
 
           <p className="leading-normal max-w-xl text-2xl">
@@ -115,7 +115,7 @@ export default function HomePage({
           /> */}
         </div>
 
-        <div className="border-2 border-current p-8 lg:p-10">
+        <div className="p-8 lg:p-10">
           <h3 className="font-semibold mb-8 text-2xl">Writing</h3>
 
           <div>
@@ -150,7 +150,7 @@ function SongCard({ song }: { song: Song }) {
   return (
     <div
       key={song.id}
-      className="border-2 border-current duration-300 group h-full link-overlay relative transition w-full hover:shadow-solid"
+      className="border-2 border-current duration-300 group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid"
     >
       <div className="aspect-square border-b-2 border-current overflow-hidden relative">
         <Image

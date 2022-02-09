@@ -2,7 +2,6 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 import { SWRConfig } from 'swr';
 
-import '@/styles/font-graphik.css';
 import '@/styles/globals.css';
 import 'react-medium-image-zoom/dist/styles.css';
 
