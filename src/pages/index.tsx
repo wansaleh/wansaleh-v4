@@ -48,9 +48,11 @@ export default function HomePage({
 }) {
   return (
     <div className="layout min-h-screen py-24 w-full lg:py-40">
-      <div className="grid grid-cols-1 items-center mb-20 lg:grid-cols-2 lg:mb-40">
+      <div className="grid grid-cols-1 items-center mb-6 lg:grid-cols-2 lg:mb-8">
         <div className="border-2 border-b-0 border-current flex flex-col h-full justify-center p-8 lg:border-b-2 lg:border-r-0 lg:p-10">
-          <h2 className="font-semibold mb-4 text-3xl">Hey, I’m Wan!</h2>
+          <h2 className="font-semibold mb-6 text-3xl tracking-tight">
+            Hey, I’m Wan!
+          </h2>
 
           <p className="!leading-tight font-light text-4xl tracking-tight xl:text-5xl">
             I am a music producer, mixer and mastering engineer from Malaysia. I
@@ -70,10 +72,14 @@ export default function HomePage({
         </div>
       </div>
 
-      <div className="mb-20">
-        <h3 className="font-semibold mb-8 text-2xl">Featured Works</h3>
+      <div className="mb-6 lg:mb-8">
+        <h3 className="font-bold mb-6 text-2xl tracking-tight lg:mb-8">
+          <span className="border-2 border-current inline-block leading-none p-6">
+            Featured Works
+          </span>
+        </h3>
 
-        <div className="gap-4 grid grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="gap-6 grid grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
           {featuredSongIDs.map((id) => (
             <SongCard
               key={id}
@@ -83,21 +89,6 @@ export default function HomePage({
 
           <Link href="/discography">
             <a className="border-2 border-current duration-300 flex group h-full items-center justify-center link-overlay relative transition w-full hover:shadow-solid">
-              {/* <svg
-                className="stroke-current"
-                height="4em"
-                width="4em"
-                fill="none"
-                stroke="#000"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line x1="12" x2="12" y1="5" y2="19" />
-                <line x1="5" x2="19" y1="12" y2="12" />
-              </svg> */}
               <span className="text-5xl">View All</span>
             </a>
           </Link>
@@ -108,7 +99,7 @@ export default function HomePage({
         <div className="bg-darkbg border-2 border-b-0 border-darkbg h-full p-8 text-lightbg lg:border-b-2 lg:border-r-0 lg:p-10 dark:bg-lightbg dark:border-lightbg dark:text-darkbg">
           <h3 className="font-semibold mb-8 text-2xl">About</h3>
 
-          <p className="leading-normal max-w-xl mb-10 text-2xl">
+          <p className="leading-normal max-w-xl text-2xl">
             My name is Wan Saleh, and I am a music producer based in Kuala
             Lumpur, Malaysia. My business partner is Ikhwan Fatanna, also a
             composer and producer. Together we run our studio, Rekaman Music in
@@ -129,13 +120,13 @@ export default function HomePage({
 
           <div>
             {allPosts.slice(0, 3).map((post) => (
-              <div key={post.id} className="group link-overlay mb-4">
-                <h3 className="font-semibold text-xl transition group-hover:text-brand">
+              <div key={post.id} className="group link-overlay mt-4">
+                <h3 className="font-semibold text-xl tracking-tight transition group-hover:text-brand">
                   <Link href={`/blog/${post.slug}`}>
                     <a className="link">{post.title}</a>
                   </Link>
                 </h3>
-                <div className="font-medium text-gray-500 text-sm">
+                <div className="font-semibold text-gray-500 text-sm">
                   {format(
                     parse(post.date, 'yyyy-MM-dd', new Date()),
                     'MMMM d, yyyy'
@@ -172,7 +163,7 @@ function SongCard({ song }: { song: Song }) {
       </div>
 
       <div className="p-4 lg:p-6">
-        <div className="font-bold line-clamp-1 text-xl">
+        <h3 className="font-bold line-clamp-1 text-xl tracking-tight">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
@@ -181,8 +172,9 @@ function SongCard({ song }: { song: Song }) {
           >
             {song.title}
           </a>
-        </div>
-        <div className="font-bold line-clamp-1 text-base text-slate-500">
+        </h3>
+
+        <div className="font-bold line-clamp-1 text-base text-slate-500 tracking-tight">
           {artistNames}
         </div>
       </div>
