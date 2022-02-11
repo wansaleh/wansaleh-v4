@@ -17,6 +17,7 @@ export type Post = {
   tags: string[];
   date: string;
   author: any;
+  edited: string;
 };
 
 export async function getPostBySlug(slug: string) {
@@ -75,6 +76,7 @@ export async function getAllPostsNotionAPI(): Promise<Post[]> {
       tags: properties.tags.multi_select.map((tag) => tag.name),
       date: properties.date.date.start,
       author: properties.author.people[0],
+      edited: post.last_edited_time,
     };
   });
 

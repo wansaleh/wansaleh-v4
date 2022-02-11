@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { format, parse } from 'date-fns';
+import { format, formatDistanceStrict, parse, parseISO } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
@@ -139,7 +139,10 @@ export default function PostPage({
               {views && <> &mdash; {views} views</>}
             </div>
 
-            {/* <div>Last updated on</div> */}
+            <div>
+              Last updated{' '}
+              {formatDistanceStrict(parseISO(post.edited), new Date())} ago
+            </div>
           </div>
 
           <div className="lg:col-span-3">
