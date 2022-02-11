@@ -59,7 +59,7 @@ export async function getAllPostsNotionAPI(): Promise<Post[]> {
 
     return {
       id: post.id,
-      title: properties.title.title[0].plain_text,
+      title: properties.title.title.map((txt) => txt.plain_text).join(''),
       slug: properties.slug.rich_text.map((txt) => txt.plain_text).join(''),
       cover: properties.cover.files[0].external.url,
       coverCaption: properties.coverCaption.rich_text
