@@ -30,7 +30,7 @@ export default function PageTitle({
       {subtitle && (
         <h2
           className={clsx(
-            'font-medium mt-4 text-2xl text-center text-gray-500',
+            'font-medium max-w-3xl mt-4 text-2xl text-center text-gray-500',
             !center && '!text-left'
           )}
         >
