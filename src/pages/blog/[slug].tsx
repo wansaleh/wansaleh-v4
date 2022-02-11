@@ -69,7 +69,7 @@ export default function PostPage({
 
   useEffect(() => {
     async function loadViews() {
-      const views = await fetch(`/api/post-views?slug=${post.slug}`).then(
+      const views = await fetch(`/api/postviews?slug=${post.slug}`).then(
         (res) => res.json()
       );
 
@@ -82,6 +82,14 @@ export default function PostPage({
     if (ref.current?.textContent) {
       setReadTime(readingTime(ref.current.textContent));
     }
+
+    return () => {
+      fetch(`/api/postviews`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'increment', slug: post.slug }),
+      });
+    };
   }, [post.slug]);
 
   return (
