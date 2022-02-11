@@ -1,24 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Client } from '@notionhq/client';
-import { NotionToMarkdown } from 'notion-to-md';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const getDatabase = async (databaseId) => {
+export const getDatabase = async (databaseId: string) => {
   const response = await notion.databases.query({
     database_id: databaseId,
   });
   return response.results;
 };
 
-export const getPage = async (pageId) => {
+export const getPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId });
   return response;
 };
 
-export const getBlocks = async (blockId) => {
+export const getBlocks = async (blockId: string) => {
   const blocks: any = [];
   let cursor;
   // eslint-disable-next-line no-constant-condition
@@ -35,5 +34,3 @@ export const getBlocks = async (blockId) => {
   }
   return blocks;
 };
-
-export const n2m = new NotionToMarkdown({ notionClient: notion });

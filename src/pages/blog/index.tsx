@@ -1,4 +1,8 @@
-import { getAllPostsNotion, Post } from '@/lib/posts-notion';
+import {
+  getAllPostsNotion,
+  getAllPostsNotionAPI,
+  Post,
+} from '@/lib/posts-notion';
 
 import FeaturedPostCard from '@/components/FeaturedPostCard';
 import PageTitle from '@/components/PageTitle';
@@ -6,7 +10,8 @@ import PostCard from '@/components/PostCard';
 import Seo from '@/components/Seo';
 
 export async function getStaticProps() {
-  const allPosts: Post[] = await getAllPostsNotion();
+  // const allPosts: Post[] = await getAllPostsNotion();
+  const allPosts = await getAllPostsNotionAPI();
 
   return {
     props: { allPosts },
