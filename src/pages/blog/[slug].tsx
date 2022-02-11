@@ -10,7 +10,6 @@ import { NotionRenderer } from 'react-notion';
 import { readingTime } from 'reading-time-estimator';
 import smartypants from 'remark-smartypants';
 
-// import useMDX from '@/lib/hooks/use-mdx';
 import { coverLoader, getBlurUrl } from '@/lib/images';
 import { getAllPostsNotion, getPostBySlug, Post } from '@/lib/posts-notion';
 
@@ -26,14 +25,12 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const { post, blockMap, posts } = await getPostBySlug(params.slug);
 
-  // const { code } = await getPostMDX(mdString);
-
   return {
     props: {
       post,
       blockMap,
       // code,
-      posts,
+      allPosts: posts,
     },
     revalidate: 1,
   };
@@ -55,13 +52,11 @@ export async function getStaticPaths() {
 export default function PostPage({
   post,
   blockMap,
-  // code,
-  posts,
+  allPosts,
 }: {
   post: Post;
   blockMap: any;
-  // code: string;
-  posts: Post[];
+  allPosts: Post[];
 }) {
   const { theme } = useTheme();
   const [views, setViews] = useState(null);
@@ -71,8 +66,6 @@ export default function PostPage({
     text: string;
   } | null>(null);
   const ref = useRef<HTMLElement>(null);
-
-  // const { Component } = useMDX(code);
 
   useEffect(() => {
     async function loadViews() {
@@ -95,29 +88,7 @@ export default function PostPage({
     <div className="min-h-screen w-full">
       <Seo templateTitle={`${post.title} | Blog`} />
 
-      <div className="mb-8 mt-20 w-full">
-        <div className="aspect-[4] relative">
-          <Image
-            src={post.cover as string}
-            alt={post.title}
-            className="object-center object-cover"
-            loader={coverLoader}
-            layout="fill"
-            placeholder="blur"
-            blurDataURL={getBlurUrl(post.cover)}
-          />
-        </div>
-        {post.coverCaption && (
-          <ReactMarkdown
-            className="caption font-medium layout leading-tight max-w-5xl p-4 text-center text-gray-500 text-sm"
-            remarkPlugins={[smartypants]}
-          >
-            {post.coverCaption}
-          </ReactMarkdown>
-        )}
-      </div>
-
-      <div className="layout mb-32 mt-16">
+      <div className="layout mb-32 mt-24">
         <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
           <div>
             <Link href="/blog">
@@ -163,15 +134,40 @@ export default function PostPage({
 
         <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
           <div>
-            {readTime && <>{readTime?.text}</>}
-            {views && <> &mdash; {views} views</>}
+            <div>
+              {readTime && <>{readTime?.text}</>}
+              {views && <> &mdash; {views} views</>}
+            </div>
+
+            {/* <div>Last updated on</div> */}
           </div>
 
           <div className="lg:col-span-3">
+            <div className="aspect-video max-w-3xl overflow-hidden relative rounded-lg w-full">
+              <Image
+                src={post.cover as string}
+                alt={post.title}
+                className="object-center object-cover"
+                loader={coverLoader}
+                layout="fill"
+                placeholder="blur"
+                blurDataURL={getBlurUrl(post.cover)}
+              />
+            </div>
+
+            {post.coverCaption && (
+              <ReactMarkdown
+                className="caption font-medium leading-tight max-w-3xl py-4 text-gray-500 text-sm"
+                remarkPlugins={[smartypants]}
+              >
+                {post.coverCaption}
+              </ReactMarkdown>
+            )}
+
             <article
               ref={ref}
               className={clsx(
-                'prose lg:prose-lg dark:prose-invert',
+                'mt-4 prose lg:prose-lg dark:prose-invert',
                 'prose-headings:text-gray-500',
                 'prose-a:decoration-2 prose-a:no-underline prose-a:text-brand prose-a:underline-offset-2 hover:prose-a:underline'
               )}
@@ -183,8 +179,6 @@ export default function PostPage({
                 {post.description}
               </ReactMarkdown>
 
-              {/* <Component /> */}
-
               <NotionRenderer
                 blockMap={blockMap}
                 hideHeader
@@ -192,7 +186,7 @@ export default function PostPage({
                   a: ({ decoratorValue, children }) => {
                     let href = decoratorValue;
                     if (href.startsWith('/')) {
-                      const postWithId = posts.find(
+                      const postWithId = allPosts.find(
                         (p) => p.id.replace(/-/g, '') === href.slice(1)
                       );
                       href = postWithId ? postWithId.slug : href;

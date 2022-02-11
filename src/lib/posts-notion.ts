@@ -1,12 +1,4 @@
 import { orderBy } from 'lodash-es';
-// import { bundleMDX } from 'mdx-bundler';
-// import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-// import remarkGfm from 'remark-gfm';
-// import { remarkMdxToc } from 'remark-mdx-toc';
-// import remarkSlug from 'remark-slug';
-// import remarkSmartypants from 'remark-smartypants';
-
-// import { n2m } from './notion';
 
 export type Post = {
   id: string;
@@ -59,31 +51,3 @@ export async function getAllPostsNotion(): Promise<Post[]> {
       process.env.NODE_ENV === 'development' ? true : !!post.published
     );
 }
-
-// export async function getPostMDX(mdString: string) {
-//   return bundleMDX({
-//     source: mdString,
-//     xdmOptions(options) {
-//       options.remarkPlugins = [
-//         ...(options?.remarkPlugins ?? []),
-//         remarkGfm,
-//         remarkSmartypants,
-//         remarkSlug,
-//         remarkMdxToc,
-//       ];
-//       options.rehypePlugins = [
-//         ...(options?.rehypePlugins ?? []),
-//         // rehypeSlug,
-//         [
-//           rehypeAutolinkHeadings,
-//           {
-//             properties: {
-//               className: ['hash-anchor'],
-//             },
-//           },
-//         ],
-//       ];
-//       return options;
-//     },
-//   });
-// }
