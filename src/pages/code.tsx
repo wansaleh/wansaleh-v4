@@ -35,8 +35,6 @@ export default function WebPage({
     filteredProjects = projects.filter((project: Project) =>
       project.tags.map((tag) => tag).includes(activeTag)
     );
-  } else {
-    filteredProjects = projects;
   }
 
   return (
