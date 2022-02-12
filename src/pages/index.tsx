@@ -48,8 +48,10 @@ export default function HomePage({
 }) {
   return (
     <div className="layout min-h-screen py-24 w-full lg:py-40">
-      <div className="border-2 border-current grid grid-cols-1 items-center mb-6 overflow-hidden rounded-lg lg:grid-cols-2 lg:mb-8">
-        <div className="flex flex-col h-full justify-center p-8 lg:p-10">
+      <div className="herobg"></div>
+
+      <div className="gap-10 grid grid-cols-1 items-center mb-6 lg:grid-cols-2 lg:mb-8">
+        <div className="flex flex-col h-full justify-center">
           <h2 className="font-semibold mb-6 text-3xl tracking-tight">
             Hey, I’m Wan!
           </h2>
@@ -67,7 +69,7 @@ export default function HomePage({
           </p>
         </div>
 
-        <div className="bg-brand">
+        <div className="">
           <PeepSVG className="h-full w-full" />
         </div>
       </div>
@@ -105,14 +107,6 @@ export default function HomePage({
             composer and producer. Together we run our studio, Rekaman Music in
             Ara Damansara, Selangor.
           </p>
-
-          {/* <Image
-            src={profilePic}
-            width={120}
-            height={120}
-            alt=""
-            className="rounded-full"
-          /> */}
         </div>
 
         <div className="p-8 lg:p-10">
@@ -137,6 +131,13 @@ export default function HomePage({
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .herobg {
+          @apply w-full absolute h-screen -z-10 top-0 left-0 -scale-y-100 opacity-50;
+          background: url('/images/grad.png') center/cover no-repeat;
+        }
+      `}</style>
     </div>
   );
 }
