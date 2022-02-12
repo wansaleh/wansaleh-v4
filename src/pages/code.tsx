@@ -29,10 +29,12 @@ export default function WebPage({
 }) {
   const [activeTag, setActiveTag] = useState('all');
 
-  let filteredProjects = projects.filter((project) => !project.hidden);
+  const allProjects = projects.filter((project) => !project.hidden);
+
+  let filteredProjects = allProjects;
 
   if (activeTag !== 'all') {
-    filteredProjects = filteredProjects.filter((project: Project) =>
+    filteredProjects = allProjects.filter((project: Project) =>
       project.tags.map((tag) => tag).includes(activeTag)
     );
   }
@@ -59,7 +61,7 @@ export default function WebPage({
         >
           All
           <span className="mx-1 opacity-30">&middot;</span>
-          <span className="text-sm">{projects.length}</span>
+          <span className="text-sm">{allProjects.length}</span>
         </button>
         {tags.map((tag) => (
           <button
