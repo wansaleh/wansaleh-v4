@@ -48,7 +48,9 @@ export default function HomePage({
 }) {
   return (
     <div className="layout min-h-screen py-24 w-full lg:py-40">
-      <div className="herobg"></div>
+      <div className="-scale-y-100 -z-10 absolute h-screen left-0 opacity-50 top-0 w-full">
+        <Image src="/images/grad.png" alt="" layout="fill" />
+      </div>
 
       <div className="gap-10 grid grid-cols-1 items-center mb-6 lg:grid-cols-2 lg:mb-8">
         <div className="flex flex-col h-full justify-center">
@@ -76,7 +78,7 @@ export default function HomePage({
 
       <div className="mb-6 lg:mb-8">
         <h3 className="font-bold mb-6 text-2xl tracking-tight lg:mb-8">
-          <span className="border-2 border-current inline-block leading-none p-6 rounded-lg">
+          <span className="border-4 border-current inline-block leading-none p-6 rounded-lg">
             Featured Works
           </span>
         </h3>
@@ -131,13 +133,6 @@ export default function HomePage({
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .herobg {
-          @apply w-full absolute h-screen -z-10 top-0 left-0 -scale-y-100 opacity-50;
-          background: url('/images/grad.png') center/cover no-repeat;
-        }
-      `}</style>
     </div>
   );
 }
