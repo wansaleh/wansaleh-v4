@@ -26,6 +26,7 @@ async function main() {
           `${project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}.webp`
         ),
         {
+          delay: 7,
           overwrite: true,
           width,
           height: width / ratio,
