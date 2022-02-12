@@ -83,7 +83,7 @@ export default function HomePage({
           </span>
         </h3>
 
-        <div className="gap-6 grid grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
           {featuredSongIDs.map((id) => (
             <SongCard
               key={id}
@@ -92,7 +92,7 @@ export default function HomePage({
           ))}
 
           <Link href="/discography">
-            <a className="border-2 border-current duration-300 flex group h-full items-center justify-center link-overlay relative rounded-lg transition w-full hover:shadow-solid">
+            <a className="border-2 border-current duration-300 flex group h-full items-center justify-center link-overlay p-6 relative rounded-lg transition w-full hover:shadow-solid">
               <span className="text-5xl">View All</span>
             </a>
           </Link>
@@ -100,7 +100,7 @@ export default function HomePage({
       </div>
 
       <div className="border-2 border-current gap-0 grid grid-cols-1 overflow-hidden rounded-lg lg:grid-cols-2">
-        <div className="bg-darkbg h-full p-8 text-lightbg lg:p-10 dark:bg-lightbg dark:text-darkbg">
+        <div className="bg-darkbg h-full p-6 text-lightbg lg:p-10 dark:bg-lightbg dark:text-darkbg">
           <h3 className="font-semibold mb-8 text-2xl">About</h3>
 
           <p className="leading-normal max-w-xl text-2xl">
@@ -111,7 +111,7 @@ export default function HomePage({
           </p>
         </div>
 
-        <div className="p-8 lg:p-10">
+        <div className="p-6 lg:p-10">
           <h3 className="font-semibold mb-8 text-2xl">Writing</h3>
 
           <div>

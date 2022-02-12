@@ -52,11 +52,11 @@ strong {
   }
 
   .shadow-solid {
-    box-shadow: -6px -6px 0 theme('colors.darkbg');
+    box-shadow: 6px 6px 0 theme('colors.darkbg');
   }
 
   .dark .shadow-solid {
-    box-shadow: -6px -6px 0 theme('colors.lightbg');
+    box-shadow: 6px 6px 0 theme('colors.lightbg');
   }
 }
 
