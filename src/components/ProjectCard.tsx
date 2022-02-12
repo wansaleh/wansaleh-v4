@@ -9,18 +9,21 @@ export default function ProjectCard({ project }: { project: Project }) {
       key={project.id}
       className="border-2 border-current duration-300 flex flex-col group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid"
     >
-      <div className="aspect-[16/10] border-b-2 border-current overflow-hidden relative">
+      <div className="aspect-[4/5] border-b-2 border-current overflow-hidden relative">
         <Image
-          src={project.thumbnail}
+          // src={project.thumbnail}
+          src={`/images/screenshots/${project.url
+            .replace(/^https?:\/\//, '')
+            .replace(/\/$/, '')}.webp`}
           alt={project.title}
           className="object-cover object-top"
           loading="lazy"
           layout="fill"
-          placeholder="blur"
-          blurDataURL={project.thumbnail.replace(
-            'c_scale,w_600',
-            'c_scale,w_50,q_10'
-          )}
+          // placeholder="blur"
+          // blurDataURL={project.thumbnail.replace(
+          //   'c_scale,w_600',
+          //   'c_scale,w_50,q_10'
+          // )}
         />
       </div>
 

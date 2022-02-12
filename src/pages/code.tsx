@@ -29,7 +29,7 @@ export default function WebPage({
 }) {
   const [activeTag, setActiveTag] = useState('all');
 
-  let filteredProjects = projects;
+  let filteredProjects = projects.filter((project) => !project.hidden);
 
   if (activeTag !== 'all') {
     filteredProjects = projects.filter((project: Project) =>
