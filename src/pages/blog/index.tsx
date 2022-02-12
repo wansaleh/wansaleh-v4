@@ -29,7 +29,7 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
     <>
       <Seo templateTitle="Blog" />
 
-      <div className="layout max-w-7xl min-h-screen py-24 lg:py-40">
+      <div className="layout min-h-screen py-24 lg:py-40">
         <PageTitle
           title="Blog"
           subtitle="I want to write more. But I'm lazy as hell."

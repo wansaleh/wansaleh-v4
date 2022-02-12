@@ -78,7 +78,7 @@ export default function WebPage({
         ))}
       </div>
 
-      <div className="layout max-w-7xl">
+      <div className="layout">
         <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project: Project) => (
             <ProjectCard project={project} key={project.id} />
