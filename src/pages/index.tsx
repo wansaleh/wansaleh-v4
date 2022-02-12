@@ -48,7 +48,7 @@ export default function HomePage({
 }) {
   return (
     <div className="w-full">
-      <div className="bg-[#fff000] w-full dark:bg-brand">
+      <div className="bg-[#fff000] border-b-4 border-current w-full dark:bg-brand">
         <div className="layout pb-8 py-24 w-full lg:pb-24">
           {/* <div className="-scale-y-100 -z-10 absolute h-screen left-0 opacity-40 top-0 w-full">
             <Image
@@ -71,7 +71,7 @@ export default function HomePage({
                 Malaysia. I run{' '}
                 <a
                   href="https://rekaman.org"
-                  className="decoration-4 decoration-gray-500/50 underline underline-offset-4 hover:text-brand"
+                  className="decoration-4 decoration-gray-500/50 underline underline-offset-4 hover:decoration-current"
                 >
                   my studio
                 </a>{' '}
