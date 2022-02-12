@@ -32,7 +32,7 @@ export default function WebPage({
   let filteredProjects = projects.filter((project) => !project.hidden);
 
   if (activeTag !== 'all') {
-    filteredProjects = projects.filter((project: Project) =>
+    filteredProjects = filteredProjects.filter((project: Project) =>
       project.tags.map((tag) => tag).includes(activeTag)
     );
   }
