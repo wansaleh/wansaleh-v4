@@ -48,8 +48,14 @@ export default function HomePage({
 }) {
   return (
     <div className="layout min-h-screen py-24 w-full lg:py-40">
-      <div className="-scale-y-100 -z-10 absolute h-screen left-0 opacity-50 top-0 w-full">
-        <Image src="/images/grad.png" alt="" layout="fill" />
+      <div className="-scale-y-100 -z-10 absolute h-screen left-0 opacity-40 top-0 w-full">
+        <Image
+          src="/images/grad.png"
+          alt=""
+          layout="fill"
+          className="dark:invert"
+        />
+        <div className="absolute bg-gradient-to-b from-lightbg h-1/2 left-0 right-0 to-transparent top-0 w-full dark:from-darkbg"></div>
       </div>
 
       <div className="gap-10 grid grid-cols-1 items-center mb-6 lg:grid-cols-2 lg:mb-8">
