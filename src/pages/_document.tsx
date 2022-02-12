@@ -24,7 +24,7 @@ class MyDocument extends Document {
           />
 
           <link
-            href="https://api.fontshare.com/css?f[]=general-sans@1,2&f[]=satoshi@1,2&f[]=clash-grotesk@1&f[]=switzer@1&display=swap"
+            href="https://api.fontshare.com/css?f[]=general-sans@1,2&f[]=satoshi@1,2&f[]=clash-grotesk@1&f[]=clash-display@1&f[]=switzer@1&display=swap"
             rel="stylesheet"
           />
         </Head>

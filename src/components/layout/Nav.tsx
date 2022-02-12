@@ -25,16 +25,14 @@ export default function Nav() {
 
   return (
     <div className="absolute flex items-center justify-between layout left-0 p-6 right-0 top-0 z-50">
-      {router.pathname !== '/' && (
-        <Link href="/">
-          <a className="flex font-semibold gap-2 group items-center leading-tight text-base tracking-tight">
-            <span className="duration-300 transition group-hover:text-brand">
-              <Logo2 className="h-[2em]" />
-            </span>
-            <span className="sr-only md:not-sr-only">By Wan Saleh</span>
-          </a>
-        </Link>
-      )}
+      <Link href="/">
+        <a className="flex font-semibold gap-2 group items-center leading-tight text-base tracking-tight">
+          <span className="duration-300 transition group-hover:text-brand">
+            <Logo2 className="h-[1.5em]" />
+          </span>
+          <span className="sr-only md:not-sr-only">By Wan Saleh</span>
+        </a>
+      </Link>
 
       <div className="flex-1" />
 

@@ -3,7 +3,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
 
 const lightbg = '#fff';
-const darkbg = '#0f0e17';
+const darkbg = colors.neutral[900];
 // const brand = '#F36163';
 const brand = '#008cff';
 
@@ -18,6 +18,7 @@ module.exports = {
       fontFamily: {
         sans: ['Switzer', ...fontFamily.sans],
         head: ['Switzer', ...fontFamily.sans],
+        cd: ['Clash Display', ...fontFamily.sans],
       },
     },
   },

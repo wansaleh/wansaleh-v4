@@ -48,21 +48,11 @@ export default function HomePage({
 }) {
   return (
     <div className="w-full">
-      <div className="bg-[#fff000] border-b-4 border-current w-full dark:bg-brand">
+      <div className="bg-[#fff000] border-b-4 border-current w-full dark:bg-blue-900">
         <div className="layout pb-8 py-24 w-full lg:pb-24">
-          {/* <div className="-scale-y-100 -z-10 absolute h-screen left-0 opacity-40 top-0 w-full">
-            <Image
-              src="/images/grad.png"
-              alt=""
-              layout="fill"
-              className="dark:invert"
-            />
-            <div className="absolute bg-gradient-to-b from-lightbg h-1/2 left-0 right-0 to-transparent top-0 w-full dark:from-darkbg"></div>
-          </div> */}
-
           <div className="gap-6 grid grid-cols-1 items-center mb-6 lg:gap-10 lg:grid-cols-2 lg:mb-8">
             <div className="flex flex-col h-full justify-center">
-              <h2 className="font-semibold mb-6 text-3xl tracking-tight lg:text-5xl">
+              <h2 className="font-cd font-semibold mb-6 text-3xl tracking-tight lg:text-5xl">
                 Hey, I’m Wan!
               </h2>
 
