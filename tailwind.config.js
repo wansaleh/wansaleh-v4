@@ -5,7 +5,7 @@ const colors = require('tailwindcss/colors');
 const lightbg = '#fff';
 const darkbg = '#0f0e17';
 // const brand = '#F36163';
-const brand = colors.sky[500];
+const brand = '#008cff';
 
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
