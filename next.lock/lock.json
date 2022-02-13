@@ -1,5 +1,0 @@
-{
-  "https://cdn.skypack.dev/-/@georgedoescode/generative-utils@v1.0.37-h1ixtguoxSvQwieN7rSd/dist=es2019,mode=imports/optimized/@georgedoescode/generative-utils.js": { "integrity": "sha512-lmOl4miWfsRseFOhm+hP2RBK7elN04refBuqQUCm1cXgbaI3RXPGMZyrziCpk8lY6KyacOeSG9HvwRmbcdAZIg==", "contentType": "application/javascript; charset=utf-8" },
-  "https://cdn.skypack.dev/@georgedoescode/generative-utils": { "integrity": "sha512-qk2FikrJ2jO3rbT2v6Wk0vnHPchHjYOfl5BGsSFZ6y1/33XLRpgcUOzN8DF5QuXzGgsZ8QMhWi4hB+GC8JVkTg==", "contentType": "application/javascript; charset=utf-8" },
-  "version": 1
-}
