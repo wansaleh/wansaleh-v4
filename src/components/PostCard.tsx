@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { coverLoader, getBlurUrl } from '@/lib/images';
-import { Post } from '@/lib/posts-notion';
+import { Post } from '@/lib/notion/posts-notion';
 
 export default function PostCard({ post }: { post: Post }) {
   return (

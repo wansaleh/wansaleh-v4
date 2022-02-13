@@ -11,7 +11,11 @@ import { readingTime } from 'reading-time-estimator';
 import smartypants from 'remark-smartypants';
 
 import { coverLoader, getBlurUrl } from '@/lib/images';
-import { getAllPostsNotion, getPostBySlug, Post } from '@/lib/posts-notion';
+import {
+  getAllPostsNotion,
+  getPostBySlug,
+  Post,
+} from '@/lib/notion/posts-notion';
 
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';

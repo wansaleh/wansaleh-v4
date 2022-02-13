@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { format, parse } from 'date-fns';
+import { format, parse, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { fetchSongsById } from '@/lib/fetch-songs-diskograf';
-import { getAllPostsNotion, Post } from '@/lib/posts-notion';
+import { getAllPostsNotion, Post } from '@/lib/notion/posts-notion';
 import { prepareSong, Song } from '@/lib/songs';
 
 import PeepSVG from '@/components/images/Peep';
@@ -178,8 +178,11 @@ function SongCard({ song }: { song: Song }) {
           </a>
         </h3>
 
-        <div className="font-bold line-clamp-1 text-base text-slate-500 tracking-tight">
-          {artistNames}
+        <div className="font-semibold line-clamp-1 text-base text-slate-500 tracking-tight">
+          {artistNames}{' '}
+          <span className="font-normal">
+            {format(parseISO(song.released_at), 'yyyy')}
+          </span>
         </div>
       </div>
     </div>

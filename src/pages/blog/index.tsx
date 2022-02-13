@@ -2,7 +2,7 @@ import {
   getAllPostsNotion,
   getAllPostsNotionAPI,
   Post,
-} from '@/lib/posts-notion';
+} from '@/lib/notion/posts-notion';
 
 import FeaturedPostCard from '@/components/FeaturedPostCard';
 import PageTitle from '@/components/PageTitle';

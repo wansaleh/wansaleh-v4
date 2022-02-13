@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 
-import { Project } from '@/lib/projects-notion';
+import { Project } from '@/lib/notion/projects-notion';
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (

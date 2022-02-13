@@ -5,7 +5,7 @@ import { useState } from 'react';
 import {
   getAllProjects as getAllProjectNotion,
   Project,
-} from '@/lib/projects-notion';
+} from '@/lib/notion/projects-notion';
 
 import PageTitle from '@/components/PageTitle';
 import ProjectCard from '@/components/ProjectCard';

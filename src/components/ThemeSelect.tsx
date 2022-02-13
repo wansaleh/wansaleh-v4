@@ -27,7 +27,7 @@ export default function ThemeSelect() {
     if (!themes[theme]) {
       setTheme('light');
     }
-  }, [themes[theme]]);
+  }, [setTheme, theme]);
 
   if (!mounted) return null;
 
@@ -37,13 +37,15 @@ export default function ThemeSelect() {
     setTheme(themeKeys[(themeIndex + 1) % themeKeys.length]);
   }
 
-  const Icon = themes[theme].icon;
+  const themeKeys = Object.keys(themes);
+  const themeIndex = themeKeys.indexOf(theme);
+  const Icon = themes[themeKeys[(themeIndex + 1) % themeKeys.length]].icon;
 
   return (
     <>
       <button
         type="button"
-        className="flex font-semibold gap-1 h-8 items-center justify-center px-1 py-0 transition w-8 hover:text-brand"
+        className="flex font-semibold gap-1 h-8 items-center justify-center px-1 py-0 transition w-8"
         onClick={toggle}
         title={themes[theme].label}
       >
@@ -65,6 +67,7 @@ function SunIcon(props) {
       strokeWidth="2"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      className="hover:fill-current"
       {...props}
     >
       <circle cx="12" cy="12" r="5" />
@@ -91,6 +94,7 @@ function MoonIcon(props) {
       strokeWidth="2"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      className="hover:fill-current"
       {...props}
     >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />

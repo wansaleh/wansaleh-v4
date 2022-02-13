@@ -2,8 +2,6 @@ import { orderBy } from 'lodash-es';
 
 import { getDatabase } from './notion';
 
-import { NotionItem } from '@/types/notion-item';
-
 export type Post = {
   id: string;
   title: string;

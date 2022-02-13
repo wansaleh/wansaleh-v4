@@ -36,17 +36,16 @@ export default function Nav() {
 
       <div className="flex-1" />
 
-      <ul className="flex font-semibold items-center text-base tracking-tight lg:gap-1">
+      <ul className="flex font-semibold items-center leading-none text-base">
         {links.map(({ href, label }) => (
           <li key={href}>
             <Link href={href}>
               <a
                 className={clsx(
-                  'mx-2 relative',
-                  '',
-                  'hover:after:opacity-100',
-                  // router.pathname.startsWith(href) && 'after:opacity-100'
-                  router.pathname.startsWith(href) && 'font-extrabold'
+                  'block mx-1 px-1.5 py-0.5 relative rounded',
+                  'hover:bg-darkbg hover:dark:bg-lightbg hover:dark:text-darkbg hover:text-lightbg',
+                  router.pathname.startsWith(href) &&
+                    'bg-darkbg text-lightbg dark:bg-lightbg dark:text-darkbg'
                 )}
               >
                 {label}
