@@ -8,8 +8,9 @@ const defaultMeta = {
   siteName: 'By Wan Saleh',
   description:
     'Producer, composer, mixer and mastering engineer. Coder at night.',
-  url: 'https://wansaleh.com',
-  image: 'https://wansaleh.com/favicon/large-og.jpg',
+  url: 'https://by.wansaleh.com',
+  image:
+    'https://og.wansaleh.com/api/og?siteName=By Wan Saleh&description=Music producer, composer, mixer & mastering engineer.',
   type: 'website',
   robots: 'follow, index',
 };
