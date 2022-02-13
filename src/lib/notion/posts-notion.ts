@@ -1,6 +1,6 @@
 import { orderBy } from 'lodash-es';
 
-import { getDatabase } from './notion';
+import { getDatabase, getDatabaseItems } from './notion';
 
 export type Post = {
   id: string;
@@ -51,40 +51,27 @@ export async function getAllPostsNotion(): Promise<Post[]> {
 
 export async function getAllPostsNotionAPI(): Promise<Post[]> {
   const posts = await getDatabase('c381256bf8ab4e4cbf87b8d2eec87fb1');
+  const items = await getDatabaseItems(posts);
 
-  return posts.map((post: any) => {
+  const result = items.map((post: any) => {
     const properties = post.properties;
 
     return {
       id: post.id,
-      title: properties.title.title.map((txt) => txt.plain_text).join(''),
-      slug: properties.slug.rich_text.map((txt) => txt.plain_text).join(''),
-      cover: properties.cover.files[0].external.url,
-      coverCaption: properties.coverCaption.rich_text
-        .map((txt) => txt.plain_text)
-        .join(''),
-      subtitle: properties.subtitle.rich_text
-        .map((txt) => txt.plain_text)
-        .join(''),
-      description: properties.description.rich_text
-        .map((txt) => txt.plain_text)
-        .join(''),
-      featured: properties.featured.checkbox,
-      published: properties.published.checkbox,
-      tags: properties.tags.multi_select.map((tag) => tag.name),
-      date: properties.date.date.start,
-      author: properties.author.people[0],
+      title: properties.title,
+      slug: properties.slug,
+      cover: properties.cover[0].url,
+      coverCaption: properties.coverCaption,
+      subtitle: properties.subtitle,
+      description: properties.description,
+      featured: properties.featured,
+      published: properties.published,
+      tags: properties.tags.map((tag) => tag.name),
+      date: properties.date,
+      author: properties.author[0],
       edited: post.last_edited_time,
     };
   });
 
-  // return orderBy(posts, 'date', 'desc')
-  //   .map((post) => ({
-  //     ...post,
-  //     featured: post.featured ?? false,
-  //     cover: Array.isArray(post.cover) ? post.cover[0].rawUrl : post.cover,
-  //   }))
-  //   .filter((post) =>
-  //     process.env.NODE_ENV === 'development' ? true : !!post.published
-  //   );
+  return orderBy(result, 'date', 'desc');
 }

@@ -21,6 +21,8 @@ module.exports = {
 
     'react/display-name': 'off',
 
+    '@typescript-eslint/ban-ts-comment': 'off',
+
     //#region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
     // 'unused-imports/no-unused-imports': 'warn',

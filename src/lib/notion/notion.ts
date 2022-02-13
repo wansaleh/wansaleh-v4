@@ -34,3 +34,45 @@ export const getBlocks = async (blockId: string) => {
   }
   return blocks;
 };
+
+export const getDatabaseItems = async (results) => {
+  // console.log(results[0].properties);
+
+  return results.map((result) => {
+    const properties = {};
+    Object.keys(result.properties).map((key) => {
+      const prop = result.properties[key];
+      const propValue = prop[prop.type];
+      if (!Array.isArray(propValue)) {
+        if (prop.type === 'date') {
+          properties[key] = propValue.start;
+        } else {
+          properties[key] = propValue;
+        }
+      } else {
+        if (prop.type === 'multi_select') {
+          properties[key] = propValue;
+        } else if (prop.type === 'rich_text' || prop.type === 'title') {
+          properties[key] = propValue.map((item) => item.plain_text).join('');
+        } else if (prop.type === 'people') {
+          properties[key] = propValue.map((item) => ({
+            name: item.name,
+            email: item.person.email,
+            avatar: item.avatar_url,
+          }));
+        } else {
+          properties[key] = propValue.map((item) => item[item.type]);
+        }
+      }
+    });
+
+    return {
+      id: result.id,
+      created_time: result.created_time,
+      last_edited_time: result.last_edited_time,
+      cover: result.cover,
+      icon: result.icon,
+      properties,
+    };
+  });
+};
