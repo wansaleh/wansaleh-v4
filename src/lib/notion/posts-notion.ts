@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { orderBy } from 'lodash-es';
 
 import { getDatabase, getDatabaseItems } from './notion';

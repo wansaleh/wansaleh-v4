@@ -59,6 +59,7 @@ export default function PostPage({
   allPosts,
 }: {
   post: Post;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   blockMap: any;
   allPosts: Post[];
 }) {

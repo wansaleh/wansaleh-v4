@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 
@@ -58,9 +59,16 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="flex flex-wrap leading-none mt-1 text-gray-500 text-xs">
-          <ul className="mt-0 tags">
-            {project.tags.map((tag) => (
-              <li key={tag} className="inline-block">
+          <ul className="mt-0">
+            {project.tags.map((tag, i) => (
+              <li
+                key={tag}
+                className={clsx(
+                  'inline-block',
+                  i < project.tags.length - 1 &&
+                    'after:content-["·"] after:px-1'
+                )}
+              >
                 {tag}
               </li>
             ))}
@@ -68,22 +76,22 @@ export default function ProjectCard({ project }: { project: Project }) {
 
           <span className="mx-2">/</span>
 
-          <ul className="mt-0 tags">
-            {project.stack?.map((stack) => (
-              <li key={stack} className="inline-block">
+          <ul className="mt-0">
+            {project.stack.map((stack, i) => (
+              <li
+                key={stack}
+                className={clsx(
+                  'inline-block',
+                  i < project.stack.length - 1 &&
+                    'after:content-["·"] after:px-1'
+                )}
+              >
                 {stack}
               </li>
             ))}
           </ul>
         </div>
       </div>
-
-      <style jsx>{`
-        ul.tags li:not(:last-child):after {
-          @apply px-1;
-          content: '·';
-        }
-      `}</style>
     </div>
   );
 }

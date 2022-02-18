@@ -22,7 +22,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
             rel="stylesheet"
           />
-
           <link
             href="https://api.fontshare.com/css?f[]=general-sans@1,2&f[]=satoshi@1,2&f[]=clash-grotesk@1&f[]=clash-display@1&f[]=switzer@1&display=swap"
             rel="stylesheet"

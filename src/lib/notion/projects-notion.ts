@@ -7,7 +7,7 @@ export type Project = {
   thumbnail: string;
   tags: string[];
   publishedAt: string;
-  stack?: string[];
+  stack: string[];
   description: string;
   defunct?: boolean;
   hidden?: boolean;
