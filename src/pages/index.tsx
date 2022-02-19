@@ -180,7 +180,7 @@ function SongCard({ song }: { song: Song }) {
 
         <div className="font-semibold line-clamp-1 text-base text-slate-500 tracking-tight">
           {artistNames}{' '}
-          <span className="font-normal">
+          <span className="font-normal ml-1">
             {format(parseISO(song.released_at), 'yyyy')}
           </span>
         </div>

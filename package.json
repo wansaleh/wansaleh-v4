@@ -51,7 +51,7 @@
     "rehype-raw": "^6.1.1",
     "remark-smartypants": "^2.0.0",
     "slugify": "^1.6.5",
-    "swr": "^1.2.1"
+    "swr": "^1.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
@@ -75,7 +75,7 @@
     "gray-matter": "^4.0.3",
     "lint-staged": "^12.3.4",
     "mdx-bundler": "^8.0.1",
-    "next-sitemap": "^2.4.2",
+    "next-sitemap": "^2.4.3",
     "node-fetch": "^3.2.0",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
