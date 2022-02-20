@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <script async src="https://cdn.splitbee.io/sb.js"></script>
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css"
