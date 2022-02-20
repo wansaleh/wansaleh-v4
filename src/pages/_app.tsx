@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import Script from 'next/script';
 import { ThemeProvider } from 'next-themes';
 import { SWRConfig } from 'swr';
 
@@ -15,6 +16,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           fetch(resource, init).then((res) => res.json()),
       }}
     >
+      <Script src="https://cdn.splitbee.io/sb.js" />
+
       <ThemeProvider attribute="class">
         <Layout>
           <Component {...pageProps} />
