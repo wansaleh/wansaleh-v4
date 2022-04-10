@@ -36,6 +36,3 @@ yarn-error.log*
 # next-sitemap
 robots.txt
 sitemap.xml
-
-# yarn
-.yarn
