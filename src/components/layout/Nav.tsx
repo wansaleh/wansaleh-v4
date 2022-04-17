@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import Logo2 from '../images/Logo2';
+import Logo2 from '../images/Logo';
 import ThemeSelect from '../ThemeSelect';
 
 const links = [
@@ -28,9 +28,9 @@ export default function Nav() {
       <Link href="/">
         <a className="flex font-semibold gap-2 group items-center leading-tight text-base tracking-tight">
           <span className="duration-300 transition group-hover:text-brand">
-            <Logo2 className="h-[1.5em]" />
+            <Logo2 className="h-[2em]" />
           </span>
-          <span className="sr-only md:not-sr-only">By Wan Saleh</span>
+          <span className="sr-only">By Wan Saleh</span>
         </a>
       </Link>
 

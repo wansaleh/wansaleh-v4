@@ -10,10 +10,10 @@ const themes = {
     label: 'Dark Mode',
     icon: MoonIcon,
   },
-  // system: {
-  //   label: 'System Default',
-  //   icon: SystemIcon,
-  // },
+  system: {
+    label: 'System Default',
+    icon: SystemIcon,
+  },
 };
 
 export default function ThemeSelect() {
@@ -47,7 +47,7 @@ export default function ThemeSelect() {
         type="button"
         className="flex font-semibold gap-1 h-8 items-center justify-center px-1 py-0 transition w-8"
         onClick={toggle}
-        title={themes[theme].label}
+        // title={themes[theme].label}
       >
         <Icon />
       </button>

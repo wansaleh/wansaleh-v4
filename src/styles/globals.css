@@ -21,6 +21,11 @@ html {
 
 body {
   @apply bg-fixed bg-lightbg text-darkbg tracking-normal dark:bg-darkbg dark:text-lightbg;
+
+  &:before {
+    @apply content-[""] absolute w-full h-[20rem] bg-gradient-to-b dark:from-gray-900 dark:to-darkbg from-gray-50 to-lightbg;
+  }
+
 }
 
 h1 {

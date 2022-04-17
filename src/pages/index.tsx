@@ -48,7 +48,7 @@ export default function HomePage({
 }) {
   return (
     <div className="w-full">
-      <div className="bg-[#fff000] border-b-4 border-current w-full dark:bg-blue-900">
+      <div className="bg-[#fff000] border-b-4 border-current w-full dark:bg-[#002855]">
         <div className="layout pb-8 py-24 w-full lg:pb-24">
           <div className="gap-6 grid grid-cols-1 items-center mb-6 lg:gap-10 lg:grid-cols-2 lg:mb-8">
             <div className="flex flex-col h-full justify-center">
@@ -76,10 +76,10 @@ export default function HomePage({
         </div>
       </div>
 
-      <div className="layout pb-10 pt-10 w-full lg:pb-40">
+      <div className="layout pb-32 pt-10 w-full lg:pb-40">
         <div className="mb-6 lg:mb-8">
           <h3 className="font-bold mb-6 text-2xl tracking-tight lg:mb-8">
-            <span className="bg-darkbg inline-block leading-none p-6 rounded-lg text-lightbg dark:bg-lightbg dark:text-darkbg">
+            <span className="bg-darkbg inline-block leading-none px-6 py-4 rounded-lg text-lightbg dark:bg-lightbg dark:text-darkbg font-cd">
               Featured Works
             </span>
           </h3>
@@ -102,24 +102,24 @@ export default function HomePage({
 
         <div className="border-2 border-current gap-0 grid grid-cols-1 overflow-hidden rounded-lg lg:grid-cols-2">
           <div className="bg-darkbg h-full p-6 text-lightbg lg:p-10 dark:bg-lightbg dark:text-darkbg">
-            <h3 className="font-semibold mb-8 text-2xl">About</h3>
+            <h3 className="font-bold mb-8 text-2xl font-cd">About</h3>
 
             <p className="leading-normal max-w-xl text-2xl">
               My name is Wan Saleh, and I am a music producer based in Kuala
               Lumpur, Malaysia. My business partner is{' '}
               <a
                 href="https://instagram.com/ikhwanfatanna"
-                className="underline"
+                // className="underline"
               >
                 Ikhwan Fatanna
               </a>
-              , he is also a composer and producer. Together we run our studio,
-              Rekaman Music in Ara Damansara, Selangor.
+              , who is a singer-songwriter and producer. Together we run our
+              studio, Rekaman Music in Ara Damansara, Selangor.
             </p>
           </div>
 
           <div className="p-6 lg:p-10">
-            <h3 className="font-semibold mb-8 text-2xl">Writing</h3>
+            <h3 className="font-bold mb-8 text-2xl font-cd">Writing</h3>
 
             <div>
               {allPosts.slice(0, 3).map((post) => (
