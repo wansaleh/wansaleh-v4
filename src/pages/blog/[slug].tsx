@@ -9,6 +9,7 @@ import Zoom from 'react-medium-image-zoom';
 import { NotionRenderer } from 'react-notion';
 import { readingTime } from 'reading-time-estimator';
 import smartypants from 'remark-smartypants';
+import useSWR from 'swr';
 
 import { coverLoader, getBlurUrl } from '@/lib/images';
 import {
@@ -64,7 +65,6 @@ export default function PostPage({
   allPosts: Post[];
 }) {
   const { theme } = useTheme();
-  const [views, setViews] = useState(null);
   const [readTime, setReadTime] = useState<{
     minutes: number;
     words: number;
@@ -72,18 +72,12 @@ export default function PostPage({
   } | null>(null);
   const ref = useRef<HTMLElement>(null);
 
+  const { data: views } = useSWR(
+    post.slug ? `/api/postviews?slug=${post.slug}` : null,
+    { revalidateOnFocus: false }
+  );
+
   useEffect(() => {
-    async function loadViews() {
-      const views = await fetch(`/api/postviews?slug=${post.slug}`).then(
-        (res) => res.json()
-      );
-
-      setViews(views);
-    }
-    if (post.slug) {
-      loadViews();
-    }
-
     if (ref.current?.textContent) {
       setReadTime(readingTime(ref.current.textContent));
     }
@@ -147,9 +141,33 @@ export default function PostPage({
 
         <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
           <div>
-            <div>
-              {readTime && <>{readTime?.text}</>}
-              {views && <> &mdash; {views} views</>}
+            <div className="font-semibold">
+              {readTime && <>{readTime.text}</>}
+              <span> &middot; </span>
+              {views ? (
+                <>{views} views</>
+              ) : (
+                <svg
+                  className="animate-spin -mt-0.5 h-4 w-4 text-white inline-block"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              )}
             </div>
 
             <div>
