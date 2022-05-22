@@ -12,6 +12,7 @@ export type Project = {
   defunct?: boolean;
   hidden?: boolean;
   featured?: boolean;
+  order?: number;
 };
 
 export async function getAllProjects(): Promise<{

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { orderBy } from 'lodash-es';
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
@@ -38,6 +39,12 @@ export default function WebPage({
       project.tags.map((tag) => tag).includes(activeTag)
     );
   }
+
+  filteredProjects = orderBy(
+    filteredProjects,
+    ['order', 'publishedAt'],
+    ['asc', 'desc']
+  );
 
   return (
     <div className="min-h-screen py-24 w-full lg:py-40">
