@@ -217,7 +217,7 @@ export default function PostPage({
                 blockMap={blockMap}
                 hideHeader
                 customDecoratorComponents={{
-                  a: ({ decoratorValue, children }) => {
+                  a: ({ decoratorValue, renderComponent }) => {
                     let href = decoratorValue;
                     if (href.startsWith('/')) {
                       const postWithId = allPosts.find(
@@ -228,7 +228,7 @@ export default function PostPage({
 
                     return (
                       <Link href={href}>
-                        <a className="notion-link">{children}</a>
+                        <a className="notion-link">{renderComponent()}</a>
                       </Link>
                     );
                   },
@@ -238,7 +238,7 @@ export default function PostPage({
                     return (
                       <Zoom
                         zoomMargin={0}
-                        overlayBgColorEnd={theme === 'dark' ? 'black' : 'white'}
+                        // overlayBgColorEnd={theme === 'dark' ? 'black' : 'white'}
                       >
                         {renderComponent()}
                       </Zoom>

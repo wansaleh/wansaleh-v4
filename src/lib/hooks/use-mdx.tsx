@@ -13,8 +13,8 @@ function addSlug(item) {
 
 export default function useMDX(code: string) {
   const Component = useMemo(() => getMDXComponent(code), [code]);
-  const { toc: _toc } = useMemo(() => getMDXExport(code), [code]);
-  const toc = useMemo(() => _toc.map(addSlug), [_toc]);
+  // const { toc: _toc } = useMemo(() => getMDXExport(code), [code]);
+  // const toc = useMemo(() => _toc.map(addSlug), [_toc]);
 
-  return { Component, toc };
+  return { Component };
 }
