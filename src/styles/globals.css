@@ -3,48 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-::-moz-selection {
-  background: theme('colors.brand');
-}
-::selection {
-  background: theme('colors.brand');
-}
-
-html {
-  @apply font-sans;
-  font-feature-settings: 'case', 'calt', 'cv01', 'cv02', 'cv03', 'cv04',
-    'cv11' off, 'tnum' off;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  scroll-padding-top: 5rem;
-}
-
-body {
-  @apply bg-fixed bg-lightbg text-darkbg tracking-normal dark:bg-darkbg dark:text-lightbg;
-
-  &:before {
-    @apply content-[""] absolute w-full h-[20rem] bg-gradient-to-b dark:from-gray-900 dark:to-darkbg from-gray-50 to-lightbg;
-  }
-}
-
-h1 {
-  @apply font-head text-4xl lg:text-6xl;
-}
-h2 {
-  @apply font-head text-3xl lg:text-5xl;
-}
-h3 {
-  @apply font-head text-2xl lg:text-4xl;
-}
-
-b,
-strong {
-  @apply font-bold;
-}
-
 @layer base {
+  ::-moz-selection {
+    background: theme('colors.brand');
+  }
+  ::selection {
+    background: theme('colors.brand');
+  }
+
+  html {
+    @apply font-sans;
+    font-feature-settings: 'case', 'calt', 'cv01', 'cv02', 'cv03', 'cv04',
+      'cv11' off, 'tnum' off;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-lightbg bg-fixed tracking-normal text-darkbg dark:bg-darkbg dark:text-lightbg;
+
+    &:before {
+      @apply absolute h-[20rem] w-full bg-gradient-to-b from-gray-50 to-lightbg content-[""] dark:from-gray-900 dark:to-darkbg;
+    }
+  }
+
+  h1 {
+    @apply font-head text-4xl lg:text-6xl;
+  }
+  h2 {
+    @apply font-head text-3xl lg:text-5xl;
+  }
+  h3 {
+    @apply font-head text-2xl lg:text-4xl;
+  }
+
+  b,
+  strong {
+    @apply font-bold;
+  }
+
   .layout {
-    @apply max-w-[86rem] mx-auto px-6 w-full;
+    @apply mx-auto w-full max-w-[86rem] px-6;
   }
 
   .link-overlay {
@@ -52,7 +52,7 @@ strong {
   }
 
   .link-overlay a.link:before {
-    @apply absolute bottom-0 content-[''] cursor-pointer left-0 right-0 top-0 z-10;
+    @apply absolute bottom-0 left-0 right-0 top-0 z-10 cursor-pointer content-[''];
   }
 
   .shadow-solid {
@@ -79,7 +79,7 @@ strong {
 }
 
 body > svg {
-  @apply -z-10 bottom-0 fixed h-screen left-0 opacity-40 overflow-visible right-0 top-0 w-screen;
+  @apply fixed bottom-0 left-0 right-0 top-0 -z-10 h-screen w-screen overflow-visible opacity-40;
 }
 
 .add-comma {
@@ -89,69 +89,69 @@ body > svg {
 }
 
 .notion-callout {
-  @apply bg-gray-500/20 border-2 border-gray-500/20 p-6 pl-10 relative rounded-lg;
+  @apply relative rounded-lg border-2 border-gray-500/20 bg-gray-500/20 p-6 pl-10;
 
   .notion-emoji {
-    @apply -translate-x-1/2 -translate-y-1/2 absolute bg-lightbg border-2 border-gray-500/30 flex h-[1.75em] items-center justify-center left-0 rounded-full text-3xl top-1/2 w-[1.75em] dark:bg-darkbg;
+    @apply absolute left-0 top-1/2 flex h-[1.75em] w-[1.75em] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-gray-500/30 bg-lightbg text-3xl dark:bg-darkbg;
   }
 }
 
 .notion-gray_background {
-  @apply bg-gray-500/10 border-gray-500/10;
+  @apply border-gray-500/10 bg-gray-500/10;
   .notion-emoji {
     @apply border-gray-500/10;
   }
 }
 .notion-amber_background {
-  @apply bg-amber-500/10 border-amber-500/10;
+  @apply border-amber-500/10 bg-amber-500/10;
   .notion-emoji {
     @apply border-amber-500/10;
   }
 }
 .notion-orange_background {
-  @apply bg-orange-500/10 border-orange-500/10;
+  @apply border-orange-500/10 bg-orange-500/10;
   .notion-emoji {
     @apply border-orange-500/10;
   }
 }
 .notion-yellow_background {
-  @apply bg-yellow-500/10 border-yellow-500/10;
+  @apply border-yellow-500/10 bg-yellow-500/10;
   .notion-emoji {
     @apply border-yellow-500/10;
   }
 }
 .notion-green_background {
-  @apply bg-green-500/10 border-green-500/10;
+  @apply border-green-500/10 bg-green-500/10;
   .notion-emoji {
     @apply border-green-500/10;
   }
 }
 .notion-teal_background {
-  @apply bg-teal-500/10 border-teal-500/10;
+  @apply border-teal-500/10 bg-teal-500/10;
   .notion-emoji {
     @apply border-teal-500/10;
   }
 }
 .notion-blue_background {
-  @apply bg-blue-500/10 border-blue-500/10;
+  @apply border-blue-500/10 bg-blue-500/10;
   .notion-emoji {
     @apply border-blue-500/10;
   }
 }
 .notion-purple_background {
-  @apply bg-purple-500/10 border-purple-500/10;
+  @apply border-purple-500/10 bg-purple-500/10;
   .notion-emoji {
     @apply border-purple-500/10;
   }
 }
 .notion-pink_background {
-  @apply bg-pink-500/10 border-pink-500/10;
+  @apply border-pink-500/10 bg-pink-500/10;
   .notion-emoji {
     @apply border-pink-500/10;
   }
 }
 .notion-red_background {
-  @apply bg-red-500/10 border-red-500/10;
+  @apply border-red-500/10 bg-red-500/10;
   .notion-emoji {
     @apply border-red-500/10;
   }

@@ -8,9 +8,9 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="border-2 border-current duration-300 flex flex-col group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid"
+      className="link-overlay hover:shadow-solid group relative flex h-full w-full flex-col overflow-hidden rounded-lg border-2 border-current transition duration-300"
     >
-      <div className="aspect-[4/5] border-b-2 border-current overflow-hidden relative">
+      <div className="relative aspect-[4/5] overflow-hidden border-b-2 border-current">
         <Image
           // src={project.thumbnail}
           src={`/images/screenshots/${project.url
@@ -29,23 +29,23 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h2 className="font-bold text-xl tracking-tight lg:text-2xl">
+        <h2 className="text-xl font-bold tracking-tight lg:text-2xl">
           {project.title}
           {project.defunct && (
-            <span className="border border-current font-medium ml-1 px-1.5 rounded-full text-orange-500 text-xs">
+            <span className="ml-1 rounded-full border border-current px-1.5 text-xs font-medium text-orange-500">
               Defunct
             </span>
           )}
         </h2>
 
         <p
-          className="max-w-md mt-4 mx-auto text-gray-500 text-sm lg:text-base"
+          className="mx-auto mt-4 max-w-md text-sm text-gray-500 lg:text-base"
           dangerouslySetInnerHTML={{ __html: project.description }}
         />
 
         <div className="flex-1" />
 
-        <div className="font-medium mt-4 text-gray-600 text-sm dark:text-gray-400">
+        <div className="mt-4 text-sm font-medium text-gray-600 dark:text-gray-400">
           <a
             href={project.url}
             target="_blank"
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           {format(parseISO(project.publishedAt), 'MMMM yyyy')}
         </div>
 
-        <div className="flex flex-wrap leading-none mt-1 text-gray-500 text-xs">
+        <div className="mt-1 flex flex-wrap text-xs leading-none text-gray-500">
           <ul className="mt-0">
             {project.tags.map((tag, i) => (
               <li
@@ -66,7 +66,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 className={clsx(
                   'inline-block',
                   i < project.tags.length - 1 &&
-                    'after:content-["·"] after:px-1'
+                    'after:px-1 after:content-["·"]'
                 )}
               >
                 {tag}
@@ -83,7 +83,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 className={clsx(
                   'inline-block',
                   i < project.stack.length - 1 &&
-                    'after:content-["·"] after:px-1'
+                    'after:px-1 after:content-["·"]'
                 )}
               >
                 {stack}

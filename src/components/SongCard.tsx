@@ -7,12 +7,12 @@ import { Song } from '@/lib/songs';
 
 export default function SongCard({ song }: { song: Song }) {
   return (
-    <div className="border-2 border-current duration-300 group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid">
-      <div className="aspect-square bg-darkbg border-b-2 border-current duration-200 ease-out overflow-hidden">
+    <div className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden border-2 border-current transition duration-300">
+      <div className="aspect-square overflow-hidden border-b-2 border-current bg-darkbg duration-200 ease-out">
         <Image
-          src={song.artworkURL}
+          src={song.artworks.cdn}
           alt={song.title}
-          className="h-full object-contain scale-[101%] w-full"
+          className="h-full w-full scale-[101%] object-contain"
           loading="lazy"
           width="600"
           height="600"
@@ -20,28 +20,32 @@ export default function SongCard({ song }: { song: Song }) {
       </div>
 
       <div className="p-4">
-        <h2 className="font-bold leading-tight text-xl tracking-tight">
+        <div className="text-xs font-medium tracking-tight">
+          {format(parseISO(song.released_at), 'MMMM yyyy')}
+        </div>
+
+        <h2 className="text-xl font-bold leading-tight tracking-tight">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
             rel="external noopener noreferrer"
-            className="line-clamp-1 link"
+            className="link line-clamp-1"
           >
             {song.title}
           </a>
         </h2>
 
-        <div className="font-medium leading-tight line-clamp-1 mt-0.5 text-base tracking-tight">
-          {song.artistNames.join(', ')}
+        <div className="mt-0.5 text-base font-medium leading-tight tracking-tight line-clamp-1">
+          {song.primaryNames.join(', ')}
         </div>
 
-        <div className="flex flex-wrap gap-4 items-end justify-between mt-4">
+        <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
           <Info song={song} />
           <Links song={song} />
         </div>
 
         {process.env.NODE_ENV === 'development' && (
-          <div className="absolute bg-black font-medium leading-tight mt-2 text-white text-xs top-0">
+          <div className="absolute top-0 mt-2 bg-black text-xs font-medium leading-tight text-white">
             id: {song.id}
           </div>
         )}
@@ -69,28 +73,17 @@ function Info({ song }: { song: Song }) {
     });
   }
 
-  const roles = replaceAll(
-    arrayToSentence(song.myRoles, {
-      lastSeparator: ' & ',
-    }),
-    replacements
-  );
-
   return (
     <div>
       {/* <div className="font-medium leading-tight line-clamp-1 mt-6 text-xs dark:text-gray-500">
         {roles}
       </div> */}
 
-      <div className="flex flex-wrap font-medium gap-2 text-xs tracking-tight">
+      <div className="flex flex-wrap gap-2 text-xs font-medium tracking-tight">
         <div className="add-comma">
           {song.genres.slice(0, 2).map(({ genre, order }) => (
             <span key={order}>{genre.title}</span>
           ))}
-        </div>
-        {/* <div className="flex-1" /> */}
-        <div className="font-bold">
-          {format(parseISO(song.released_at), 'MMMM yyyy')}
         </div>
       </div>
     </div>
@@ -99,7 +92,7 @@ function Info({ song }: { song: Song }) {
 
 function Links({ song }: { song: Song }) {
   return (
-    <div className="flex font-medium gap-1.5 items-center links relative text-sm transform transition z-50">
+    <div className="links relative z-50 flex transform items-center gap-1.5 text-sm font-medium transition">
       {song.data.applemusic && (
         <a
           href={song.data.applemusic}
@@ -138,7 +131,7 @@ function Links({ song }: { song: Song }) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 249 325.5"
           enableBackground="new 0 0 249 325.5"
-          className="-mt-1 block h-[1.15em] ml-0.5"
+          className="-mt-1 ml-0.5 block h-[1.15em]"
           fill="currentColor"
           xmlSpace="preserve"
         >

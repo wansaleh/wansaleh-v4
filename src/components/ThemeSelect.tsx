@@ -45,7 +45,7 @@ export default function ThemeSelect() {
     <>
       <button
         type="button"
-        className="flex font-semibold gap-1 h-8 items-center justify-center px-1 py-0 transition w-8"
+        className="flex h-8 w-8 items-center justify-center gap-1 px-1 py-0 font-semibold transition"
         onClick={toggle}
         // title={themes[theme].label}
       >

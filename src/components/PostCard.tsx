@@ -7,8 +7,8 @@ import { Post } from '@/lib/notion/posts-notion';
 
 export default function PostCard({ post }: { post: Post }) {
   return (
-    <div className="duration-300 group h-full link-overlay relative transition w-full">
-      <div className="aspect-[2] border-2 border-current overflow-hidden relative rounded-lg transition group-hover:shadow-solid">
+    <div className="link-overlay group relative h-full w-full transition duration-300">
+      <div className="group-hover:shadow-solid relative aspect-[2] overflow-hidden rounded-lg border-2 border-current transition">
         <Image
           src={post.cover as string}
           alt={post.title}
@@ -24,14 +24,14 @@ export default function PostCard({ post }: { post: Post }) {
 
       <div className="mt-4">
         {!post.published && (
-          <div className="font-bold mb-2 text-red-500">Unpublished</div>
+          <div className="mb-2 font-bold text-red-500">Unpublished</div>
         )}
 
-        <div className="font-bold mb-1 text-gray-500 text-xs tracking-widest uppercase">
+        <div className="mb-1 text-xs font-bold uppercase tracking-widest text-gray-500">
           {post.tags?.join(', ')}
         </div>
 
-        <h2 className="!leading-tight font-semibold mb-1 text-lg lg:text-xl">
+        <h2 className="mb-1 text-lg font-semibold !leading-tight lg:text-xl">
           <Link href={`/blog/${post.slug}`}>
             <a className="link transition group-hover:text-brand">
               {post.title}
@@ -39,11 +39,11 @@ export default function PostCard({ post }: { post: Post }) {
           </Link>
         </h2>
 
-        <div className="font-semibold text-base text-gray-500">
+        <div className="text-base font-semibold text-gray-500">
           {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')}
         </div>
 
-        <div className="font-light mt-2 text-gray-500 text-sm">
+        <div className="mt-2 text-sm font-light text-gray-500">
           {post.subtitle}
         </div>
       </div>

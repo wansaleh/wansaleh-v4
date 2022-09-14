@@ -5,7 +5,7 @@ import { TTrack } from '@/lib/spotify';
 
 export default function Track({ track }: { track: TTrack }) {
   return (
-    <div className="border-b border-gray-200 flex flex-row group items-center leading-tight link-overlay py-2 w-full dark:border-gray-800">
+    <div className="link-overlay group flex w-full flex-row items-center border-b border-gray-200 py-2 leading-tight dark:border-gray-800">
       <div className="flex flex-1 items-center">
         <div className="mr-3">
           <img
@@ -13,12 +13,12 @@ export default function Track({ track }: { track: TTrack }) {
             width={track.thumb.width}
             height={track.thumb.height}
             alt=""
-            className="h-12 rounded w-12"
+            className="h-12 w-12 rounded"
           />
         </div>
         <div className="flex flex-1 flex-col">
           <a
-            className="duration-200 font-medium line-clamp-1 link text-gray-900 transition dark:text-gray-100 group-hover:text-brand"
+            className="link font-medium text-gray-900 transition duration-200 line-clamp-1 group-hover:text-brand dark:text-gray-100"
             href={track.songUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -26,11 +26,11 @@ export default function Track({ track }: { track: TTrack }) {
           >
             {track.title}
           </a>
-          <p className="font-medium line-clamp-1 text-gray-500 text-sm truncate">
+          <p className="truncate text-sm font-medium text-gray-500 line-clamp-1">
             {track.artist}
           </p>
           {track.addedAt && (
-            <p className="font-medium line-clamp-1 opacity-70 text-gray-500 text-xs truncate">
+            <p className="truncate text-xs font-medium text-gray-500 opacity-70 line-clamp-1">
               {formatDistanceToNow(parseISO(track.addedAt))} ago
             </p>
           )}

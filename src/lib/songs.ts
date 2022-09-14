@@ -1,5 +1,3 @@
-import slugify from 'slugify';
-
 type Data = {
   artwork: string;
   spotify: string;
@@ -43,32 +41,15 @@ export type RawSong = {
   artists: Artist[];
   genres: Genre[];
   notes?: string;
-  // youtube_data: any;
+  permalink: string;
+  primaryNames: string[];
+  artworks: any;
 };
 
 export type Song = RawSong & {
-  permalink: string;
-  artistNames: string[];
   artworkURL: string;
-  myRoles: string[];
+  // myRoles: string[];
 };
-
-export function prepareSong(song: RawSong): Song {
-  const permalink = getDiskografLink(song);
-  const artistNames = getArtistNames(song);
-  const artworkURL = getArtworkURL(song);
-  const myRoles = song.artists
-    .filter(({ artist }) => artist.id === 87)
-    .map(({ role }) => role.title);
-
-  return {
-    ...song,
-    permalink,
-    artistNames,
-    artworkURL,
-    myRoles,
-  };
-}
 
 export function convertCdn(url: string): string {
   return url
@@ -89,25 +70,4 @@ export function getArtworkURL(song: RawSong, size = 'artwork'): string {
     );
 
   return 'https://via.placeholder.com/600x600?text=No%20Artwork';
-}
-
-export function getArtistNames(song: RawSong): string[] {
-  return song.artists
-    .filter(({ role }) => role.tag === 'primary')
-    .map(({ artist }) => `${artist.prefix_title || ''} ${artist.name}`.trim());
-}
-
-export default function getDiskografLink(song: RawSong): string {
-  return `https://diskograf.com/explore/song/${song.id}-${getSlug(
-    song.title
-  )}?ref=wansalehdotcom`;
-}
-
-function getSlug(text: string): string {
-  if (!text) return text;
-
-  return slugify(text, {
-    remove: /[*+~,.()'"!:@#]/g,
-    lower: true,
-  });
 }

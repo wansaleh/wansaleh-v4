@@ -18,6 +18,7 @@ import {
   Post,
 } from '@/lib/notion/posts-notion';
 
+import NonSSR from '@/components/NonSSR';
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
 
@@ -96,7 +97,7 @@ export default function PostPage({
       <Seo templateTitle={`${post.title} | Blog`} />
 
       <div className="layout mb-32 mt-24">
-        <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div>
             <Link href="/blog">
               <a className="flex items-center hover:text-brand">
@@ -121,7 +122,7 @@ export default function PostPage({
           </div>
 
           <div className="lg:col-span-3">
-            <div className="mb-4 text-gray-500 text-left">
+            <div className="mb-4 text-left text-gray-500">
               Published{' '}
               {format(
                 parse(post.date, 'yyyy-MM-dd', new Date()),
@@ -139,36 +140,38 @@ export default function PostPage({
           </div>
         </div>
 
-        <div className="gap-8 grid grid-cols-1 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div>
-            <div className="font-semibold">
-              {readTime && <>{readTime.text}</>}
-              <span> &middot; </span>
-              {views ? (
-                <>{views} views</>
-              ) : (
-                <svg
-                  className="animate-spin -mt-0.5 h-4 w-4 text-white inline-block"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-              )}
-            </div>
+            <NonSSR>
+              <div className="font-semibold">
+                {readTime && <>{readTime.text}</>}
+                <span> &middot; </span>
+                {views ? (
+                  <>{views} views</>
+                ) : (
+                  <svg
+                    className="-mt-0.5 inline-block h-4 w-4 animate-spin text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                )}
+              </div>
+            </NonSSR>
 
             <div>
               Last updated{' '}
@@ -177,11 +180,11 @@ export default function PostPage({
           </div>
 
           <div className="lg:col-span-3">
-            <div className="aspect-video max-w-3xl overflow-hidden relative rounded-lg w-full">
+            <div className="relative aspect-video w-full max-w-3xl overflow-hidden rounded-lg">
               <Image
                 src={post.cover as string}
                 alt={post.title}
-                className="object-center object-cover"
+                className="object-cover object-center"
                 loader={coverLoader}
                 layout="fill"
                 placeholder="blur"
@@ -191,7 +194,7 @@ export default function PostPage({
 
             {post.coverCaption && (
               <ReactMarkdown
-                className="caption font-medium leading-tight max-w-3xl py-4 text-gray-500 text-sm"
+                className="caption max-w-3xl py-4 text-sm font-medium leading-tight text-gray-500"
                 remarkPlugins={[smartypants]}
               >
                 {post.coverCaption}
@@ -201,9 +204,9 @@ export default function PostPage({
             <article
               ref={ref}
               className={clsx(
-                'mt-4 prose lg:prose-lg dark:prose-invert',
+                'prose mt-4 dark:prose-invert lg:prose-lg',
                 'prose-headings:text-gray-500',
-                'prose-a:decoration-2 prose-a:no-underline prose-a:text-brand prose-a:underline-offset-2 hover:prose-a:underline'
+                'prose-a:text-brand prose-a:no-underline prose-a:decoration-2 prose-a:underline-offset-2 hover:prose-a:underline'
               )}
             >
               <ReactMarkdown

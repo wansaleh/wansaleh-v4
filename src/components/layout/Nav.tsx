@@ -24,10 +24,10 @@ export default function Nav() {
   const router = useRouter();
 
   return (
-    <div className="absolute flex items-center justify-between layout left-0 p-6 right-0 top-0 z-50">
+    <div className="layout absolute left-0 right-0 top-0 z-50 flex items-center justify-between p-6">
       <Link href="/">
-        <a className="flex font-semibold gap-2 group items-center leading-tight text-base tracking-tight">
-          <span className="duration-300 transition group-hover:text-brand">
+        <a className="group flex items-center gap-2 text-base font-semibold leading-tight tracking-tight">
+          <span className="transition duration-300 group-hover:text-brand">
             <Logo2 className="h-[2em]" />
           </span>
           <span className="sr-only">By Wan Saleh</span>
@@ -36,14 +36,14 @@ export default function Nav() {
 
       <div className="flex-1" />
 
-      <ul className="flex font-semibold items-center leading-none text-base">
+      <ul className="flex items-center text-base font-semibold leading-none">
         {links.map(({ href, label }) => (
           <li key={href}>
             <Link href={href}>
               <a
                 className={clsx(
-                  'block mx-1 px-1.5 py-0.5 relative rounded',
-                  'hover:bg-darkbg hover:dark:bg-lightbg hover:dark:text-darkbg hover:text-lightbg',
+                  'relative mx-1 block rounded px-1.5 py-0.5',
+                  'hover:bg-darkbg hover:text-lightbg hover:dark:bg-lightbg hover:dark:text-darkbg',
                   router.pathname.startsWith(href) &&
                     'bg-darkbg text-lightbg dark:bg-lightbg dark:text-darkbg'
                 )}

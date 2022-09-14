@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { fetchSongsById } from '@/lib/fetch-songs-diskograf';
 import { getAllPostsNotion, Post } from '@/lib/notion/posts-notion';
-import { prepareSong, Song } from '@/lib/songs';
+import { Song } from '@/lib/songs';
 
 import PeepSVG from '@/components/images/Peep';
 
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       featuredSongIDs,
-      songs: data.songs.map(prepareSong),
+      songs: data.songs,
       allPosts,
     },
     revalidate: 1,
@@ -48,20 +48,20 @@ export default function HomePage({
 }) {
   return (
     <div className="w-full">
-      <div className="bg-[#fff000] border-b-4 border-current w-full dark:bg-[#002855]">
-        <div className="layout pb-8 py-24 w-full lg:pb-24">
-          <div className="gap-6 grid grid-cols-1 items-center mb-6 lg:gap-10 lg:grid-cols-2 lg:mb-8">
-            <div className="flex flex-col h-full justify-center">
-              <h2 className="font-cd font-semibold mb-6 text-3xl tracking-tight lg:text-5xl">
+      <div className="w-full border-b-4 border-current bg-[#fff000] dark:bg-[#002855]">
+        <div className="layout w-full py-24 pb-8 lg:pb-24">
+          <div className="mb-6 grid grid-cols-1 items-center gap-6 lg:mb-8 lg:grid-cols-2 lg:gap-10">
+            <div className="flex h-full flex-col justify-center">
+              <h2 className="mb-6 font-cd text-3xl font-semibold tracking-tight lg:text-5xl">
                 Hey, I’m Wan!
               </h2>
 
-              <p className="!leading-tight font-light text-4xl tracking-tight xl:text-6xl">
+              <p className="text-4xl font-light !leading-tight tracking-tight xl:text-6xl">
                 I am a music producer, mixer and mastering engineer from
                 Malaysia. I run{' '}
                 <a
                   href="https://rekaman.org"
-                  className="decoration-4 decoration-gray-500/50 underline underline-offset-4 hover:decoration-current"
+                  className="underline decoration-gray-500/50 decoration-4 underline-offset-4 hover:decoration-current"
                 >
                   my studio
                 </a>{' '}
@@ -70,21 +70,21 @@ export default function HomePage({
             </div>
 
             <div className="">
-              <PeepSVG className="-scale-x-100 h-full w-full" />
+              <PeepSVG className="h-full w-full -scale-x-100" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="layout pb-32 pt-10 w-full lg:pb-40">
+      <div className="layout w-full pb-32 pt-10 lg:pb-40">
         <div className="mb-6 lg:mb-8">
-          <h3 className="font-bold mb-6 text-2xl tracking-tight lg:mb-8">
-            <span className="bg-darkbg inline-block leading-none px-6 py-4 rounded-lg text-lightbg dark:bg-lightbg dark:text-darkbg font-cd">
+          <h3 className="mb-6 text-2xl font-bold tracking-tight lg:mb-8">
+            <span className="inline-block rounded-lg bg-darkbg px-6 py-4 font-cd leading-none text-lightbg dark:bg-lightbg dark:text-darkbg">
               Featured Works
             </span>
           </h3>
 
-          <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
             {featuredSongIDs.map((id) => (
               <SongCard
                 key={id}
@@ -93,18 +93,18 @@ export default function HomePage({
             ))}
 
             <Link href="/discography">
-              <a className="border-2 border-current duration-300 flex group h-full items-center justify-center link-overlay p-6 relative rounded-lg transition w-full hover:shadow-solid">
+              <a className="link-overlay hover:shadow-solid group relative flex h-full w-full items-center justify-center rounded-lg border-2 border-current p-6 transition duration-300">
                 <span className="text-5xl">View All</span>
               </a>
             </Link>
           </div>
         </div>
 
-        <div className="border-2 border-current gap-0 grid grid-cols-1 overflow-hidden rounded-lg lg:grid-cols-2">
-          <div className="bg-darkbg h-full p-6 text-lightbg lg:p-10 dark:bg-lightbg dark:text-darkbg">
-            <h3 className="font-bold mb-8 text-2xl font-cd">About</h3>
+        <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-lg border-2 border-current lg:grid-cols-2">
+          <div className="h-full bg-darkbg p-6 text-lightbg dark:bg-lightbg dark:text-darkbg lg:p-10">
+            <h3 className="mb-8 font-cd text-2xl font-bold">About</h3>
 
-            <p className="leading-normal max-w-xl text-2xl">
+            <p className="max-w-xl text-2xl leading-normal">
               My name is Wan Saleh, and I am a music producer based in Kuala
               Lumpur, Malaysia. My business partner is{' '}
               <a
@@ -119,17 +119,17 @@ export default function HomePage({
           </div>
 
           <div className="p-6 lg:p-10">
-            <h3 className="font-bold mb-8 text-2xl font-cd">Writing</h3>
+            <h3 className="mb-8 font-cd text-2xl font-bold">Writing</h3>
 
             <div>
               {allPosts.slice(0, 3).map((post) => (
-                <div key={post.id} className="group link-overlay mt-4">
-                  <h3 className="font-semibold text-xl tracking-tight transition group-hover:text-brand">
+                <div key={post.id} className="link-overlay group mt-4">
+                  <h3 className="text-xl font-semibold tracking-tight transition group-hover:text-brand">
                     <Link href={`/blog/${post.slug}`}>
                       <a className="link">{post.title}</a>
                     </Link>
                   </h3>
-                  <div className="font-semibold text-gray-500 text-sm">
+                  <div className="text-sm font-semibold text-gray-500">
                     {format(
                       parse(post.date, 'yyyy-MM-dd', new Date()),
                       'MMMM d, yyyy'
@@ -146,41 +146,41 @@ export default function HomePage({
 }
 
 function SongCard({ song }: { song: Song }) {
-  let artistNames = song.artistNames.join(', ');
-  if (song.artistNames.length === 2) {
-    artistNames = `${song.artistNames[0]} ft. ${song.artistNames[1]}`;
+  let artistNames = song.primaryNames.join(', ');
+  if (song.primaryNames.length === 2) {
+    artistNames = `${song.primaryNames[0]} ft. ${song.primaryNames[1]}`;
   }
 
   return (
     <div
       key={song.id}
-      className="border-2 border-current duration-300 group h-full link-overlay overflow-hidden relative rounded-lg transition w-full hover:shadow-solid"
+      className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden rounded-lg border-2 border-current transition duration-300"
     >
-      <div className="aspect-square border-b-2 border-current overflow-hidden relative">
+      <div className="relative aspect-square overflow-hidden border-b-2 border-current">
         <Image
-          src={song.artworkURL}
+          src={song.artworks.cdn}
           alt={song.title}
-          className="h-full object-contain scale-[102%] w-full"
+          className="h-full w-full scale-[102%] object-contain"
           loading="lazy"
           layout="fill"
         />
       </div>
 
       <div className="p-4 lg:p-6">
-        <h3 className="font-bold line-clamp-1 text-xl tracking-tight">
+        <h3 className="text-xl font-bold tracking-tight line-clamp-1">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
             rel="external noopener noreferrer"
-            className="line-clamp-1 link"
+            className="link line-clamp-1"
           >
             {song.title}
           </a>
         </h3>
 
-        <div className="font-semibold line-clamp-1 text-base text-slate-500 tracking-tight">
+        <div className="text-base font-semibold tracking-tight text-slate-500 line-clamp-1">
           {artistNames}{' '}
-          <span className="font-normal ml-1">
+          <span className="ml-1 font-normal">
             {format(parseISO(song.released_at), 'yyyy')}
           </span>
         </div>

@@ -13,11 +13,11 @@ export default function NowPlaying({
 
   return (
     <>
-      <div className="leading-none p-4 text-center">
+      <div className="p-4 text-center leading-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 48 48"
-          className="-mt-1 h-5 inline-block mr-1"
+          className="-mt-1 mr-1 inline-block h-5"
         >
           <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
             <g

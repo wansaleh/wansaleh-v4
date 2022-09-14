@@ -16,7 +16,7 @@ module.exports = {
     extend: {
       colors: { brand, lightbg, darkbg, gray: colors.slate },
       fontFamily: {
-        sans: ['Switzer', ...fontFamily.sans],
+        sans: ['Inter var', ...fontFamily.sans],
         head: ['Switzer', ...fontFamily.sans],
         cd: ['Clash Display', ...fontFamily.sans],
       },

@@ -47,7 +47,7 @@ export default function WebPage({
   );
 
   return (
-    <div className="min-h-screen py-24 w-full lg:py-40">
+    <div className="min-h-screen w-full py-24 lg:py-40">
       <Seo templateTitle="Projects" />
 
       <div className="layout">
@@ -57,12 +57,12 @@ export default function WebPage({
         />
       </div>
 
-      <div className="flex flex-wrap gap-0.5 justify-center layout max-w-5xl mb-12 relative text-lg z-10">
+      <div className="layout relative z-10 mb-12 flex max-w-5xl flex-wrap justify-center gap-0.5 text-lg">
         <button
           type="button"
           className={clsx(
-            'leading-none p-1.5 px-3 rounded-full hover:bg-gray-500/20',
-            activeTag === 'all' && 'font-semibold bg-gray-500/20'
+            'rounded-full p-1.5 px-3 leading-none hover:bg-gray-500/20',
+            activeTag === 'all' && 'bg-gray-500/20 font-semibold'
           )}
           onClick={() => setActiveTag('all')}
         >
@@ -75,8 +75,8 @@ export default function WebPage({
             key={tag}
             type="button"
             className={clsx(
-              'leading-none p-1.5 px-3 rounded-full hover:bg-gray-500/20',
-              activeTag === tag && 'font-semibold bg-gray-500/20'
+              'rounded-full p-1.5 px-3 leading-none hover:bg-gray-500/20',
+              activeTag === tag && 'bg-gray-500/20 font-semibold'
             )}
             onClick={() => setActiveTag(tag)}
           >
@@ -86,7 +86,7 @@ export default function WebPage({
       </div>
 
       <div className="layout">
-        <div className="gap-8 grid grid-cols-1 justify-center place-items-center md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 place-items-center justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project: Project) => (
             <ProjectCard project={project} key={project.id} />
           ))}

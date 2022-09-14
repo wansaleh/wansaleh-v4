@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import { useState } from 'react';
 
 import fetchSongsDiskograf from '@/lib/fetch-songs-diskograf';
-import { prepareSong, Song } from '@/lib/songs';
+import { Song } from '@/lib/songs';
 
 import PageTitle from '@/components/PageTitle';
 import Seo from '@/components/Seo';
@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      songs: data.songs.map(prepareSong),
+      songs: data.songs,
       total: data.total,
     },
     revalidate: 1,
@@ -35,15 +35,12 @@ export default function DiscographyPage({
     const data = await fetch(`/api/songs?offset=${loadedSongs.length}`).then(
       (res) => res.json()
     );
-    setLoadedSongs((loadedSongs) => [
-      ...loadedSongs,
-      ...data.songs.map(prepareSong),
-    ]);
+    setLoadedSongs((loadedSongs) => [...loadedSongs, ...data.songs]);
     setLoading(false);
   }
 
   return (
-    <div className="min-h-screen py-24 w-full lg:py-40">
+    <div className="min-h-screen w-full py-24 lg:py-40">
       <Seo templateTitle="Music Works & Discography" />
 
       <div className="layout">
@@ -54,7 +51,7 @@ export default function DiscographyPage({
       </div>
 
       <div className="layout mt-12 lg:mt-20">
-        <div className="gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {loadedSongs.map((song) => (
             <SongCard key={song.id} song={song} />
           ))}
@@ -63,13 +60,13 @@ export default function DiscographyPage({
         {total > loadedSongs.length && (
           <div className="mt-20 text-center">
             <button
-              className="border-2 border-current ease-in font-semibold min-w-[15rem] px-4 py-4 relative rounded-lg text-center text-lg transition hover:shadow-solid active:shadow-solid"
+              className="hover:shadow-solid active:shadow-solid relative min-w-[15rem] rounded-lg border-2 border-current px-4 py-4 text-center text-lg font-semibold transition ease-in"
               onClick={() => loadMore()}
               disabled={loading}
             >
               {loading ? (
                 <svg
-                  className="-mt-1 animate-spin h-6 inline-block mr-2 text-current w-6"
+                  className="-mt-1 mr-2 inline-block h-6 w-6 animate-spin text-current"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"

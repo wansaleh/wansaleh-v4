@@ -6,13 +6,7 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <script async src="https://cdn.splitbee.io/sb.js"></script>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css"
-            integrity="sha512-8vEtrrc40OAQaCUaqVjNMQtQEPyNtllVG1RYy6bGEuWQkivCBeqOzuDJPPhD+MO6y6QGLuQYPCr8Nlzu9lTYaQ=="
-            crossOrigin="anonymous"
-            referrerPolicy="no-referrer"
-          />
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

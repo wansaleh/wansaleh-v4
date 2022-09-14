@@ -39,7 +39,7 @@ export default function BlogPage({ allPosts }: { allPosts: Post[] }) {
           <FeaturedPostCard post={featuredPost} />
         </div> */}
 
-        <div className="gap-8 grid grid-cols-1 w-full lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
           {allPosts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}

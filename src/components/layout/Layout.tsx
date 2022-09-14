@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
       <Nav />
 
-      <main className="flex flex-col font-normal items-center justify-center min-h-screen relative">
+      <main className="relative flex min-h-screen flex-col items-center justify-center font-normal">
         {children}
 
         <Footer />
