@@ -79,7 +79,7 @@ export default function HomePage({
       <div className="layout w-full pb-32 pt-10 lg:pb-40">
         <div className="mb-6 lg:mb-8">
           <h3 className="mb-6 text-2xl font-bold tracking-tight lg:mb-8">
-            <span className="inline-block rounded-lg bg-darkbg px-6 py-4 font-cd leading-none text-lightbg dark:bg-lightbg dark:text-darkbg">
+            <span className="inline-block rounded-md bg-darkbg px-6 py-4 font-cd leading-none text-lightbg dark:bg-lightbg dark:text-darkbg">
               Featured Works
             </span>
           </h3>
@@ -93,14 +93,14 @@ export default function HomePage({
             ))}
 
             <Link href="/discography">
-              <a className="link-overlay hover:shadow-solid group relative flex h-full w-full items-center justify-center rounded-lg border-2 border-current p-6 transition duration-300">
+              <a className="link-overlay hover:shadow-solid group relative flex h-full w-full items-center justify-center rounded-md border-2 border-current p-6 transition duration-300">
                 <span className="text-5xl">View All</span>
               </a>
             </Link>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-lg border-2 border-current lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-0 overflow-hidden rounded-md border-2 border-current lg:grid-cols-2">
           <div className="h-full bg-darkbg p-6 text-lightbg dark:bg-lightbg dark:text-darkbg lg:p-10">
             <h3 className="mb-8 font-cd text-2xl font-bold">About</h3>
 
@@ -154,7 +154,7 @@ function SongCard({ song }: { song: Song }) {
   return (
     <div
       key={song.id}
-      className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden rounded-lg border-2 border-current transition duration-300"
+      className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden rounded-md border-2 border-current transition duration-300"
     >
       <div className="relative aspect-square overflow-hidden border-b-2 border-current">
         <Image

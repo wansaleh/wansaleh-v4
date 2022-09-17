@@ -8,7 +8,7 @@ import { Post } from '@/lib/notion/posts-notion';
 export default function PostCard({ post }: { post: Post }) {
   return (
     <div className="link-overlay group relative h-full w-full transition duration-300">
-      <div className="group-hover:shadow-solid relative aspect-[2] overflow-hidden rounded-lg border-2 border-current transition">
+      <div className="group-hover:shadow-solid relative aspect-[2] overflow-hidden rounded-md border-2 border-current transition">
         <Image
           src={post.cover as string}
           alt={post.title}
@@ -43,7 +43,7 @@ export default function PostCard({ post }: { post: Post }) {
           {format(parse(post.date, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')}
         </div>
 
-        <div className="mt-2 text-sm font-light text-gray-500">
+        <div className="mt-2 text-base font-normal text-gray-500">
           {post.subtitle}
         </div>
       </div>

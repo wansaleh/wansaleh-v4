@@ -8,7 +8,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="link-overlay hover:shadow-solid group relative flex h-full w-full flex-col overflow-hidden rounded-lg border-2 border-current transition duration-300"
+      className="link-overlay hover:shadow-solid group relative flex h-full w-full flex-col overflow-hidden rounded-md border-2 border-current transition duration-300"
     >
       <div className="relative aspect-[4/5] overflow-hidden border-b-2 border-current">
         <Image

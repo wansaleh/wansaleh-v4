@@ -7,7 +7,7 @@ import { Song } from '@/lib/songs';
 
 export default function SongCard({ song }: { song: Song }) {
   return (
-    <div className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden border-2 border-current transition duration-300">
+    <div className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden rounded-md border-2 border-current transition duration-300">
       <div className="aspect-square overflow-hidden border-b-2 border-current bg-darkbg duration-200 ease-out">
         <Image
           src={song.artworks.cdn}
@@ -19,7 +19,7 @@ export default function SongCard({ song }: { song: Song }) {
         />
       </div>
 
-      <div className="p-4">
+      <div className="bg-black p-3 text-white">
         <div className="text-xs font-medium tracking-tight">
           {format(parseISO(song.released_at), 'MMMM yyyy')}
         </div>
@@ -35,7 +35,7 @@ export default function SongCard({ song }: { song: Song }) {
           </a>
         </h2>
 
-        <div className="mt-0.5 text-base font-medium leading-tight tracking-tight line-clamp-1">
+        <div className="mt-0.5 text-sm font-medium leading-tight tracking-tight line-clamp-1">
           {song.primaryNames.join(', ')}
         </div>
 
