@@ -48,7 +48,7 @@ export default function HomePage({
 }) {
   return (
     <div className="w-full">
-      <div className="w-full border-b-4 border-current bg-[#fff000] dark:bg-[#002855]">
+      <div className="w-full border-b-4 border-current bg-yellow-300 dark:bg-blue-900">
         <div className="layout w-full py-24 pb-8 lg:pb-24">
           <div className="mb-6 grid grid-cols-1 items-center gap-6 lg:mb-8 lg:grid-cols-2 lg:gap-10">
             <div className="flex h-full flex-col justify-center">
@@ -56,7 +56,7 @@ export default function HomePage({
                 Hey, I’m Wan!
               </h2>
 
-              <p className="text-4xl font-light !leading-tight tracking-tight xl:text-6xl">
+              <p className="text-4xl font-light !leading-tight tracking-tighter xl:text-6xl">
                 I am a music producer, mixer and mastering engineer from
                 Malaysia. I run{' '}
                 <a
@@ -84,7 +84,7 @@ export default function HomePage({
             </span>
           </h3>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {featuredSongIDs.map((id) => (
               <SongCard
                 key={id}
