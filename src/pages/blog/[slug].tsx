@@ -96,7 +96,7 @@ export default function PostPage({
     <div className="min-h-screen w-full">
       <Seo templateTitle={`${post.title} | Blog`} />
 
-      <div className="layout mb-32 mt-24">
+      <div className="mb-32 mt-24 layout">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div>
             <Link href="/blog">

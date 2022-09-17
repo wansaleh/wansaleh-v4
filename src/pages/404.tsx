@@ -9,7 +9,7 @@ export default function NotFoundPage() {
 
       <main>
         <section>
-          <div className="layout flex min-h-screen flex-col items-center justify-center text-center">
+          <div className="flex min-h-screen flex-col items-center justify-center text-center layout">
             <h1 className="mt-8">😩 Page Not Found</h1>
             <Link href="/">
               <a className="mt-4">Back to Home</a>

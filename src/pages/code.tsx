@@ -57,7 +57,7 @@ export default function WebPage({
         />
       </div>
 
-      <div className="layout relative z-10 mb-12 flex max-w-5xl flex-wrap justify-center gap-0.5 text-lg">
+      <div className="relative z-10 mb-12 flex max-w-5xl flex-wrap justify-center gap-0.5 text-lg layout">
         <button
           type="button"
           className={clsx(

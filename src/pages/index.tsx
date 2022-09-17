@@ -49,7 +49,7 @@ export default function HomePage({
   return (
     <div className="w-full">
       <div className="w-full border-b-4 border-current bg-yellow-300 dark:bg-blue-900">
-        <div className="layout w-full py-24 pb-8 lg:pb-24">
+        <div className="w-full py-24 pb-8 layout lg:pb-24">
           <div className="mb-6 grid grid-cols-1 items-center gap-6 lg:mb-8 lg:grid-cols-2 lg:gap-10">
             <div className="flex h-full flex-col justify-center">
               <h2 className="mb-6 font-cd text-3xl font-semibold tracking-tight lg:text-5xl">
@@ -76,7 +76,7 @@ export default function HomePage({
         </div>
       </div>
 
-      <div className="layout w-full pb-32 pt-10 lg:pb-40">
+      <div className="w-full pb-32 pt-10 layout lg:pb-40">
         <div className="mb-6 lg:mb-8">
           <h3 className="mb-6 text-2xl font-bold tracking-tight lg:mb-8">
             <span className="inline-block rounded-md bg-darkbg px-6 py-4 font-cd leading-none text-lightbg dark:bg-lightbg dark:text-darkbg">
@@ -158,7 +158,7 @@ function SongCard({ song }: { song: Song }) {
     >
       <div className="relative aspect-square overflow-hidden border-b-2 border-current">
         <Image
-          src={song.artworks.cdn}
+          src={song.artworks.cdn.artworkMedium}
           alt={song.title}
           className="h-full w-full scale-[102%] object-contain"
           loading="lazy"

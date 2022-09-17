@@ -43,10 +43,6 @@
     @apply font-bold;
   }
 
-  .layout {
-    @apply mx-auto w-full max-w-[86rem] px-6;
-  }
-
   .link-overlay {
     @apply relative;
   }

@@ -24,7 +24,7 @@ export default function SpotifyPage() {
     <>
       <Seo templateTitle="Listens" />
 
-      <div className="layout min-h-screen max-w-7xl py-20 lg:py-40">
+      <div className="min-h-screen max-w-7xl py-20 layout lg:py-40">
         <PageTitle title="Listens" />
 
         <div className="mx-auto mb-10 max-w-2xl rounded-xl border-2 border-current">

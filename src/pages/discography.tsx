@@ -50,17 +50,17 @@ export default function DiscographyPage({
         />
       </div>
 
-      <div className="layout mt-12 lg:mt-20">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-12 layout lg:mt-20">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {loadedSongs.map((song) => (
             <SongCard key={song.id} song={song} />
           ))}
         </div>
 
         {total > loadedSongs.length && (
-          <div className="mt-20 text-center">
+          <div className="mt-8 text-center">
             <button
-              className="hover:shadow-solid active:shadow-solid relative min-w-[15rem] rounded-lg border-2 border-current px-4 py-4 text-center text-lg font-semibold transition ease-in"
+              className="hover:shadow-solid active:shadow-solid relative min-w-[15rem] rounded-lg border-2 border-current bg-black px-4 py-4 text-center text-lg font-semibold text-white transition ease-in dark:bg-white dark:text-black"
               onClick={() => loadMore()}
               disabled={loading}
             >

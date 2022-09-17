@@ -10,7 +10,7 @@ export default function SongCard({ song }: { song: Song }) {
     <div className="link-overlay hover:shadow-solid group relative h-full w-full overflow-hidden rounded-md border-2 border-current transition duration-300">
       <div className="aspect-square overflow-hidden border-b-2 border-current bg-darkbg duration-200 ease-out">
         <Image
-          src={song.artworks.cdn}
+          src={song.artworks.cdn.artworkMedium}
           alt={song.title}
           className="h-full w-full scale-[101%] object-contain"
           loading="lazy"

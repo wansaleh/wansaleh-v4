@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { fontFamily } = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 const lightbg = '#fff';
 const darkbg = '#0f0e17';
@@ -20,11 +21,27 @@ module.exports = {
         head: ['Switzer', ...fontFamily.sans],
         cd: ['Clash Display', ...fontFamily.sans],
       },
+      maxWidth: {
+        '8xl': '90rem',
+      },
     },
   },
 
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/line-clamp'),
+
+    plugin(({ addUtilities, theme }) => {
+      addUtilities({
+        '.layout': {
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          width: '100%',
+          maxWidth: theme('maxWidth.8xl'),
+          paddingLeft: theme('spacing.4'),
+          paddingRight: theme('spacing.4'),
+        },
+      });
+    }),
   ],
 };

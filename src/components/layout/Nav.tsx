@@ -24,7 +24,7 @@ export default function Nav() {
   const router = useRouter();
 
   return (
-    <div className="layout absolute left-0 right-0 top-0 z-50 flex items-center justify-between p-6">
+    <div className="absolute left-0 right-0 top-0 z-50 flex items-center justify-between p-6 layout">
       <Link href="/">
         <a className="group flex items-center gap-2 text-base font-semibold leading-tight tracking-tight">
           <span className="transition duration-300 group-hover:text-brand">
