@@ -18,7 +18,7 @@ module.exports = {
       colors: { brand, lightbg, darkbg, gray: colors.slate },
       fontFamily: {
         sans: ['Inter var', ...fontFamily.sans],
-        head: ['Switzer', ...fontFamily.sans],
+        head: ['Manrope', ...fontFamily.sans],
         cd: ['Clash Display', ...fontFamily.sans],
       },
       maxWidth: {

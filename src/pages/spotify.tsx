@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-import { getSavedTracks, getTopTracks, TTrack } from '@/lib/spotify';
+import { TTrack } from '@/lib/spotify';
 
 import NowPlaying from '@/components/NowPlaying';
 import PageTitle from '@/components/PageTitle';

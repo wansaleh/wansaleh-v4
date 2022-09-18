@@ -1,6 +1,3 @@
-import { gql } from 'graphql-request';
-
-import gqlFetch from './gql-fetch';
 import type { RawSong } from './songs';
 
 export default async function fetchSongsDiskograf(offset = 0): Promise<{

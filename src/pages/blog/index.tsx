@@ -1,10 +1,5 @@
-import {
-  getAllPostsNotion,
-  getAllPostsNotionAPI,
-  Post,
-} from '@/lib/notion/posts-notion';
+import { getAllPostsNotionAPI, Post } from '@/lib/notion/posts-notion';
 
-import FeaturedPostCard from '@/components/FeaturedPostCard';
 import PageTitle from '@/components/PageTitle';
 import PostCard from '@/components/PostCard';
 import Seo from '@/components/Seo';

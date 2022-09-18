@@ -1,4 +1,4 @@
-import { getMDXComponent, getMDXExport } from 'mdx-bundler/client';
+import { getMDXComponent } from 'mdx-bundler/client';
 import { useMemo } from 'react';
 import slugify from 'slugify';
 
