@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import clsx from 'clsx';
 import { format, parseISO } from 'date-fns';
-import Image from 'next/image';
 
 import { Song } from '@/lib/songs';
 
@@ -8,24 +8,21 @@ export default function SongCard({ song }: { song: Song }) {
   return (
     <div className="link-overlay group relative h-full w-full overflow-hidden rounded-md transition duration-300">
       <div className="relative aspect-square overflow-hidden bg-black duration-200 ease-out">
+        <img
+          src={song.artworks.cdn.artworkMedium}
+          alt={song.title}
+          className="absolute inset-0 z-0 h-full w-full scale-[200%] object-contain blur-xl"
+        />
+
         <div className="absolute inset-0 z-0 h-full w-full">
-          <Image
+          <img
             src={song.artworks.cdn.artworkMedium}
             alt={song.title}
-            className="scale-[200%] object-contain blur-xl"
-            loading="lazy"
-            width="600"
-            height="600"
-          />
-        </div>
-        <div>
-          <Image
-            src={song.artworks.cdn.artworkMedium}
-            alt={song.title}
-            className="scale-[101%] object-contain"
-            loading="lazy"
-            width="600"
-            height="600"
+            className={clsx(
+              'absolute top-1/2 w-full -translate-y-1/2 scale-[101%] object-cover',
+              song.artworks.cdn.artworkMedium.includes('ytimg') &&
+                'aspect-[16/9]'
+            )}
           />
         </div>
       </div>
