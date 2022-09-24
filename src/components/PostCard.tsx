@@ -8,7 +8,7 @@ import { Post } from '@/lib/notion/posts-notion';
 export default function PostCard({ post }: { post: Post }) {
   return (
     <div className="link-overlay group relative h-full w-full transition duration-300">
-      <div className="group-hover:shadow-solid relative aspect-[2] overflow-hidden rounded-md border-2 border-current transition">
+      <div className="relative aspect-[2] overflow-hidden rounded-md transition">
         <Image
           src={post.cover as string}
           alt={post.title}

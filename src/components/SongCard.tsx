@@ -6,7 +6,7 @@ import { Song } from '@/lib/songs';
 
 export default function SongCard({ song }: { song: Song }) {
   return (
-    <div className="link-overlay group relative h-full w-full overflow-hidden rounded-md transition duration-300">
+    <div className="link-overlay group relative h-full w-full overflow-hidden rounded-md shadow-md ring-1 ring-slate-500/10 transition duration-300 hover:shadow-lg hover:ring-slate-500/30">
       <div className="relative aspect-square overflow-hidden bg-black duration-200 ease-out">
         <img
           src={song.artworks.cdn.artworkMedium}
@@ -27,12 +27,11 @@ export default function SongCard({ song }: { song: Song }) {
         </div>
       </div>
 
-      <div className="bg-black p-3 text-white">
+      <div className="bg-white p-3 dark:bg-black">
         <div className="text-xs font-medium tracking-tight">
           {format(parseISO(song.released_at), 'MMMM yyyy')}
         </div>
-
-        <h2 className="text-xl font-bold leading-tight tracking-tight">
+        <h2 className="text-lg font-bold leading-tight tracking-tight">
           <a
             href={`https://youtube.com/watch?v=${song.data.youtube}`}
             target="_blank"
@@ -42,16 +41,13 @@ export default function SongCard({ song }: { song: Song }) {
             {song.title}
           </a>
         </h2>
-
-        <div className="mt-0.5 text-sm font-medium leading-tight tracking-tight line-clamp-1">
+        <div className="text-xs font-medium leading-tight tracking-tight line-clamp-1">
           {song.primaryNames.join(', ')}
         </div>
-
-        <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+        {/* <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
           <Info song={song} />
           <Links song={song} />
-        </div>
-
+        </div> */}
         {process.env.NODE_ENV === 'development' && (
           <div className="absolute top-0 mt-2 bg-black text-xs font-medium leading-tight text-white">
             id: {song.id}

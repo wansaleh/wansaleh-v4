@@ -8,9 +8,9 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="link-overlay hover:shadow-solid group relative flex h-full w-full flex-col overflow-hidden rounded-md border-2 border-current transition duration-300"
+      className="link-overlay group relative flex h-full w-full flex-col overflow-hidden rounded-md shadow-md ring-1 ring-slate-500/10 transition duration-300 hover:shadow-lg hover:ring-slate-500/30"
     >
-      <div className="relative aspect-[4/5] overflow-hidden border-b-2 border-current">
+      <div className="relative aspect-[16/9] overflow-hidden">
         <Image
           // src={project.thumbnail}
           src={`/images/screenshots/${project.url
@@ -39,7 +39,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </h2>
 
         <p
-          className="mx-auto mt-4 max-w-md text-sm text-gray-500 lg:text-base"
+          className="mt-4 text-sm text-gray-500 lg:text-base"
           dangerouslySetInnerHTML={{ __html: project.description }}
         />
 
