@@ -18,8 +18,8 @@ module.exports = {
       colors: { brand, lightbg, darkbg, gray: colors.slate },
       fontFamily: {
         sans: ['Inter var', ...fontFamily.sans],
-        head: ['Manrope', ...fontFamily.sans],
-        cd: ['Clash Display', ...fontFamily.sans],
+        head: ['Inter var', ...fontFamily.sans],
+        cd: ['Inter var', 'Clash Display', ...fontFamily.sans],
       },
       maxWidth: {
         '8xl': '90rem',
@@ -37,7 +37,7 @@ module.exports = {
           marginLeft: 'auto',
           marginRight: 'auto',
           width: '100%',
-          maxWidth: theme('maxWidth.8xl'),
+          maxWidth: theme('maxWidth.7xl'),
           paddingLeft: theme('spacing.4'),
           paddingRight: theme('spacing.4'),
         },

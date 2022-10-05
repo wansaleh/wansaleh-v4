@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { format, parse, parseISO } from 'date-fns';
+import { format, parse } from 'date-fns';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -38,11 +38,11 @@ export default function HomePage({
         <div className="w-full py-24 pb-8 layout lg:pb-24">
           <div className="mb-6 grid grid-cols-1 items-center gap-6 lg:mb-8 lg:grid-cols-2 lg:gap-10">
             <div className="flex h-full flex-col justify-center">
-              <h2 className="mb-6 font-cd text-3xl font-semibold tracking-tight lg:text-5xl">
+              <h2 className="mb-6 font-cd text-4xl font-extrabold tracking-tighter lg:text-6xl">
                 Hey, I’m Wan!
               </h2>
 
-              <p className="text-4xl font-light !leading-tight tracking-tighter xl:text-6xl">
+              <p className="text-4xl font-light !leading-tight tracking-tighter xl:text-5xl">
                 I am a music producer, mixer and mastering engineer from
                 Malaysia. I run{' '}
                 <a
@@ -67,14 +67,14 @@ export default function HomePage({
       <div className="w-full pb-32 layout lg:pb-40">
         <div className="mb-6 lg:mb-8">
           <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-2xl font-bold tracking-tight">
-              <span className="inline-block rounded-md bg-darkbg px-6 py-4 font-cd leading-none text-lightbg dark:bg-lightbg dark:text-darkbg">
+            <h3 className="text-2xl font-bold">
+              <span className="inline-block font-cd leading-none">
                 Featured Works
               </span>
             </h3>
 
             <Link href="/discography">
-              <a className="group flex items-center gap-2 font-cd text-2xl font-medium tracking-normal">
+              <a className="group flex items-center gap-2 font-cd text-2xl font-medium">
                 View All
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ export default function HomePage({
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {songs.map((song) => (
               <SongCard key={song.id} song={song} />
             ))}
@@ -101,20 +101,16 @@ export default function HomePage({
         </div>
 
         <div className="grid grid-cols-1 gap-0 lg:grid-cols-2">
-          <div className="h-full rounded-md bg-darkbg p-6 text-lightbg dark:bg-lightbg dark:text-darkbg lg:p-10">
+          <div className="h-full bg-darkbg p-6 text-lightbg dark:bg-lightbg dark:text-darkbg lg:p-10 [&_a]:underline [&_a]:decoration-gray-500/50 [&_a]:decoration-2 [&_a]:underline-offset-4 hover:[&_a]:decoration-current">
             <h3 className="mb-4 font-cd text-2xl font-bold">About</h3>
 
             <p className="max-w-xl text-2xl leading-normal">
               My name is Wan Saleh, and I am a music producer based in Kuala
-              Lumpur, Malaysia. My business partner is{' '}
-              <a
-                href="https://instagram.com/ikhwanfatanna"
-                // className="underline"
-              >
-                Ikhwan Fatanna
-              </a>
-              , who is a singer-songwriter and producer. Together we run our
-              studio, Rekaman Music in Ara Damansara, Selangor.
+              Lumpur, Malaysia. Aside from music, I&apos;m also a web developer.
+              I&apos;m the founder and developer of{' '}
+              <a href="https://diskograf.com">Diskograf.com</a> &mdash; a
+              platform to help artists in Malaysia to document their credits in
+              music. I run my studio, Rekaman Music in Ara Damansara, Selangor.
             </p>
           </div>
 
@@ -122,7 +118,7 @@ export default function HomePage({
             <h3 className="mb-4 font-cd text-2xl font-bold">Writing</h3>
 
             <div>
-              {allPosts.slice(0, 3).map((post) => (
+              {allPosts.slice(0, 5).map((post) => (
                 <div key={post.id} className="link-overlay group mt-4">
                   <h3 className="text-xl font-semibold tracking-tight transition group-hover:text-brand">
                     <Link href={`/blog/${post.slug}`}>
@@ -154,7 +150,7 @@ function SongCard({ song }: { song: Song }) {
   return (
     <div
       key={song.id}
-      className="link-overlay group relative h-full w-full overflow-hidden rounded-md shadow ring-1 ring-slate-500/10 transition duration-300"
+      className="link-overlay group relative h-full w-full overflow-hidden ring-1 ring-slate-500/10 transition duration-300"
     >
       <div className="relative aspect-square overflow-hidden">
         <Image
@@ -166,11 +162,11 @@ function SongCard({ song }: { song: Song }) {
         />
       </div>
 
-      <div className="absolute inset-0 bg-black opacity-0 transition duration-500 group-hover:opacity-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent opacity-0 transition duration-500 group-hover:opacity-90"></div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 drop-shadow-md transition duration-500 group-hover:opacity-100">
-        <span className="-mb-1 block text-xs font-normal">
-          {format(parseISO(song.released_at), 'yyyy')}
+      <div className="absolute inset-0 p-4 text-white opacity-0 drop-shadow-md transition duration-500 group-hover:opacity-100">
+        <span className="-mb-1 block text-xs font-semibold opacity-70">
+          {format(new Date(song.released_at), 'MMMM yyyy')}
         </span>
 
         <h3 className="text-lg font-bold tracking-tight">

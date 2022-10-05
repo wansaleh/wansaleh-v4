@@ -14,7 +14,7 @@
   html {
     @apply font-sans;
     font-feature-settings: 'case', 'calt', 'cv01', 'cv02', 'cv03', 'cv04',
-      'cv11' on, 'tnum' off;
+      'cv11' off, 'tnum' off;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     scroll-padding-top: 5rem;
